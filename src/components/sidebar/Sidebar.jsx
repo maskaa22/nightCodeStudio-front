@@ -1,13 +1,13 @@
 import React from 'react'
 import Navigation from '../navigation/Navigation'
-import Ballance from '../ballance/Ballance'
+import Balance from '../balance/Balance'
 import Currency from '../currency/Currency'
 
 const Sidebar = () => {
   return (
     <div>
       <Navigation/>
-      <Ballance/>
+      <Balance/>
       <Currency/>
     </div>
   )
