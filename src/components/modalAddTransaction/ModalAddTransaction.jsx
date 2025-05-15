@@ -4,6 +4,7 @@ import AddTransactionForm from '../addTransactionForm/AddTransactionForm'
 const ModalAddTransaction = () => {
   return (
     <div>
+     
       <AddTransactionForm/>
     </div>
   )

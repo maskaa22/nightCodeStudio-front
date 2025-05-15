@@ -1,18 +1,18 @@
-import React from 'react'
-import Toggle from '../toggle/Toggle'
-import Chart from '../chart/Chart'
-import StatisticsDashboard from '../statisticsDashboard/StatisticsDashboard'
-import StatisticsTable from '../statisticsTable/StatisticsTable.jsx'
+import React from "react";
+import Toggle from "../toggle/Toggle.jsx";
+import Chart from "../chart/Chart.jsx";
+import StatisticsDashboard from "../statisticsDashboard/StatisticsDashboard.jsx";
+import StatisticsTable from "../statisticsTable/StatisticsTable.jsx";
 
 const StatisticsTab = () => {
   return (
     <div>
-      <Toggle/>
-      <Chart/>
-      <StatisticsDashboard/>
-      <StatisticsTable/>
+      <Toggle />
+      <Chart />
+      <StatisticsDashboard />
+      <StatisticsTable />
     </div>
-  )
-}
+  );
+};
 
-export default StatisticsTab
+export default StatisticsTab;
