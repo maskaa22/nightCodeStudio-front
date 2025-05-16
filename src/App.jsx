@@ -13,7 +13,7 @@ import CurrencyTab from "./components/currencyTab/CurrencyTab";
 function App() {
   return (
     <Routes>
-      <UserAcountLayout>
+      <Route path="/" element={<UserAcountLayout />}>
         <Route path="/" element={<HomeTab />} />
         <Route
           path="/statistics"
@@ -28,7 +28,7 @@ function App() {
             <PrivateRoute component={<CurrencyTab />} redirectTo="/login" />
           }
         />
-      </UserAcountLayout>
+      </Route>
 
       <Route
         path="/register"
