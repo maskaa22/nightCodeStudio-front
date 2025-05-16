@@ -12,7 +12,40 @@ import CurrencyTab from "./components/currencyTab/CurrencyTab";
 
 function App() {
   return (
-    <StatisticsTab />
+    <Routes>
+      <Route path="/" element={<UserAcountLayout />}>
+        <Route path="/" element={<HomeTab />} />
+        <Route
+          path="/statistics"
+          element={
+            <PrivateRoute component={<StatisticsTab />} redirectTo="/login" />
+          }
+        />
+        {/* Лише на мобільній версії */}
+        <Route
+          path="/currency"
+          element={
+            <PrivateRoute component={<CurrencyTab />} redirectTo="/login" />
+          }
+        />
+      </Route>
+
+      <Route
+        path="/register"
+        element={
+          <RestrictedRoute
+            component={<RegistrationPage />}
+            redirectTo="/login"
+          />
+        }
+      />
+      <Route
+        path="/login"
+        element={<RestrictedRoute component={<LoginPage />} redirectTo="/" />}
+      />
+
+      <Route path="*" element={<NotFound />} />
+    </Routes>
   );
 }
 
