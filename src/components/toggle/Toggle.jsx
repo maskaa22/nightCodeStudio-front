@@ -1,5 +1,5 @@
 import { useState } from "react";
-import "./Toggle.css";
+import css from "./Toggle.module.css";
 
 const Toggle = ({ onChange, inStatisticsTab = false }) => {
   const [isExpense, setIsExpense] = useState(true);
