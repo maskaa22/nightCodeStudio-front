@@ -1,20 +1,49 @@
-.scrollWrapper {
-  overflow-y: auto;
-  padding: 16px;
-  background: var(--background-color-gradient-list);
+.listWrapper {
+}
+
+.header {
+  display: none;
 }
 
 .list {
+  background: var(--background-color-gradient-list);
   display: flex;
   flex-direction: column;
   gap: 16px;
   padding: 0;
   margin: 0;
   list-style: none;
+  overflow-y: auto;
 }
 
 .placeholder {
   text-align: center;
   color: #ccc;
   padding: 20px;
+}
+
+@media (min-width: 768px) {
+  .header {
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    color: var(--main-color-white);
+    font-weight: 600;
+  }
+
+  .list {
+    background: var(--background-color-gradient-button);
+    padding: 32px 16px;
+    border-radius: 16px;
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    margin: 0;
+  }
+}
+
+@media (min-width: 1280px) {
+  .list {
+    padding: 32px;
+  }
 }

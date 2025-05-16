@@ -23,7 +23,7 @@ const data = [
     date: "16.05.2025",
     type: "-",
     category: "other",
-    comment: "Me",
+    comment: "Big Burgers",
     sum: "2000",
   },
   {
@@ -34,6 +34,78 @@ const data = [
     comment: "Mother",
     sum: "1000",
   },
+  {
+    id: 5,
+    date: "16.05.2025",
+    type: "+",
+    category: "other",
+    comment: "Donat",
+    sum: "1000",
+  },
+  {
+    id: 6,
+    date: "16.05.2025",
+    type: "+",
+    category: "other",
+    comment: "Donat",
+    sum: "1000",
+  },
+  {
+    id: 7,
+    date: "16.05.2025",
+    type: "+",
+    category: "other",
+    comment: "Donat",
+    sum: "1000",
+  },
+  {
+    id: 8,
+    date: "16.05.2025",
+    type: "+",
+    category: "other",
+    comment: "Donat",
+    sum: "1000",
+  },
+  {
+    id: 9,
+    date: "16.05.2025",
+    type: "+",
+    category: "other",
+    comment: "Donat",
+    sum: "1000",
+  },
+  {
+    id: 10,
+    date: "16.05.2025",
+    type: "+",
+    category: "other",
+    comment: "Donat",
+    sum: "1000",
+  },
+  {
+    id: 11,
+    date: "16.05.2025",
+    type: "+",
+    category: "other",
+    comment: "Donat",
+    sum: "1000",
+  },
+  {
+    id: 12,
+    date: "16.05.2025",
+    type: "+",
+    category: "other",
+    comment: "Donat",
+    sum: "1000",
+  },
+  {
+    id: 13,
+    date: "16.05.2025",
+    type: "+",
+    category: "other",
+    comment: "Donat",
+    sum: "1000",
+  },
 ];
 
 const TransactionsList = () => {
@@ -42,10 +114,17 @@ const TransactionsList = () => {
   }
 
   return (
-    <div className={s.scrollWrapper}>
+    <div className={s.listWrapper}>
       <ul className={s.list}>
-        {data.map((item) => (
-          <TransactionsItem key={item.id} {...item} />
+        <ul className={s.header}>
+          <li>Date</li>
+          <li>Type</li>
+          <li>Category</li>
+          <li>Comment</li>
+          <li>Sum</li>
+        </ul>
+        {data.map((item, index) => (
+          <TransactionsItem key={item.id} {...item} isEven={index % 2 === 1} />
         ))}
       </ul>
     </div>
