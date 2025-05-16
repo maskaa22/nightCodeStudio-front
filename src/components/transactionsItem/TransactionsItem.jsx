@@ -37,7 +37,7 @@ const TransactionsItem = ({ date, type, category, comment, sum }) => {
           <button className={s.deleteBtn}>Delete</button>
         </div>
       </li>
-      {/* <ModalEditTranssaction/> */}
+      <ModalEditTranssaction />
     </div>
   );
 };
