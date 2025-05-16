@@ -6,7 +6,6 @@ import ModalAddTransaction from '../modalAddTransaction/ModalAddTransaction'
 const HomeTab = () => {
   return (
     <div>
-      <h2>sdvsdvdv</h2>
       <TransactionsList/>
       <ButtonAddTransaction/>
       <ModalAddTransaction/>
