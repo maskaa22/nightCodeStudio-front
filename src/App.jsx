@@ -7,7 +7,7 @@ import RegistrationPage from "./pages/registrationPage/RegistrationPage";
 import LoginPage from "./pages/loginPage/LoginPage";
 import UserAcountLayout from "./components/userAcountLayout/UserAcountLayout";
 import HomeTab from "./components/homeTab/HomeTab";
-import StatisticsTab from "./components/statisticsTab/StatisticsTab.jsx";
+import StatisticsTab from "./components/statisticsTab/StatisticsTab s.jsx";
 import CurrencyTab from "./components/currencyTab/CurrencyTab";
 
 function App() {
