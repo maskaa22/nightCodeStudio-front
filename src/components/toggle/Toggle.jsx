@@ -28,11 +28,11 @@ const Toggle = ({ onChange, inStatisticsTab = false }) => {
           <div className="toggle-circle">
             {isExpense ? (
               <svg className="toggle-icon">
-                <use xlinkHref="/sprite.svg#icon-minus" />
+                <use href="/sprite.svg#icon-minus" />
               </svg>
             ) : (
               <svg className="toggle-icon">
-                <use xlinkHref="/sprite.svg#icon-plus" />
+                <use href="/sprite.svg#icon-plus" />
               </svg>
             )}
           </div>
