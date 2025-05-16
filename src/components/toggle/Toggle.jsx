@@ -1,7 +1,7 @@
 import { useState } from "react";
 import "./Toggle.css";
 
-const Toggle = ({ onChange }) => {
+const Toggle = ({ onChange, inStatisticsTab = false }) => {
   const [isExpense, setIsExpense] = useState(true);
   const handleToggle = () => {
     const newState = !isExpense;
@@ -13,7 +13,11 @@ const Toggle = ({ onChange }) => {
 
   return (
     <div className="toggle-container">
-      <span className="toggle-label">Income</span>
+      <span
+        className={`toggle-label ${inStatisticsTab ? "statistics-text" : ""}`}
+      >
+        Income
+      </span>
       <button
         className={`toggle-button ${isExpense ? "expense" : "income"}`}
         onClick={handleToggle}
@@ -34,7 +38,11 @@ const Toggle = ({ onChange }) => {
           </div>
         </div>
       </button>
-      <span className="toggle-label">Expense</span>
+      <span
+        className={`toggle-label ${inStatisticsTab ? "statistics-text" : ""}`}
+      >
+        Expense
+      </span>
     </div>
   );
 };

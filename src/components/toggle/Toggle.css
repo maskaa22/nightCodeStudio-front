@@ -3,7 +3,6 @@
   align-items: center;
   justify-content: center;
   gap: 20px;
-  margin-top: 20px;
 }
 
 .toggle-label {
@@ -14,12 +13,16 @@
   color: var(--main-color-black);
 }
 
+.toggle-label.statistics-text {
+    color: var(--main-color-white);
+  }  
+
 .toggle-button {
   position: relative;
   width: 80px;
   height: 40px;
   border-radius: 30px;
-  /* background-color: var(--main-color-white); */
+  background-color: var(--main-color-white);
   border: none;
   cursor: pointer;
   padding: 0;
