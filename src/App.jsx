@@ -17,16 +17,20 @@ function App() {
         <Route path="/" element={<HomeTab />} />
         <Route
           path="/statistics"
-          element={
-            <PrivateRoute component={<StatisticsTab />} redirectTo="/login" />
+          element={<StatisticsTab />
           }
+          // element={
+          //   <PrivateRoute component={<StatisticsTab />} redirectTo="/login" />
+          // }
         />
         {/* Лише на мобільній версії */}
         <Route
           path="/currency"
-          element={
-            <PrivateRoute component={<CurrencyTab />} redirectTo="/login" />
+          element={<CurrencyTab />
           }
+          // element={
+          //   <PrivateRoute component={<CurrencyTab />} redirectTo="/login" />
+          // }
         />
       </Route>
 
