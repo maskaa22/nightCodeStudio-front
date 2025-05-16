@@ -1,0 +1,33 @@
+.currency {
+  padding: 16px;
+  background-image: url("images/dude-1x.png"),
+    var(--background-color-gradient-button);
+  background-size: 234px, cover;
+  background-position: center calc(100% - 32px), center;
+  background-repeat: no-repeat;
+  height: 390px;
+}
+.table {
+  color: var(--main-color-white);
+  border-collapse: separate;
+  border-spacing: 0 16px;
+  text-align: center;
+}
+
+.headItem {
+  padding: 17px 12px;
+  background: var(--background-color-gradient-list);
+}
+
+.headItem:first-child {
+  border-top-left-radius: 12px;
+  border-bottom-left-radius: 12px;
+}
+
+.headItem:last-child {
+  border-top-right-radius: 12px;
+  border-bottom-right-radius: 12px;
+}
+.item {
+  vertical-align: middle;
+}
