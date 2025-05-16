@@ -1,12 +1,13 @@
 import ModalEditTranssaction from "../modalEditTranssaction/ModalEditTranssaction";
 import s from "./TransactionsItem.module.css";
 
-const TransactionsItem = ({ date, type, category, comment, sum }) => {
+const TransactionsItem = ({ date, type, category, comment, sum, isEven }) => {
   const typeClass = type === "+" ? s.income : s.expense;
+  const evenClass = isEven ? s.even : "";
 
   return (
     <div className={s.itemWrapper}>
-      <li className={`${s.card} ${typeClass}`}>
+      <li className={`${s.card} ${typeClass} ${evenClass}`}>
         <div className={s.row}>
           <span className={s.label}>Date</span>
           <span className={s.value}>{date}</span>
@@ -32,7 +33,7 @@ const TransactionsItem = ({ date, type, category, comment, sum }) => {
             <svg className={s.icon}>
               <use href="/sprite.svg#icon-edit" />
             </svg>
-            Edit
+            <span className={s.editSpan}>Edit</span>
           </button>
           <button className={s.deleteBtn}>Delete</button>
         </div>
