@@ -9,29 +9,31 @@ import UserAcountLayout from "./components/userAcountLayout/UserAcountLayout";
 import HomeTab from "./components/homeTab/HomeTab";
 import StatisticsTab from "./components/statisticsTab/StatisticsTab.jsx";
 import CurrencyTab from "./components/currencyTab/CurrencyTab";
+import { useMediaQuery } from "react-responsive";
 
 function App() {
+  const isMobile = useMediaQuery({ maxWidth: 767 });
   return (
     <Routes>
       <Route path="/" element={<UserAcountLayout />}>
         <Route path="/" element={<HomeTab />} />
         <Route
           path="/statistics"
-          element={<StatisticsTab />
-          }
+          element={<StatisticsTab />}
           // element={
           //   <PrivateRoute component={<StatisticsTab />} redirectTo="/login" />
           // }
         />
         {/* Лише на мобільній версії */}
-        <Route
-          path="/currency"
-          element={<CurrencyTab />
-          }
-          // element={
-          //   <PrivateRoute component={<CurrencyTab />} redirectTo="/login" />
-          // }
-        />
+        {isMobile && (
+          <Route
+            path="/currency"
+            element={<CurrencyTab />}
+            // element={
+            //   <PrivateRoute component={<CurrencyTab />} redirectTo="/login" />
+            // }
+          />
+        )}
       </Route>
 
       <Route

@@ -1,9 +1,9 @@
 import Toggle from '../toggle/Toggle';
-// import Calendar from '../calendar/Calendar';
 import css from './AddTransactionForm.module.css';
 import { Field, Form, Formik } from 'formik';
 import Select from 'react-select';
 import { useState } from 'react';
+import Calendar from '../calendar/Calendar';
 
 const customStyles = {
   control: (base, state) => ({
@@ -67,7 +67,8 @@ const options = [
   { value: 'entertainment', label: 'Entertainment' },
 ];
 
-const AddTransactionForm = ({onClose}) => {
+const AddTransactionForm = ({ onClose }) => {
+  const [date, setDate] = useState(new Date());
   const [isExpense, setIsExpense] = useState('false');
   return (
     <div>
@@ -111,12 +112,14 @@ const AddTransactionForm = ({onClose}) => {
               <button type="submit" className={css.btnAdd}>
                 Add
               </button>
-              <button className={css.btnCancel} onClick={onClose}>Cancel</button>
+              <button className={css.btnCancel} onClick={onClose}>
+                Cancel
+              </button>
             </div>
           </Form>
         </Formik>
+        <Calendar value={date} onChange={setDate}/>
       </div>
-      {/* <Calendar /> */}
     </div>
   );
 };

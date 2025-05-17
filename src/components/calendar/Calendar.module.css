@@ -1,0 +1,19 @@
+.customDateInput {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-direction: row;
+  border: 1px solid #081222;
+  border-radius: 8px;
+  padding: 10px 14px;
+  width: 193px;
+  height: 44px;
+  background-color: transparent;
+  color: #081222;
+}
+
+.icon {
+  width: 24px;
+  height: 24px;
+  fill: var(--background-color-gradient-list);
+}

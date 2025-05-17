@@ -2,12 +2,20 @@
 :root {
   --main-color-black: #081222;
   --main-color-white: #fcfcfc;
-  --main-color-yellow: #DFAD3F;
-  --main-color-red: #B20202;
+  --main-color-yellow: #dfad3f;
+  --main-color-red: #b20202;
   --font-family-inter: "Inter", sans-serif;
   --font-family-poppins: "Poppins", sans-serif;
-  --background-color-gradient-list: linear-gradient(180deg, #294045 0%, #1e2f33 100%);
-  --background-color-gradient-button: linear-gradient(180deg, #355359 0%, #3b5d63 100%);
+  --background-color-gradient-list: linear-gradient(
+    180deg,
+    #294045 0%,
+    #1e2f33 100%
+  );
+  --background-color-gradient-button: linear-gradient(
+    180deg,
+    #355359 0%,
+    #3b5d63 100%
+  );
 }
 
 /*Приклад використання глобальних змінних в будь-якому css*/
@@ -15,7 +23,6 @@
   background-color: var(--main-color-black);
   color: var(--main-color-white);
 } */
-
 
 *,
 *::before,
@@ -57,11 +64,11 @@ img {
   height: auto;
 }
 
-
 .container {
   min-width: 320px;
   max-width: 375px;
   padding: 0 16px;
+  margin: 0 auto;
 }
 
 @media only screen and (min-width: 768px) {
@@ -78,7 +85,32 @@ img {
   }
 }
 
+@font-face {
+  font-family: 'Inter';
+  src: url('./fonts/Inter-VariableFont.ttf') format('truetype');
+  font-weight: 100 900; 
+}
 
+@font-face {
+  font-family: 'Poppins';
+  src: url('./fonts/Poppins-Regular.ttf') format('truetype');
+  font-weight: 400;
+}
+@font-face {
+  font-family: 'Poppins';
+  src: url('./fonts/Poppins-Medium.ttf') format('truetype');
+  font-weight: 500;
+}
+@font-face {
+  font-family: 'Poppins';
+  src: url('./fonts/Poppins-SemiBold.ttf') format('truetype');
+  font-weight: 600;
+}
+@font-face {
+  font-family: 'Poppins';
+  src: url('./fonts/Poppins-Bold.ttf') format('truetype');
+  font-weight: 700;
+}
 
 
 /* .poppins-regular {
@@ -104,3 +136,100 @@ img {
   font-weight: 700;
   font-style: normal;
 } */
+
+/* Calendar */
+
+.react-datepicker-wrapper {
+  display: inline-block !important; 
+  margin: 0 !important;
+  padding: 0 !important;
+}
+
+
+.react-datepicker {
+  border: none !important;
+  border-radius: 5px !important;
+}
+
+.react-datepicker__triangle {
+  display: none !important;
+}
+
+.react-datepicker__header {
+  font-family: var(--font-family-inter) !important;
+  background-color: #294045 !important;
+  border-bottom: none !important;
+}
+
+.react-datepicker__current-month {
+  font-family: var(--font-family-inter) !important;
+  font-weight: 500 !important;
+  font-size: 14px !important;
+  text-align: center !important;
+  color: var(--main-color-white) !important;
+}
+
+.react-datepicker__day-name {
+  box-sizing: border-box !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  font-family: var(--font-family-inter) !important;
+  font-size: 10px !important;
+  text-align: center !important;
+  color: var(--main-color-white) !important;
+}
+
+.react-datepicker__month {
+  font-family: var(--font-family-inter) !important;
+  background-color: #1e2f33 !important;
+  margin: 0 !important;
+}
+
+.react-datepicker__day {
+  margin: 0 !important;
+  font-family: var(--font-family-inter) !important;
+  font-size: 10px !important;
+  text-align: center !important;
+  color: var(--main-color-white) !important;
+  border-right: 1px solid rgba(255, 255, 255, 0.1) !important;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1) !important;
+  box-sizing: border-box !important;
+}
+
+.react-datepicker__week > .react-datepicker__day:nth-child(7) {
+  border-right: none !important;
+}
+
+.react-datepicker__week:last-of-type .react-datepicker__day {
+  border-bottom: none !important;
+}
+
+.react-datepicker__day:hover {
+  color: var(--main-color-white) !important;
+  background-color: var(--main-color-yellow) !important;
+}
+
+.react-datepicker__day--today {
+  color: var(--main-color-white) !important;
+}
+
+.react-datepicker__day--weekend {
+  color: var(--main-color-red) !important;
+}
+
+.react-datepicker__day--outside-month {
+  font-family: var(--font-family-inter) !important;
+  font-size: 10px !important;
+  text-align: center !important;
+  color: rgba(252, 252, 252, 0.5) !important;
+}
+
+.react-datepicker__day--selected {
+  color: var(--main-color-white) !important;
+  background-color: var(--main-color-yellow) !important;
+}
+  
+.react-datepicker__day--keyboard-selected, .react-datepicker__month-text--keyboard-selected, .react-datepicker__quarter-text--keyboard-selected, .react-datepicker__year-text--keyboard-selected {
+  background-color: transparent !important;
+  border-radius: none !important;
+}
