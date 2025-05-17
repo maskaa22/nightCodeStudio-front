@@ -21,7 +21,7 @@ const UserAcountLayout = () => {
           </div>
         </div>
       </div>
-      {isLogoutModalOpen && <ModalLogout />}
+      {isLogoutModalOpen && <ModalLogout onClose={() => setIsLogoutModalOpen(false)} isLogoutModalOpen={isLogoutModalOpen} />}
     </div>
   );
 };

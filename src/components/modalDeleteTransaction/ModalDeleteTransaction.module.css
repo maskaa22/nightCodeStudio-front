@@ -26,9 +26,10 @@ backdrop-filter: blur(7px);
         height: 352px;
     background: var(--background-color-gradient-button);
 }
-.closeWrapper{
+.closeIconBtn{
     display: block;
     margin-left: auto;
+    border: none;
 }
 .closeSvg{
     stroke: var(--main-color-black);
