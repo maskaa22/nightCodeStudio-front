@@ -1,0 +1,62 @@
+.toggle {
+  margin-top: 30px;
+}
+.formWrapper {
+  margin-top: 30px;
+}
+.form {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  justify-content: center;
+  gap: 12px;
+}
+
+.field {
+  background-color: inherit;
+  font-family: var(--font-family-inter);
+  font-weight: 500;
+  font-size: 18px;
+  color: var(--main-color-black);
+  border: 1px solid #294045;
+  border-radius: 8px;
+  padding: 11px 14px;
+}
+.field::placeholder {
+  color: #294045;
+}
+
+.btnWrapper {
+    margin-top: 30px;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.btnAdd {
+  display: block;
+  padding: 11px;
+  font-size: 18px;
+  font-weight: 500;
+  font-family: var(--font-family-inter);
+  background: var(--background-color-gradient-button);
+  color: var(--main-color-white);
+  border: none;
+  border-radius: 8px;
+}
+.btnCancel {
+  composes: btnAdd;
+  background: transparent;
+  color: var(--main-color-black);
+  border: 1px solid var(--main-color-black);
+}
+
+@media only screen and (min-width: 768px) {
+   .form {
+    gap: 36px;
+   }
+   .btnWrapper {
+    margin-top: 38px;
+    gap: 21px;
+   }
+  }
