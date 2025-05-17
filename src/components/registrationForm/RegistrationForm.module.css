@@ -1,0 +1,194 @@
+.containerOverride {
+  padding: 26px 0;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  max-width: 767px;
+}
+
+.RegistrationForm {
+  background: #508f8c;
+  border-radius: 8px;
+  padding: 16px;
+  width: 288px;
+  height: 516px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+}
+
+.inputWrapper {
+  position: relative;
+  height: 44px;
+}
+
+.icon {
+  position: absolute;
+  top: 50%;
+  left: 14px;
+  transform: translateY(-50%);
+  fill: #081222;
+  transition: fill 250ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.input {
+  height: 44px;
+  width: 256px;
+  padding-left: 50px;
+  background: transparent;
+  border: 1px solid #081222;
+  border-radius: 8px;
+  outline: none;
+  font-family: var(--font-family-inter);
+}
+
+.input::placeholder {
+  font: 500 18px var(--font-family-inter);
+  color: #081222;
+}
+
+.btnRegister,
+.btnLogin {
+  width: 256px;
+  height: 44px;
+  border-radius: 8px;
+  font: 500 18px var(--font-family-inter);
+  text-align: center;
+  cursor: pointer;
+  padding: 11px 0;
+}
+
+.btnRegister {
+  margin-top: 10px;
+  background: linear-gradient(180deg, #355359 0%, #3b5d63 100%);
+  color: #fcfcfc;
+  border: none;
+}
+
+.btnLogin {
+  background: transparent;
+  color: #081222;
+  border: 1px solid #081222;
+}
+
+.error {
+  position: absolute;
+  top: 100%;
+  padding-top: 2px;
+  font: 400 10px var(--font-family-inter);
+  color: #b20202;
+}
+
+.inputError {
+  border-color: #b20202;
+}
+
+.inputError::placeholder,
+.inputError + .icon {
+  color: #b20202;
+  fill: #b20202;
+}
+
+.inputValid {
+  border-color: #0b6016;
+}
+
+.inputValid::placeholder,
+.inputValid + .icon {
+  color: #0b6016;
+  fill: #0b6016;
+}
+
+.input:focus {
+  border-color: #355359;
+}
+
+.input:focus::placeholder,
+.input:focus + .icon {
+  color: #355359;
+  fill: #355359;
+}
+
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+textarea:-webkit-autofill,
+textarea:-webkit-autofill:hover,
+textarea:-webkit-autofill:focus,
+select:-webkit-autofill,
+select:-webkit-autofill:hover,
+select:-webkit-autofill:focus {
+  -webkit-box-shadow: 0 0 0px 1000px transparent inset !important;
+  box-shadow: 0 0 0px 1000px transparent inset !important;
+  -webkit-text-fill-color: #000 !important;
+  transition: background-color 5000s ease-in-out 0s;
+}
+
+@media screen and (min-width: 768px) {
+  .containerOverride {
+    padding-top: 125px;
+    max-width: 1279px;
+    min-height: 120vh;
+    background: url("images/dude-1x.png") no-repeat,
+      linear-gradient(180deg, #294045 0%, #1e2f33 100%);
+    background-size: 320px 239px, auto;
+    background-position: bottom right;
+  }
+  .RegistrationForm {
+    width: 533px;
+    height: 621px;
+    padding: 32px;
+  }
+  .form {
+    margin-top: 32px;
+  }
+  .input {
+    width: 409px;
+  }
+  .btnRegister {
+    width: 409px;
+    margin-top: 56px;
+  }
+  .btnLogin {
+    width: 409px;
+  }
+}
+@media screen and (-webkit-min-device-pixel-ratio: 2),
+  (min-resolition: 2dppx),
+  (min-resolution: 192dpi) {
+  .containerOverride {
+    background: url("images/dude-2x.png") no-repeat,
+      linear-gradient(180deg, #294045 0%, #1e2f33 100%);
+    background-size: 320px 239px, auto;
+    background-position: bottom right;
+  }
+}
+@media screen and (min-width: 1280px) {
+  .containerOverride {
+    padding-top: 48px;
+    min-height: 100%;
+    max-width: 100%;
+    background: url("images/dude-like-1x.png") no-repeat,
+      linear-gradient(180deg, #294045 0%, #1e2f33 100%);
+    background-size: 320px 239px, auto;
+    background-position: bottom right;
+  }
+  @media screen and (-webkit-min-device-pixel-ratio: 2),
+    (min-resolition: 2dppx),
+    (min-resolution: 192dpi) {
+    .containerOverride {
+      background: url("images/dude-like-2x.png") no-repeat,
+        linear-gradient(180deg, #294045 0%, #1e2f33 100%);
+      background-size: 320px 239px, auto;
+      background-position: bottom right;
+    }
+  }
+}
