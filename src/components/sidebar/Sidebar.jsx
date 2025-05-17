@@ -7,13 +7,20 @@ import s from "./Sidebar.module.css";
 
 const Sidebar = () => {
   const isMobile = useMediaQuery({ maxWidth: 767 });
+  const isTablet = useMediaQuery({ maxWidth: 1279 });
   const location = useLocation();
 
   return (
     <div className={s.sidebar}>
-      <Navigation />
-      {(!isMobile || location.pathname === "/") && <Balance />}
-      {(!isMobile || location.pathname === "/currency") && <Currency />}
+      <div className={s.mainContent}>
+        <Navigation />
+        {((isMobile && location.pathname === "/") ||
+          (!isMobile && isTablet)) && <Balance />}
+      </div>
+      <div className={s.additionBlock}>
+        {!isTablet && <Balance />}
+        {!isMobile && <Currency />}
+      </div>
     </div>
   );
 };

@@ -13,8 +13,12 @@ const UserAcountLayout = () => {
       <Header openLogoutModal={() => setIsLogoutModalOpen(true)} />
       <div className={s.mainContent}>
         <div className="container">
-          <Sidebar />
-          <Outlet />
+          <div className={s.layout}>
+            <div className={s.sidebar}>
+              <Sidebar />
+            </div>
+            <Outlet />
+          </div>
         </div>
       </div>
       {isLogoutModalOpen && <ModalLogout />}

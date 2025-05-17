@@ -69,7 +69,6 @@ img {
   max-width: 375px;
   padding: 0 16px;
   margin: 0 auto;
-  background: var(--background-color-gradient-list);
 }
 
 @media only screen and (min-width: 768px) {
