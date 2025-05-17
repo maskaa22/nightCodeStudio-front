@@ -14,15 +14,15 @@ const Currency = () => {
             </tr>
           </thead>
           <tbody>
-            <tr className={s.item}>
-              <td>USD</td>
-              <td>27.55</td>
-              <td>27.65</td>
+            <tr className={s.body}>
+              <td className={s.bodyItem}>USD</td>
+              <td className={s.bodyItem}>27.55</td>
+              <td className={s.bodyItem}>27.65</td>
             </tr>
-            <tr className={s.item}>
-              <td>EUR</td>
-              <td>30.00</td>
-              <td>30.10</td>
+            <tr className={s.body}>
+              <td className={s.bodyItem}>EUR</td>
+              <td className={s.bodyItem}>30.00</td>
+              <td className={s.bodyItem}>30.10</td>
             </tr>
           </tbody>
         </table>
