@@ -1,0 +1,29 @@
+.select {
+    background: var(--background-color-gradient-button);
+    color: var(--main-color-white);
+    border-radius: 8px;
+    border: 1px solid var(--main-color-white);
+    font-size: 18px;
+    font-weight: 500;
+    padding: 10px 14px;
+    margin-right: 20px;
+    margin-bottom: 20px;
+    appearance: none;
+    background: url(sprite.svg#icon-arrow-down) no-repeat right;
+    background-position-x: calc(100% - 32px);
+}
+
+.select:hover {
+    background: var(--background-color-gradient-list);
+}
+
+.option {
+    cursor: pointer;
+    color: #fcfcfc;
+    background-color: linear-gradient(180deg, #294045 0%, #1e2f33 100%);
+}
+
+.option:hover .option:focus {
+    color: #fcfcfc;
+    background: linear-gradient(180deg, #355359 0%, #3b5d63 100%);
+}
