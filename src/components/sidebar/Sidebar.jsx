@@ -1,16 +1,21 @@
-import React from 'react'
-import Navigation from '../navigation/Navigation'
-import Balance from '../balance/Balance'
-import Currency from '../currency/Currency'
+import Navigation from "../navigation/Navigation";
+import Balance from "../balance/Balance";
+import Currency from "../currency/Currency";
+import { useMediaQuery } from "react-responsive";
+import { useLocation } from "react-router-dom";
+import s from "./Sidebar.module.css";
 
 const Sidebar = () => {
-  return (
-    <div>
-      <Navigation/>
-      <Balance/>
-      <Currency/>
-    </div>
-  )
-}
+  const isMobile = useMediaQuery({ maxWidth: 767 });
+  const location = useLocation();
 
-export default Sidebar
+  return (
+    <div className={s.sidebar}>
+      <Navigation />
+      {(!isMobile || location.pathname === "/") && <Balance />}
+      {(!isMobile || location.pathname === "/currency") && <Currency />}
+    </div>
+  );
+};
+
+export default Sidebar;

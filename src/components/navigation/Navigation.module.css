@@ -1,0 +1,35 @@
+.container {
+  width: fit-content;
+  display: flex;
+  align-items: center;
+  gap: 39px;
+}
+
+.link {
+  display: flex;
+  width: 38px;
+  height: 38px;
+  border-radius: 6px;
+  align-items: center;
+  justify-content: center;
+  background-color: #fcfcfc7a;
+  opacity: 50%;
+}
+
+.active {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 38px;
+  height: 38px;
+  border-radius: 6px;
+  background: var(--background-color-gradient-button);
+}
+
+.icon {
+  fill: #294045;
+}
+
+.active .icon {
+  fill: var(--main-color-white);
+}

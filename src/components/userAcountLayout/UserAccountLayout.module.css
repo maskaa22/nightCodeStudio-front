@@ -1,0 +1,5 @@
+.mainContent {
+  width: 100%;
+  background: var(--background-color-gradient-list);
+  min-height: calc(100dvh - 70px);
+}
