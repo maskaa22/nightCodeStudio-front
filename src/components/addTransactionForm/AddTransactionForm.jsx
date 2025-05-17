@@ -12,7 +12,7 @@ const customStyles = {
     borderColor: state.isFocused && state.isSelected ? '#355359' : '#1e2f33',
     borderRadius: '8px',
     boxShadow: 'none',
-    padding: '9px 0',
+    height:'44px',
     color: '#081222',
     fontSize: '18px',
     fontFamily: 'Inter',
@@ -94,13 +94,16 @@ const AddTransactionForm = ({ onClose }) => {
                   isSearchable={false}
                 />
               )}
-              <Field
-                type="number"
-                id="amount"
-                name="amount"
-                placeholder="0.00"
-                className={css.field}
-              ></Field>
+              <div className={css.dateAmountWrapper}>
+                <Field
+                  type="number"
+                  id="amount"
+                  name="amount"
+                  placeholder="0.00"
+                  className={css.amountField}
+                ></Field>
+                <Calendar value={date} onChange={setDate} />
+              </div>
               <Field
                 id="comment"
                 name="comment"
@@ -118,7 +121,6 @@ const AddTransactionForm = ({ onClose }) => {
             </div>
           </Form>
         </Formik>
-        <Calendar value={date} onChange={setDate}/>
       </div>
     </div>
   );

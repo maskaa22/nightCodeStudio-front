@@ -21,16 +21,27 @@
   border: 1px solid #294045;
   border-radius: 8px;
   padding: 11px 14px;
+  height: 44px;
 }
 .field::placeholder {
   color: #294045;
 }
 
+.amountField {
+  composes: field;
+}
+
+.dateAmountWrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
 .btnWrapper {
-    margin-top: 30px;
-    display: flex;
-    flex-direction: column;
-    gap: 12px;
+  margin-top: 30px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
 }
 
 .btnAdd {
@@ -52,11 +63,20 @@
 }
 
 @media only screen and (min-width: 768px) {
-   .form {
+  .form {
     gap: 36px;
-   }
-   .btnWrapper {
+  }
+  .btnWrapper {
     margin-top: 38px;
     gap: 21px;
-   }
   }
+  .amountField {
+    width: 50%;
+  }
+  .dateAmountWrapper {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+  }
+}

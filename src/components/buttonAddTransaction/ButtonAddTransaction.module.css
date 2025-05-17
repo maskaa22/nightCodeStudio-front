@@ -1,5 +1,4 @@
 .btn {
-  display: block;
   width: 56px;
   height: 56px;
   background-color: #508f8c;
@@ -8,6 +7,9 @@
   position: fixed;
   bottom: 16px;
   right: 16px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   transition: all 0.3s ease;
 }
 
@@ -27,6 +29,8 @@
   .btn {
     width: 64px;
     height: 64px;
+    bottom: 48px;
+    right: 48px;
   }
 
   .icon {
