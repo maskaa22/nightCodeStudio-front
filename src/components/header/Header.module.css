@@ -1,0 +1,54 @@
+.header {
+  background: var(--background-color-gradient-button);
+  width: 100%;
+}
+.layout {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 8px 0;
+  background: var(--background-color-gradient-button);
+}
+.exitBlock {
+  display: flex;
+  align-items: center;
+  height: 30px;
+}
+
+.logo {
+  width: 69px;
+  height: 54px;
+}
+
+.name {
+  font-weight: 400;
+  font-size: 16px;
+  padding-right: 12px;
+  color: var(--main-color-white);
+}
+
+.exitButton {
+  display: flex;
+  padding-left: 12px;
+  align-items: center;
+  gap: 8px;
+  height: 100%;
+  background-color: transparent;
+  border: none;
+  border-left: 1px solid var(--main-color-white);
+  transition: background 250ms cubic-bezier(0.4, 0, 0.2, 1);
+
+  &:hover,
+  &:active {
+    background: linear-gradient(90deg, #ffffff15 0%, #1e2f3300 100%);
+  }
+}
+
+.exitIcon {
+  fill: var(--main-color-white);
+}
+.exitText {
+  color: var(--main-color-white);
+  font-weight: 400;
+  font-size: 16px;
+}
