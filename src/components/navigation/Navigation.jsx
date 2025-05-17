@@ -23,7 +23,7 @@ const Navigation = () => {
       >
         <div className={s.linkContainer}>
           <svg className={s.icon} width="26" height="15">
-            <use href="/sprite.svg#icon-statistics" />
+            <use href="/sprite.svg#icon-stats" />
           </svg>
           {!isMobile && <p className={s.linkText}>Statistics</p>}
         </div>
