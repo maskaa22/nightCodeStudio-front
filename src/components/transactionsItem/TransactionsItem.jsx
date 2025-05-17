@@ -14,7 +14,7 @@ const TransactionsItem = ({ date, type, category, comment, sum, isEven }) => {
         </div>
         <div className={s.row}>
           <span className={s.label}>Type</span>
-          <span className={s.value}>{type}</span>
+          <span className={`${s.value} ${s.typeCell}`}>{type}</span>
         </div>
         <div className={s.row}>
           <span className={s.label}>Category</span>
@@ -38,7 +38,7 @@ const TransactionsItem = ({ date, type, category, comment, sum, isEven }) => {
           <button className={s.deleteBtn}>Delete</button>
         </div>
       </li>
-      <ModalEditTranssaction />
+      {/* <ModalEditTranssaction /> */}
     </div>
   );
 };
