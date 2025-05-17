@@ -1,11 +1,48 @@
-import React from 'react'
+import { forwardRef } from "react";
+import DatePicker, { registerLocale } from "react-datepicker";
+import { enUS } from "date-fns/locale";
+import "react-datepicker/dist/react-datepicker.css";
+import s from "./Calendar.module.css";
 
-const Calendar = () => {
+const CustomInput = forwardRef(function Calendar({ value, onClick }, ref) {
   return (
-    <div>
-      
-    </div>
-  )
-}
+    <button
+      className={s.customDateInput}
+      onClick={onClick}
+      ref={ref}
+      type="button"
+    >
+      <span>{value}</span>
+      <svg className={s.icon}>
+        <use href="/sprite.svg#icon-calendar" />
+      </svg>
+    </button>
+  );
+});
 
-export default Calendar
+const customLocale = {
+  ...enUS,
+  options: {
+    ...enUS.options,
+    weekStartsOn: 1,
+  },
+};
+
+registerLocale("custom-en", customLocale);
+
+const Calendar = ({ value, onChange }) => {
+  return (
+    <DatePicker
+      locale="custom-en"
+      selected={value}
+      onChange={onChange}
+      dateFormat="dd.MM.yyyy"
+      customInput={<CustomInput />}
+      weekStartsOn={1}
+      calendarStartDay={1}
+      showPopperArrow={false}
+    />
+  );
+};
+
+export default Calendar;

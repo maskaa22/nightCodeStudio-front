@@ -1,0 +1,75 @@
+.currency {
+  padding: 16px;
+  background-image: url("images/dude-1x.png"),
+    var(--background-color-gradient-button);
+  background-size: 234px, cover;
+  background-position: center calc(100% - 32px), center;
+  background-repeat: no-repeat;
+  height: 390px;
+  border-radius: 16px;
+}
+.table {
+  color: var(--main-color-white);
+  border-collapse: separate;
+  /* border-spacing: 0 16px; */
+  border-spacing: 0;
+  text-align: center;
+  width: 100%;
+}
+.table tbody tr + tr td {
+  padding-top: 16px; /* імітація spacing лише між стрічками */
+}
+
+.headItem {
+  padding: 17px 0;
+  background: var(--background-color-gradient-list);
+  font-weight: 600;
+  font-size: 16px;
+}
+
+.headItem:first-child {
+  border-top-left-radius: 12px;
+  border-bottom-left-radius: 12px;
+  padding-left: 12px;
+}
+
+.headItem:last-child {
+  border-top-right-radius: 12px;
+  border-bottom-right-radius: 12px;
+  padding-right: 12px;
+}
+
+.bodyItem {
+  font-size: 16px;
+  vertical-align: middle;
+  padding: 16px 0;
+}
+
+@media only screen and (min-width: 768px) {
+  .currency {
+    background-position: center calc(100% - 16px), center;
+    background-size: 181px, cover;
+    height: 310px;
+  }
+  .table {
+    padding: 16px;
+  }
+  .headItem:first-child {
+    padding-right: 30px;
+    padding-left: 32px;
+  }
+
+  .headItem:last-child {
+    padding-left: 30px;
+    padding-right: 32px;
+  }
+}
+
+@media only screen and (min-width: 768px) {
+  .currency {
+    padding: 0;
+  }
+  .table {
+    padding: 0;
+  }
+}

@@ -1,0 +1,25 @@
+.mainContent {
+  width: 100%;
+  background: var(--background-color-gradient-list);
+  min-height: calc(100dvh - 70px);
+}
+.layout {
+  display: flex;
+  flex-direction: column;
+  padding: 24px 0;
+}
+.sidebar {
+  width: 100%;
+}
+
+@media only screen and (min-width: 1280px) {
+  .sidebar {
+    width: 450px;
+  }
+
+  .layout {
+    flex-direction: row;
+    padding: 32px 0;
+    gap: 24px;
+  }
+}
