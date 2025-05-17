@@ -21,6 +21,14 @@
     gap: 32px;
     margin-bottom: 32px;
   }
+  .mainContent {
+    width: 50%;
+  }
+  .additionBlock {
+    background: var(--background-color-gradient-button);
+    border-radius: 16px;
+    width: 50%;
+  }
 }
 
 @media only screen and (min-width: 1280px) {
@@ -35,7 +43,6 @@
 
   .additionBlock {
     width: 100%;
-    background: var(--background-color-gradient-button);
     padding: 24px 24px 41px 24px;
     border-radius: 16px;
   }

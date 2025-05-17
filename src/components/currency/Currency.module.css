@@ -11,9 +11,13 @@
 .table {
   color: var(--main-color-white);
   border-collapse: separate;
-  border-spacing: 0 16px;
+  /* border-spacing: 0 16px; */
+  border-spacing: 0;
   text-align: center;
   width: 100%;
+}
+.table tbody tr + tr td {
+  padding-top: 16px; /* імітація spacing лише між стрічками */
 }
 
 .headItem {
@@ -34,11 +38,11 @@
   border-bottom-right-radius: 12px;
   padding-right: 12px;
 }
-.body {
-  vertical-align: middle;
-}
+
 .bodyItem {
   font-size: 16px;
+  vertical-align: middle;
+  padding: 16px 0;
 }
 
 @media only screen and (min-width: 768px) {
@@ -47,8 +51,8 @@
     background-size: 181px, cover;
     height: 310px;
   }
-  .headItem {
-    padding: 16px 0;
+  .table {
+    padding: 16px;
   }
   .headItem:first-child {
     padding-right: 30px;
@@ -65,11 +69,7 @@
   .currency {
     padding: 0;
   }
-   .headItem:first-child {
-    padding-right: 78px;
-  }
-
-  .headItem:last-child {
-    padding-left: 78px;
+  .table {
+    padding: 0;
   }
 }
