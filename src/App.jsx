@@ -17,31 +17,32 @@ function App() {
         <Route path="/" element={<HomeTab />} />
         <Route
           path="/statistics"
-          element={
-            <PrivateRoute component={<StatisticsTab />} redirectTo="/login" />
+          element={<StatisticsTab />
           }
+          // element={
+          //   <PrivateRoute component={<StatisticsTab />} redirectTo="/login" />
+          // }
         />
         {/* Лише на мобільній версії */}
         <Route
           path="/currency"
-          element={
-            <PrivateRoute component={<CurrencyTab />} redirectTo="/login" />
+          element={<CurrencyTab />
           }
+          // element={
+          //   <PrivateRoute component={<CurrencyTab />} redirectTo="/login" />
+          // }
         />
       </Route>
 
       <Route
         path="/register"
-        element={
-          <RestrictedRoute
-            component={<RegistrationPage />}
-            redirectTo="/login"
-          />
-        }
+        element={<RegistrationPage />}
+        // element={<RestrictedRoute component={<RegistrationPage />} redirectTo="/login" />}
       />
       <Route
         path="/login"
-        element={<RestrictedRoute component={<LoginPage />} redirectTo="/" />}
+        element={<LoginPage />}
+        // element={<RestrictedRoute component={<LoginPage />} redirectTo="/" />}
       />
 
       <Route path="*" element={<NotFound />} />

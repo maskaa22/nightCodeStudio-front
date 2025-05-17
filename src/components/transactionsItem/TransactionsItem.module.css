@@ -1,0 +1,118 @@
+.card {
+  background: var(--background-color-gradient-button);
+  border-radius: 12px;
+  color: var(--main-color-white);
+  display: flex;
+  flex-direction: column;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+}
+
+.income {
+  border-left: 5px solid #4caf50;
+}
+
+.expense {
+  border-left: 5px solid var(--main-color-yellow);
+}
+
+.row {
+  display: flex;
+  justify-content: space-between;
+  border-bottom: 1px solid var(--main-color-white);
+  padding-bottom: 6px;
+  padding: 12px 21px 17px 21px;
+}
+
+.row:last-child {
+  border-bottom: none;
+}
+
+.label {
+  font-weight: 600;
+}
+
+.value {
+  font-weight: 400;
+  text-align: right;
+}
+
+.sum {
+  font-weight: 600;
+  color: var(--main-color-yellow);
+}
+
+.actions {
+  display: flex;
+  justify-content: space-between;
+  flex-direction: row-reverse;
+  align-items: center;
+  padding: 14px 21px;
+}
+
+.deleteBtn {
+  background-color: transparent;
+  border: 1px solid white;
+  color: var(--main-color-white);
+  padding: 4px 12px;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+.editBtn {
+  display: flex;
+  gap: 4px;
+  border: none;
+  border-radius: 18px;
+  background: transparent;
+  color: var(--main-color-white);
+  cursor: pointer;
+}
+
+.icon {
+  width: 14px;
+  height: 14px;
+  stroke: currentColor;
+  fill: var(--background-color-gradient-button);
+}
+
+@media (min-width: 768px) {
+  .card {
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    align-items: center;
+    background: transparent;
+    padding: 4px;
+    border-left: none;
+    border-radius: 16px;
+    box-shadow: none;
+  }
+
+  .even {
+    background: var(--background-color-gradient-list);
+  }
+
+  .row {
+    display: block;
+    border-bottom: none;
+    padding: 0;
+  }
+
+  .label {
+    display: none;
+  }
+
+  .editSpan {
+    display: none;
+  }
+
+  .actions {
+    justify-content: start;
+    flex-direction: row;
+    gap: 24px;
+  }
+}
+
+@media (min-width: 1280px) {
+  .card {
+  }
+}

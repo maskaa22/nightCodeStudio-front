@@ -1,5 +1,5 @@
 import { useState } from "react";
-import "./Toggle.css";
+import s from "./Toggle.module.css";
 
 const Toggle = ({ onChange, inStatisticsTab = false }) => {
   const [isExpense, setIsExpense] = useState(true);
@@ -12,26 +12,28 @@ const Toggle = ({ onChange, inStatisticsTab = false }) => {
   };
 
   return (
-    <div className="toggle-container">
+    <div className={s.toggleContainer}>
       <span
-        className={`toggle-label ${inStatisticsTab ? "statistics-text" : ""}`}
+        className={`${s.toggleLabel} ${
+          inStatisticsTab ? s.statisticsText : ""
+        }`}
       >
         Income
       </span>
       <button
-        className={`toggle-button ${isExpense ? "expense" : "income"}`}
+        className={`${s.toggleButton} ${isExpense ? s.expense : s.income}`}
         onClick={handleToggle}
         aria-pressed={isExpense}
         aria-label={isExpense ? "Switch to Income" : "Switch to Expense"}
       >
-        <div className="toggle-slider">
-          <div className="toggle-circle">
+        <div className={s.toggleSlider}>
+          <div className={s.toggleCircle}>
             {isExpense ? (
-              <svg className="toggle-icon">
+              <svg className={s.toggleIcon}>
                 <use href="/sprite.svg#icon-minus" />
               </svg>
             ) : (
-              <svg className="toggle-icon">
+              <svg className={s.toggleIcon}>
                 <use href="/sprite.svg#icon-plus" />
               </svg>
             )}
@@ -39,7 +41,9 @@ const Toggle = ({ onChange, inStatisticsTab = false }) => {
         </div>
       </button>
       <span
-        className={`toggle-label ${inStatisticsTab ? "statistics-text" : ""}`}
+        className={`${s.toggleLabel} ${
+          inStatisticsTab ? s.statisticsText : ""
+        }`}
       >
         Expense
       </span>
