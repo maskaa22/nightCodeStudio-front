@@ -1,8 +1,9 @@
-import React from 'react'
+import React, { useState } from 'react'
 import Toggle from '../toggle/Toggle'
 import Calendar from '../calendar/Calendar'
 
 const EditTransactionForm = () => {
+  const [date, setDate] = useState();
   return (
     <div>
       <Toggle />
