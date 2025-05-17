@@ -5,10 +5,10 @@ import Calendar from '../calendar/Calendar'
 const EditTransactionForm = () => {
   return (
     <div>
-      <Toggle/>
-      <Calendar/>
+      <Toggle />
+      <Calendar value={date} onChange={setDate} />
     </div>
-  )
+  );
 }
 
 export default EditTransactionForm
