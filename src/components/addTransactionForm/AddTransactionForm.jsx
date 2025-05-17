@@ -6,7 +6,7 @@ const AddTransactionForm = () => {
   return (
     <div>
       <Toggle />
-      <Calendar />
+      <Calendar value={date} onChange={setDate} />
     </div>
   );
 };
