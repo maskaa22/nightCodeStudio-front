@@ -9,7 +9,7 @@ const UserAcountLayout = () => {
   const [isLogoutModalOpen, setIsLogoutModalOpen] = useState(false);
 
   return (
-    <main>
+    <div>
       <Header openLogoutModal={() => setIsLogoutModalOpen(true)} />
       <div className={s.mainContent}>
         <div className="container">
@@ -22,7 +22,7 @@ const UserAcountLayout = () => {
         </div>
       </div>
       {isLogoutModalOpen && <ModalLogout />}
-    </main>
+    </div>
   );
 };
 
