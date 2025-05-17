@@ -2,12 +2,20 @@
 :root {
   --main-color-black: #081222;
   --main-color-white: #fcfcfc;
-  --main-color-yellow: #DFAD3F;
-  --main-color-red: #B20202;
+  --main-color-yellow: #dfad3f;
+  --main-color-red: #b20202;
   --font-family-inter: "Inter", sans-serif;
   --font-family-poppins: "Poppins", sans-serif;
-  --background-color-gradient-list: linear-gradient(180deg, #294045 0%, #1e2f33 100%);
-  --background-color-gradient-button: linear-gradient(180deg, #355359 0%, #3b5d63 100%);
+  --background-color-gradient-list: linear-gradient(
+    180deg,
+    #294045 0%,
+    #1e2f33 100%
+  );
+  --background-color-gradient-button: linear-gradient(
+    180deg,
+    #355359 0%,
+    #3b5d63 100%
+  );
 }
 
 /*Приклад використання глобальних змінних в будь-якому css*/
@@ -15,7 +23,6 @@
   background-color: var(--main-color-black);
   color: var(--main-color-white);
 } */
-
 
 *,
 *::before,
@@ -57,11 +64,11 @@ img {
   height: auto;
 }
 
-
 .container {
   min-width: 320px;
   max-width: 375px;
   padding: 0 16px;
+  margin: 0 auto;
 }
 
 @media only screen and (min-width: 768px) {
@@ -77,9 +84,6 @@ img {
     padding: 0 24px;
   }
 }
-
-
-
 
 /* .poppins-regular {
   font-family: "Poppins", sans-serif;

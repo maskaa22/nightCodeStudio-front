@@ -10,6 +10,7 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "clsx": "^2.1.1",
     "@reduxjs/toolkit": "^2.8.2",
     "axios": "^1.9.0",
     "formik": "^2.4.6",
@@ -19,7 +20,8 @@
     "react-redux": "^9.2.0",
     "react-router-dom": "^7.6.0",
     "recharts": "^2.15.3",
-    "redux-persist": "^6.0.0"
+    "redux-persist": "^6.0.0",
+    "react-responsive": "^10.0.1"
   },
   "devDependencies": {
     "@eslint/js": "^9.25.0",

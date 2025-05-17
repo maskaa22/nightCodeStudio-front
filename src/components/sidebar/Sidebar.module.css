@@ -1,0 +1,42 @@
+.sidebar {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  align-items: center;
+  margin-bottom: 24px;
+}
+
+.mainContent {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  align-items: start;
+  flex: 1;
+}
+
+@media only screen and (min-width: 768px) {
+  .sidebar {
+    align-items: start;
+    flex-direction: row;
+    gap: 32px;
+    margin-bottom: 32px;
+  }
+}
+
+@media only screen and (min-width: 1280px) {
+  .sidebar {
+    flex-direction: column;
+    width: 450px;
+  }
+
+  .mainContent {
+    width: 100%;
+  }
+
+  .additionBlock {
+    width: 100%;
+    background: var(--background-color-gradient-button);
+    padding: 24px 24px 41px 24px;
+    border-radius: 16px;
+  }
+}
