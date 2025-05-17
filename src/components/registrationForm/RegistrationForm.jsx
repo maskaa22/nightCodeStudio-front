@@ -1,11 +1,14 @@
-import React from "react";
+import React, { use } from "react";
 import { Field, Form, Formik, ErrorMessage } from "formik";
 import s from "./RegistrationForm.module.css";
 import { Link } from "react-router-dom";
 import PasswordStrengthBar from "react-password-strength-bar";
 import * as Yup from "yup";
-
+import { useDispatch } from "react-redux";
+import { registerThunk } from "../../redux/auth/operations";
+import toast from "react-hot-toast";
 const RegistrationForm = () => {
+  const dispatch = useDispatch();
   const initialValues = {
     name: "",
     email: "",
@@ -22,6 +25,18 @@ const RegistrationForm = () => {
       .required("Required"),
   });
 
+  const handleSubmit = async (values, { resetForm }) => {
+    const { confirmPassword, ...dataToSend } = values;
+    try {
+      await dispatch(registerThunk(dataToSend)).unwrap();
+      toast.success("Successfully registered!");
+      resetForm();
+    } catch (error) {
+      console.log(error);
+      toast.error("Registration failed. Please try again.");
+    }
+  };
+
   return (
     <div className={`container ${s.containerOverride}`}>
       <div className={s.RegistrationForm}>
@@ -36,7 +51,7 @@ const RegistrationForm = () => {
         <Formik
           initialValues={initialValues}
           validationSchema={validationSchema}
-          onSubmit={(values) => console.log("Submitted:", values)}
+          onSubmit={handleSubmit}
         >
           {({ values, errors, touched }) => (
             <Form className={s.form}>
@@ -59,7 +74,7 @@ const RegistrationForm = () => {
                 <Field
                   className={`${s.input} ${
                     touched.email && errors.email ? s.inputError : ""
-                  }`}
+                  } ${touched.email && !errors.email ? s.inputValid : ""}`}
                   name="email"
                   type="email"
                   placeholder="Email"
@@ -78,6 +93,8 @@ const RegistrationForm = () => {
                 <Field
                   className={`${s.input} ${
                     touched.password && errors.password ? s.inputError : ""
+                  } ${
+                    touched.password && !errors.password ? s.inputValid : ""
                   }`}
                   name="password"
                   type="password"
@@ -100,6 +117,10 @@ const RegistrationForm = () => {
                     touched.confirmPassword && errors.confirmPassword
                       ? s.inputError
                       : ""
+                  } ${
+                    touched.confirmPassword && !errors.confirmPassword
+                      ? s.inputValid
+                      : ""
                   }`}
                   name="confirmPassword"
                   type="password"
@@ -109,6 +130,7 @@ const RegistrationForm = () => {
                   <use xlinkHref="/sprite.svg#icon-lock" />
                 </svg>
                 <PasswordStrengthBar
+                  style={{ marginTop: "1rem", width: "100%" }}
                   scoreWordStyle={{ display: "none" }}
                   scoreWords={[]}
                   password={
