@@ -1,0 +1,38 @@
+.balance {
+  background: var(--background-color-gradient-button);
+  width: 100%;
+  margin-top: 24px;
+  border-radius: 16px;
+  color: var(--main-color-white);
+  padding: 24px 16px;
+}
+.title {
+  font-size: 12px;
+  text-transform: uppercase;
+  margin-bottom: 18px;
+  opacity: 0.4;
+}
+.cost {
+  font-weight: 700;
+  font-size: 30px;
+}
+.curreny {
+  margin-left: 10px;
+}
+
+@media only screen and (min-width: 768px) {
+  .balance {
+    padding: 38px 16px;
+    margin-top: 24px;
+  }
+}
+@media only screen and (min-width: 1280px) {
+  .balance {
+    padding: 0 0 0 13px;
+    margin-bottom: 23px;
+    background: transparent;
+  }
+  .title {
+    margin-bottom: 12px;
+  }
+}
