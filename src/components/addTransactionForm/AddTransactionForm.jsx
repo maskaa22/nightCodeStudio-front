@@ -1,61 +1,14 @@
-import Toggle from '../toggle/Toggle';
-import css from './AddTransactionForm.module.css';
-import { Field, Form, Formik } from 'formik';
-import Select from 'react-select';
 import { useState } from 'react';
+import { Field, Form, Formik, useFormikContext } from 'formik';
+import Select from 'react-select';
+import Toggle from '../toggle/Toggle';
 import Calendar from '../calendar/Calendar';
+import css from './AddTransactionForm.module.css';
+import { selectStyles } from './SelectStyles';
 
-const customStyles = {
-  control: (base, state) => ({
-    ...base,
-    backgroundColor: 'inherit',
-    borderColor: state.isFocused && state.isSelected ? '#355359' : '#1e2f33',
-    borderRadius: '8px',
-    boxShadow: 'none',
-    height:'44px',
-    color: '#081222',
-    fontSize: '18px',
-    fontFamily: 'Inter',
-    fontWeight: '500',
-  }),
-  option: (base, state) => ({
-    ...base,
-    background: state.isSelected
-      ? 'linear-gradient(180deg, #355359 0%, #3b5d63 100%)'
-      : state.isFocused
-      ? 'linear-gradient(180deg, #355359 0%, #3b5d63 100%)'
-      : 'transparent',
-    color: '#FCFCFC',
-    fontSize: '16px',
-    padding: '12px 16px',
-    cursor: 'pointer',
-  }),
-  menu: (base) => ({
-    ...base,
-    backgroundColor: '#294045',
-    borderRadius: '8px',
-    overflow: 'hidden',
-    marginTop: 4,
-  }),
-  singleValue: (base) => ({
-    ...base,
-    color: '#081222',
-  }),
-  indicatorSeparator: () => ({
-    display: 'none',
-  }),
-  dropdownIndicator: (base) => ({
-    ...base,
-    color: '#081222',
-    padding: '0 8px',
-  }),
-  placeholder: (base) => ({
-    ...base,
-    color: '#081222',
-  }),
-};
-// i will take this options from backend
-const options = [
+
+
+const categoryOptions = [
   { value: 'main', label: 'Main expenses' },
   { value: 'products', label: 'Products' },
   { value: 'car', label: 'Car' },
@@ -67,61 +20,102 @@ const options = [
   { value: 'entertainment', label: 'Entertainment' },
 ];
 
-const AddTransactionForm = ({ onClose }) => {
-  const [date, setDate] = useState(new Date());
-  const [isExpense, setIsExpense] = useState('false');
+const initialFormValues = {
+  type: 'expense',
+  category: '',
+  amount: '',
+  comment: '',
+  date: new Date(),
+};
+
+export const TransactionFormFields = ({ isExpense }) => {
+  const { values, setFieldValue } = useFormikContext();
+
   return (
-    <div>
-      <div className={css.toggle}>
-        <Toggle
-          onChange={(isExpense) =>
-            isExpense ? setIsExpense(true) : setIsExpense(false)
-          }
+    <div className={css.form}>
+      {isExpense && (
+        <Select
+          options={categoryOptions}
+          styles={selectStyles}
+          placeholder="Category"
+          isSearchable={false}
+          onChange={(option) => setFieldValue('category', option.value)}
+          value={categoryOptions.find((opt) => opt.value === values.category)}
+        />
+      )}
+
+      <div className={css.dateAmountWrapper}>
+        <Field
+          type="number"
+          name="amount"
+          placeholder="0.00"
+          className={css.amountField}
+        />
+        <Calendar
+          value={values.date}
+          onChange={(date) => setFieldValue('date', date)}
         />
       </div>
-      <div className={css.formWrapper}>
-        <Formik
-          initialValues={{ category: '', amount: '', comment: '' }}
-          onSubmit={() => {}}
-        >
+
+      <Field name="comment" placeholder="Comment" className={css.field} />
+    </div>
+  );
+};
+
+const AddTransactionForm = ({ onClose }) => {
+  const [isExpense, setIsExpense] = useState(true);
+
+  const handleSubmit = (values, { resetForm }) => {
+    console.log('Submitted values:', values);
+    resetForm({
+      values: {
+        ...initialFormValues,
+        type: isExpense ? 'expense' : 'income',
+        date: new Date(),
+      },
+    });
+    onClose();
+  };
+
+  const handleTypeChange = (isExpense, setFieldValue) => {
+    setIsExpense(isExpense);
+    setFieldValue('type', isExpense ? 'expense' : 'income');
+    setFieldValue('category', '');
+  };
+
+  return (
+    <div className={css.formWrapper}>
+      <Formik
+        initialValues={initialFormValues}
+        onSubmit={handleSubmit}
+        enableReinitialize
+      >
+        {({ setFieldValue }) => (
           <Form>
-            <div className={css.form}>
-              {isExpense && (
-                <Select
-                  options={options}
-                  styles={customStyles}
-                  placeholder="Category"
-                  isSearchable={false}
-                />
-              )}
-              <div className={css.dateAmountWrapper}>
-                <Field
-                  type="number"
-                  id="amount"
-                  name="amount"
-                  placeholder="0.00"
-                  className={css.amountField}
-                ></Field>
-                <Calendar value={date} onChange={setDate} />
+            <Toggle
+              value={isExpense}
+              onChange={(value) => handleTypeChange(value, setFieldValue)}
+            />
+
+            <div className={css.formContent}>
+              <TransactionFormFields isExpense={isExpense} />
+
+              <div className={css.btnWrapper}>
+                <button type="submit" className={css.btnAdd}>
+                  Add
+                </button>
+                <button
+                  type="button"
+                  className={css.btnCancel}
+                  onClick={onClose}
+                >
+                  Cancel
+                </button>
               </div>
-              <Field
-                id="comment"
-                name="comment"
-                placeholder="Comment"
-                className={css.field}
-              ></Field>
-            </div>
-            <div className={css.btnWrapper}>
-              <button type="submit" className={css.btnAdd}>
-                Add
-              </button>
-              <button className={css.btnCancel} onClick={onClose}>
-                Cancel
-              </button>
             </div>
           </Form>
-        </Formik>
-      </div>
+        )}
+      </Formik>
     </div>
   );
 };

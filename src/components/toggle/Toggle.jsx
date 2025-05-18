@@ -1,9 +1,10 @@
-import { useState } from "react";
-import s from "./Toggle.module.css";
+import { useState } from 'react';
+import s from './Toggle.module.css';
 
 const Toggle = ({ onChange, inStatisticsTab = false }) => {
   const [isExpense, setIsExpense] = useState(true);
-  const handleToggle = () => {
+  const handleToggle = (e) => {
+    e.preventDefault();
     const newState = !isExpense;
     setIsExpense(newState);
     if (onChange) {
@@ -15,16 +16,17 @@ const Toggle = ({ onChange, inStatisticsTab = false }) => {
     <div className={s.toggleContainer}>
       <span
         className={`${s.toggleLabel} ${
-          inStatisticsTab ? s.statisticsText : ""
+          inStatisticsTab ? s.statisticsText : ''
         }`}
       >
         Income
       </span>
       <button
+        type='button'
         className={`${s.toggleButton} ${isExpense ? s.expense : s.income}`}
         onClick={handleToggle}
         aria-pressed={isExpense}
-        aria-label={isExpense ? "Switch to Income" : "Switch to Expense"}
+        aria-label={isExpense ? 'Switch to Income' : 'Switch to Expense'}
       >
         <div className={s.toggleSlider}>
           <div className={s.toggleCircle}>
@@ -42,7 +44,7 @@ const Toggle = ({ onChange, inStatisticsTab = false }) => {
       </button>
       <span
         className={`${s.toggleLabel} ${
-          inStatisticsTab ? s.statisticsText : ""
+          inStatisticsTab ? s.statisticsText : ''
         }`}
       >
         Expense
