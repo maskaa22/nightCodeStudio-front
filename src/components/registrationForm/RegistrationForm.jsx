@@ -27,7 +27,7 @@ const RegistrationForm = () => {
       .max(64, 'Max 64 characters')
       .required('Required'),
     password: Yup.string()
-      .min(8, 'Min 6 characters')
+      .min(8, 'Min 8 characters')
       .max(64, 'Max 64 characters')
       .required('Required'),
     confirmPassword: Yup.string()
@@ -156,12 +156,7 @@ const RegistrationForm = () => {
                   style={{ marginTop: '1rem', width: '100%' }}
                   scoreWordStyle={{ display: 'none' }}
                   scoreWords={[]}
-                  password={
-                    values.password === values.confirmPassword &&
-                    values.confirmPassword !== ''
-                      ? values.confirmPassword
-                      : 'short'
-                  }
+                  password={values.password}
                   minScore={2}
                   className={
                     values.password === values.confirmPassword &&
