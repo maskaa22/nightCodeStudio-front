@@ -1,7 +1,10 @@
+import { useState } from "react";
+import ModalDeleteTransaction from "../modalDeleteTransaction/ModalDeleteTransaction";
 import ModalEditTranssaction from "../modalEditTranssaction/ModalEditTranssaction";
 import s from "./TransactionsItem.module.css";
 
 const TransactionsItem = ({ date, type, category, comment, sum, isEven }) => {
+  const [isOpenModalDelete, setIsOpenModalDelete] = useState(false);
   const typeClass = type === "+" ? s.income : s.expense;
   const evenClass = isEven ? s.even : "";
 
@@ -35,10 +38,11 @@ const TransactionsItem = ({ date, type, category, comment, sum, isEven }) => {
             </svg>
             <span className={s.editSpan}>Edit</span>
           </button>
-          <button className={s.deleteBtn}>Delete</button>
+          <button className={s.deleteBtn} onClick={() => setIsOpenModalDelete(true)}>Delete</button>
         </div>
       </li>
       {/* <ModalEditTranssaction /> */}
+            <ModalDeleteTransaction isOpen={isOpenModalDelete} onClose={() => setIsOpenModalDelete(false)}/>
     </div>
   );
 };
