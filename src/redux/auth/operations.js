@@ -16,25 +16,10 @@ export const registerThunk = createAsyncThunk(
     }
   },
 );
-export const loginThunk = createAsyncThunk(
-  'auth/login',
-  async (body, thunkAPI) => {
-    try {
-      const { data } = await api.post('/auth/login', body);
-      return data;
-    } catch (error) {
-      return thunkAPI.rejectWithValue(error.response);
-    }
-  },
-);
 
-/*
- * POST @ /users/login
- * body: { email, password }
- */
-export const logIn = createAsyncThunk("auth/login", async (body, thunkAPI) => {
+export const logIn = createAsyncThunk('auth/login', async (body, thunkAPI) => {
   try {
-    const { data } = await api.post("/auth/login", body);
+    const { data } = await api.post('/auth/login', body);
     return data;
   } catch (error) {
     return thunkAPI.rejectWithValue(error.message);
