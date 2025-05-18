@@ -1,9 +1,13 @@
-import ModalEditTranssaction from "../modalEditTranssaction/ModalEditTranssaction";
-import s from "./TransactionsItem.module.css";
+import { useState } from 'react';
+import ModalEditTransaction from '../modalEditTransaction/ModalEditTransaction';
+import s from './TransactionsItem.module.css';
+import ModalDeleteTransaction from '../modalDeleteTransaction/ModalDeleteTransaction';
 
 const TransactionsItem = ({ date, type, category, comment, sum, isEven }) => {
-  const typeClass = type === "+" ? s.income : s.expense;
-  const evenClass = isEven ? s.even : "";
+  const typeClass = type === '+' ? s.income : s.expense;
+  const evenClass = isEven ? s.even : '';
+  const [isModalEditOpen, setIsModalEditOpen] = useState(false);
+  const [isOpen, setIsOpen] = useState(false)
 
   return (
     <div className={s.itemWrapper}>
@@ -29,16 +33,31 @@ const TransactionsItem = ({ date, type, category, comment, sum, isEven }) => {
           <span className={`${s.value} ${s.sum}`}>{sum} UAH</span>
         </div>
         <div className={s.actions}>
-          <button className={s.editBtn}>
+          <button
+            className={s.editBtn}
+            onClick={() => setIsModalEditOpen(true)}
+          >
             <svg className={s.icon}>
               <use href="/sprite.svg#icon-edit" />
             </svg>
             <span className={s.editSpan}>Edit</span>
           </button>
-          <button className={s.deleteBtn}>Delete</button>
+          <button
+            className={s.deleteBtn}
+            onClick={() => setIsOpen(true)}
+          >
+            Delete
+          </button>
         </div>
       </li>
-      {/* <ModalEditTranssaction /> */}
+      <ModalEditTransaction
+        isOpen={isModalEditOpen}
+        onClose={() => setIsModalEditOpen(false)}
+      />
+      <ModalDeleteTransaction
+        isOpen={isOpen}
+        onClose={() => setIsOpen(false)}
+      />
     </div>
   );
 };
