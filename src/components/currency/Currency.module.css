@@ -50,6 +50,7 @@
     background-position: center calc(100% - 16px), center;
     background-size: 181px, cover;
     height: 310px;
+    padding: 0;
   }
   .table {
     padding: 16px;
@@ -65,7 +66,7 @@
   }
 }
 
-@media only screen and (min-width: 768px) {
+@media only screen and (min-width: 1280px) {
   .currency {
     padding: 0;
   }

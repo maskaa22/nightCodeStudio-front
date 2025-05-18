@@ -6,8 +6,9 @@
   border: 1px solid #081222;
   border-radius: 8px;
   padding: 10px 14px;
-  width: 193px;
+  width: 271px;
   height: 44px;
+  font-size: 18px;
   background-color: transparent;
   color: #081222;
 }
@@ -16,4 +17,10 @@
   width: 24px;
   height: 24px;
   fill: var(--background-color-gradient-list);
+}
+
+@media only screen and (min-width: 768px) {
+  .customDateInput {
+    width: 193px;
+  }
 }

@@ -41,8 +41,12 @@ function App() {
 
       <Route
         path="/register"
-        element={<RegistrationPage />}
-        // element={<RestrictedRoute component={<RegistrationPage />} redirectTo="/login" />}
+        element={<RegistrationPage />
+          // <RestrictedRoute
+          //   component={<RegistrationPage />}
+          //   redirectTo="/login"
+          // />
+        }
       />
       <Route
         path="/login"

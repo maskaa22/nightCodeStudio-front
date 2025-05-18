@@ -3,13 +3,13 @@ import { registerThunk, logIn } from "./operations";
 
 const initialState = {
   data: {
-    name: "",
-    email: "",
+    name: '',
+    email: '',
   },
   isLoggedIn: false,
 };
 const slice = createSlice({
-  name: "auth",
+  name: 'auth',
   initialState,
 
   extraReducers: (builder) => {
@@ -17,9 +17,14 @@ const slice = createSlice({
       state.user = action.payload.user;
       state.isLoggedIn = true;
     });
-    builder.addCase(logIn.fulfilled, (state, action) => {
+    
+ builder.addCase(logIn.fulfilled, (state, action) => {
       state.user = action.payload.user;
       state.token = action.payload.token;
+
+    //builder.addCase(loginThunk.fulfilled, (state, action) => {
+      //state.data = action.payload.data.accessToken;
+      
       state.isLoggedIn = true;
     });
   },

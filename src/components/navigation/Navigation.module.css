@@ -1,7 +1,8 @@
 .container {
-  width: fit-content;
+  /* width: fit-content; */
   display: flex;
   align-items: center;
+  justify-content: center;
   gap: 39px;
 }
 
@@ -64,7 +65,7 @@
   .container {
     flex-direction: column;
     gap: 24px;
-    padding: 36px 19px;
+    padding: 36px 16px;
     background: var(--background-color-gradient-button);
     width: 100%;
     border-radius: 16px;

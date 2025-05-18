@@ -1,0 +1,136 @@
+.backdrop {
+    position: fixed;
+    z-index: 999;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+backdrop-filter: blur(7px);
+}
+
+.modal {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border-radius: 16px;
+    padding-top: 16px;
+    padding-left: 16px;
+    padding-right: 16px;
+    padding-bottom: 32px;
+    width: 287px;
+    height: 352px;
+    background: var(--background-color-gradient-button);
+}
+
+.closeWrapper {
+    display: block;
+    margin-left: auto;
+}
+
+.closeSvg {
+    stroke: var(--main-color-black);
+    width: 16px;
+    height: 16px;
+}
+
+.logoWrapper {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.logoSvg {
+    stroke: var(--main-color-black);
+    width: 54px;
+    height: 54px;
+}
+
+.logoText {
+    font-weight: 700;
+    font-family: var(--font-family-poppins);
+    font-size: 30px;
+    text-align: center;
+    color: var(--main-color-black);
+    margin-bottom: 16px;
+}
+
+.logoutConfirmParagraph {
+    font-weight: 400;
+    font-family: var(--font-family-inter);
+    font-size: 18px;
+    text-align: center;
+    color: var(--main-color-black);
+    margin-bottom: 16px;
+}
+
+.btnsWrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.logoutBtn {
+    border-radius: 8px;
+    border: none;
+    padding: 11px 79px;
+    width: 248px;
+    height: 44px;
+    background: var(--background-color-gradient-list);
+    color: var(--main-color-white);
+    font-weight: 500;
+    font-size: 18px;
+    font-family: var(--font-family-inter);
+}
+
+.cancelBtn {
+    border: 1px solid var(--main-color-black);
+    border-radius: 8px;
+    padding: 11px 79px;
+    width: 248px;
+    height: 44px;
+    font-weight: 500;
+    font-size: 18px;
+    font-family: var(--font-family-inter);
+    color: var(--main-color-black);
+    background-color: transparent;
+}
+
+@media screen and (min-width: 768px) {
+    .modal {
+        width: 533px;
+        height: 387px;
+        padding-top: 53px;
+        padding-right: 61px;
+        padding-left: 61px;
+    }
+
+    .logoText {
+        margin-bottom: 38px;
+    }
+.logoutConfirmParagraph {
+    margin-bottom: 24px;
+}
+    .btnsWrapper {
+        gap: 21px;
+    }
+
+    .logoutBtn {
+        width: 410px;
+    }
+
+    .cancelBtn {
+        width: 410px;
+    }
+}
+
+@media screen and (min-width: 1280px) {
+    .modal {
+        width: 533px;
+        height: 387px;
+    }
+}
