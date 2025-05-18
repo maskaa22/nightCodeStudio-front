@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom';
 import PasswordStrengthBar from 'react-password-strength-bar';
 import * as Yup from 'yup';
 import { useDispatch } from 'react-redux';
-import { registerThunk, loginThunk } from '../../redux/auth/operations';
+import { registerThunk, logIn } from '../../redux/auth/operations';
 import toast from 'react-hot-toast';
 import { useNavigate } from 'react-router-dom';
 const RegistrationForm = () => {
@@ -47,7 +47,7 @@ const RegistrationForm = () => {
         password: dataToSend.password,
       };
 
-      await dispatch(loginThunk(loginData)).unwrap();
+      await dispatch(logIn(loginData)).unwrap();
       toast.success('Logged in automatically!');
       navigate('/', { replace: true });
       resetForm();
