@@ -1,0 +1,9 @@
+.statistics {
+    background: var(--background-color-gradient-button);
+    border-radius: 16px;
+    color: var(--main-color-white);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
