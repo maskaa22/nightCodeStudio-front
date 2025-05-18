@@ -1,0 +1,252 @@
+.container {
+  display: flex;
+  justify-content: center;
+  max-width: 767px;
+  height: 100vh;
+  padding: 20px;
+  background: var(--background-color-gradient-list);
+}
+
+.LoginForm {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 288px;
+  min-height: 516px;
+  border-radius: 16px;
+  padding: 16px;
+  background: #508f8c;
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+}
+
+.formInputs {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  padding-top: 16px;
+  padding-bottom: 16px;
+}
+
+.formButtons {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.inputWrapper {
+  position: relative;
+  height: 44px;
+}
+
+.input {
+  height: 44px;
+  width: 256px;
+  padding-left: 50px;
+  border: 1px solid var(--main-color-black);
+  border-radius: 8px;
+  outline: none;
+  font-family: var(--font-family-inter);
+  background: transparent;
+}
+
+.input::placeholder {
+  font-family: var(--font-family-inter);
+  font-size: 18px;
+  font-weight: 500;
+  color: var(--main-color-red);
+}
+
+.icon {
+  position: absolute;
+  top: 50%;
+  left: 14px;
+  transform: translateY(-50%);
+  fill: var(--main-color-black);
+  transition: fill 250ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.btnLogin,
+.btnRegister {
+  text-align: center;
+  width: 256px;
+  height: 44px;
+  border-radius: 8px;
+  font: 500 18px var(--font-family-inter);
+  padding: 11px 0;
+  color: var(--main-color-black);
+  background: #508f8c;
+  border: 1px solid var(--main-color-black);
+  transition: background 0.3s ease, color 0.3s ease, transform 0.2s ease,
+    box-shadow 0.2s ease;
+}
+
+.btnLogin:hover,
+.btnLogin:focus-visible,
+.btnRegister:hover,
+.btnRegister:focus-visible {
+  background: var(--background-color-gradient-button);
+  transform: translateY(-1px);
+  color: var(--main-color-white);
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(80, 143, 140, 0.4);
+}
+
+.error {
+  position: absolute;
+  top: 100%;
+  padding-top: 2px;
+  font: 400 10px var(--font-family-inter);
+  color: var(--main-color-red);
+}
+
+.inputError {
+  border-color: var(--main-color-red);
+}
+
+.inputError::placeholder,
+.inputError + .icon {
+  color: var(--main-color-red);
+  fill: var(--main-color-red);
+}
+
+.inputValid {
+  border-color: #0b6016;
+}
+
+.inputValid::placeholder,
+.inputValid + .icon {
+  color: #0b6016;
+  fill: #0b6016;
+}
+
+.input:focus {
+  border-color: #355359;
+}
+
+.input:focus::placeholder,
+.input:focus + .icon {
+  color: #355359;
+  fill: #355359;
+}
+
+.illustrationMobile {
+  position: absolute;
+  bottom: 23px;
+  right: 12px;
+  width: 159px;
+  height: 118px;
+  background-image: url("/images/dude-1x.png");
+  background-repeat: no-repeat;
+  background-size: 147px 100%;
+  background-position: right bottom;
+  pointer-events: none;
+}
+
+/* Retina */
+@media screen and (-webkit-min-device-pixel-ratio: 2),
+  (min-resolution: 2dppx),
+  (min-resolution: 192dpi) {
+  .illustrationMobile {
+    background-image: url("/images/dude-2x.png");
+  }
+}
+
+/* Tablet */
+@media screen and (min-width: 768px) {
+  .container {
+    padding-top: 176px;
+    padding-bottom: 329px;
+    max-width: 1279px;
+    background: url("/images/dude-1x.png") no-repeat,
+      var(--background-color-gradient-list);
+    background-size: 320px 239px, auto;
+    background-position: calc(100%) calc(100% - 58px);
+  }
+
+  @media screen and (-webkit-min-device-pixel-ratio: 2),
+    (min-resolution: 192dpi) {
+    .container {
+      background: url("/images/dude-2x.png") no-repeat,
+        var(--background-color-gradient-list);
+      background-size: 320px 239px, auto;
+      background-position: calc(100%) calc(100% - 58px);
+    }
+  }
+
+  .LoginForm {
+    width: 533px;
+    height: 519px;
+    padding-top: 53px;
+    padding-bottom: 82px;
+    padding-left: 32px;
+    padding-right: 32px;
+  }
+
+  .formInputs {
+    padding-top: 37px;
+    padding-bottom: 32px;
+    gap: 24px;
+  }
+
+  .input {
+    width: 409px;
+  }
+
+  .formButtons {
+    gap: 21px;
+  }
+
+  .btnLogin,
+  .btnRegister {
+    width: 409px;
+  }
+
+  .illustrationMobile {
+    display: none;
+  }
+}
+
+/* Desktop */
+@media screen and (min-width: 1280px) {
+  .container {
+    padding-top: 75px;
+    background: url("images/dude-like-1x.png") no-repeat,
+      var(--background-color-gradient-list);
+    background-size: 320px 239px, auto;
+    background-position: right 16px bottom 35px;
+  }
+
+  @media screen and (-webkit-min-device-pixel-ratio: 2),
+    (min-resolution: 2dppx),
+    (min-resolution: 192dpi) {
+    .container {
+      background: url("images/dude-like-2x.png") no-repeat,
+        var(--background-color-gradient-list);
+      background-size: 320px 239px, auto;
+      background-position: right 16px bottom 35px;
+    }
+  }
+}
+
+/* Autofill fix */
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+textarea:-webkit-autofill,
+textarea:-webkit-autofill:hover,
+textarea:-webkit-autofill:focus,
+select:-webkit-autofill,
+select:-webkit-autofill:hover,
+select:-webkit-autofill:focus {
+  -webkit-box-shadow: 0 0 0px 1000px transparent inset !important;
+  box-shadow: 0 0 0px 1000px transparent inset !important;
+  -webkit-text-fill-color: #000 !important;
+  transition: background-color 5000s ease-in-out 0s;
+}
