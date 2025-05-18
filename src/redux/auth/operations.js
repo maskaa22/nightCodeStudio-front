@@ -27,3 +27,16 @@ export const loginThunk = createAsyncThunk(
     }
   },
 );
+
+/*
+ * POST @ /users/login
+ * body: { email, password }
+ */
+export const logIn = createAsyncThunk("auth/login", async (body, thunkAPI) => {
+  try {
+    const { data } = await api.post("/auth/login", body);
+    return data;
+  } catch (error) {
+    return thunkAPI.rejectWithValue(error.message);
+  }
+});
