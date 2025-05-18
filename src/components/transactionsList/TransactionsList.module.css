@@ -42,8 +42,24 @@
     flex-direction: column;
     gap: 16px;
     margin: 0;
-    overflow-y: scroll;
+    overflow-y: auto;
     max-height: 538px;
+  }
+
+  .list::-webkit-scrollbar {
+    width: 4px;
+  }
+
+  .list::-webkit-scrollbar-track {
+    background: var(--background-color-gradient-list);
+    margin-top: 80px;
+    margin-bottom: 80px;
+    border-radius: 64px;
+  }
+
+  .list::-webkit-scrollbar-thumb {
+    background: #508f8c;
+    border-radius: 64px;
   }
 }
 
