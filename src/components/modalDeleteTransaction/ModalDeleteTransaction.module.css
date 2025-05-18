@@ -30,6 +30,7 @@ backdrop-filter: blur(7px);
     display: block;
     margin-left: auto;
     border: none;
+    background: transparent;
 }
 .closeSvg{
     stroke: var(--main-color-black);
