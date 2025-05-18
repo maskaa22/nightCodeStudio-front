@@ -3,6 +3,7 @@
     border-radius: 16px;
     color: var(--main-color-white);
     display: flex;
-    justify-content: center;
+    justify-content: space-around;
     align-items: center;
+    flex-wrap: wrap;
 }
