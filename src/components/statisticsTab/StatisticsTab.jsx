@@ -6,17 +6,21 @@ import css from './StatisticsTab.module.css'
 
 const StatisticsTab = () => {
   return (
-    <div className="container">
+    <div>
       <div className={css.statistics}>
-        <Toggle
-          inStatisticsTab={true}
-          onChange={(isExpense) =>
-            console.log(isExpense ? "Expense statistics" : "Income statistics")
-          }
-        />
-        <Chart />
-        <StatisticsDashboard />
-        <StatisticsTable />
+        <div>
+          <Toggle
+            inStatisticsTab={true}
+            onChange={(isExpense) =>
+              console.log(isExpense ? "Expense statistics" : "Income statistics")
+            }
+          />
+            <Chart />
+        </div>
+        <div>
+          <StatisticsDashboard />
+          <StatisticsTable />
+        </div>
       </div>
     </div>
   );

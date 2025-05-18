@@ -6,10 +6,11 @@
     font-size: 18px;
     font-weight: 500;
     padding: 10px 14px;
+    margin-top: 16px;
     margin-right: 20px;
     margin-bottom: 20px;
     appearance: none;
-    background: url(sprite.svg#icon-arrow-down) no-repeat right;
+    background: url(/sprite.svg#icon-arrow-down) no-repeat right;
     background-position-x: calc(100% - 32px);
 }
 
