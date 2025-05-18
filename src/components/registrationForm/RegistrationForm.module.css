@@ -4,7 +4,6 @@
   display: flex;
   justify-content: center;
   max-width: 767px;
-  background: linear-gradient(180deg, #294045 0%, #1e2f33 100%);
 }
 
 .RegistrationForm {
@@ -138,7 +137,7 @@ select:-webkit-autofill:focus {
     padding-top: 125px;
     max-width: 1279px;
     min-height: 120vh;
-    background: url("images/dude-1x.png") no-repeat,
+    background: url('images/dude-1x.png') no-repeat,
       linear-gradient(180deg, #294045 0%, #1e2f33 100%);
     background-size: 320px 239px, auto;
     background-position: bottom right;
@@ -161,24 +160,23 @@ select:-webkit-autofill:focus {
   .btnLogin {
     width: 409px;
   }
-  @media screen and (-webkit-min-device-pixel-ratio: 2),
-    (min-resolition: 2dppx),
-    (min-resolution: 192dpi) {
-    .containerOverride {
-      background: url("images/dude-2x.png") no-repeat,
-        linear-gradient(180deg, #294045 0%, #1e2f33 100%);
-      background-size: 320px 239px, auto;
-      background-position: bottom right;
-    }
+}
+@media screen and (-webkit-min-device-pixel-ratio: 2),
+  (min-resolition: 2dppx),
+  (min-resolution: 192dpi) {
+  .containerOverride {
+    background: url('images/dude-2x.png') no-repeat,
+      linear-gradient(180deg, #294045 0%, #1e2f33 100%);
+    background-size: 320px 239px, auto;
+    background-position: bottom right;
   }
 }
-
 @media screen and (min-width: 1280px) {
   .containerOverride {
     padding-top: 48px;
     min-height: 100%;
     max-width: 100%;
-    background: url("images/dude-like-1x.png") no-repeat,
+    background: url('images/dude-like-1x.png') no-repeat,
       linear-gradient(180deg, #294045 0%, #1e2f33 100%);
     background-size: 320px 239px, auto;
     background-position: bottom right;
@@ -187,7 +185,7 @@ select:-webkit-autofill:focus {
     (min-resolition: 2dppx),
     (min-resolution: 192dpi) {
     .containerOverride {
-      background: url("images/dude-like-2x.png") no-repeat,
+      background: url('images/dude-like-2x.png') no-repeat,
         linear-gradient(180deg, #294045 0%, #1e2f33 100%);
       background-size: 320px 239px, auto;
       background-position: bottom right;
