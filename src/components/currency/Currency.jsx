@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import s from './Currency.module.css';
 import axios from 'axios';
 
@@ -6,25 +6,39 @@ const Currency = () => {
   const [rates, setRates] = useState([]);
 
   useEffect(() => {
-    const mono = async () => {
-      try {
-        await axios
-          .get('https://api.monobank.ua/bank/currency')
-          .then((response) => {
-            const filtered = response.data.filter(
-              (item) =>
-                (item.currencyCodeA === 840 && item.currencyCodeB === 980) ||
-                (item.currencyCodeA === 978 && item.currencyCodeB === 980),
-            );
-            setRates(filtered);
-          })
-          .catch((error) => console.error(error));
-      } catch (err) {
-        console.log(err);
+  const fetchCurrency = async () => {
+    const cached = localStorage.getItem('currencyData');
+
+    if (cached) {
+      const { data, timestamp } = JSON.parse(cached);
+      const oneHour = 60 * 60 * 1000;
+
+      if (Date.now() - timestamp < oneHour) {
+        setRates(data); 
+        return;
       }
-    };
-    mono();
-  }, []);
+    }
+
+    try {
+      const response = await axios.get('https://api.monobank.ua/bank/currency');
+      const filtered = response.data.filter(
+        item =>
+          (item.currencyCodeA === 840 && item.currencyCodeB === 980) ||
+          (item.currencyCodeA === 978 && item.currencyCodeB === 980)
+      );
+
+      setRates(filtered);
+      localStorage.setItem(
+        'currencyData',
+        JSON.stringify({ data: filtered, timestamp: Date.now() })
+      );
+    } catch (error) {
+      console.error('Помилка при запиті до API:', error);
+    }
+  };
+
+  fetchCurrency();
+}, []);
 
   console.log(rates);
 
@@ -48,16 +62,6 @@ const Currency = () => {
               <td className={s.bodyItem}>{rate.rateSell.toFixed(2)}</td>
             </tr>
           ))}
-          {/* <tr className={s.body}>
-            <td className={s.bodyItem}>USD</td>
-            <td className={s.bodyItem}>27.55</td>
-            <td className={s.bodyItem}>27.65</td>
-          </tr>
-          <tr className={s.body}>
-            <td className={s.bodyItem}>EUR</td>
-            <td className={s.bodyItem}>30.00</td>
-            <td className={s.bodyItem}>30.10</td>
-          </tr> */}
         </tbody>
       </table>
     </div>
