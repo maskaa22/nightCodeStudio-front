@@ -4,10 +4,10 @@
   justify-content: center;
   max-width: 767px;
   background: var(--background-color-gradient-list);
+  padding: 26px 0;
 }
 
 .RegistrationForm {
-  margin-top: 26px;
   background: #508f8c;
   border-radius: 8px;
   padding: 16px 16px 46px 16px;
@@ -49,6 +49,8 @@
   border-radius: 8px;
   outline: none;
   font-family: var(--font-family-inter);
+  font-weight: 500;
+  font-size: 18px;
 }
 
 .input::placeholder {
@@ -58,7 +60,7 @@
 
 .btnRegister,
 .btnLogin {
-  width: 256px;
+  width: 100%;
   height: 44px;
   border-radius: 8px;
   font: 500 18px var(--font-family-inter);
@@ -99,6 +101,7 @@
   padding-top: 2px;
   font: 400 10px var(--font-family-inter);
   color: #b20202;
+  font-weight: 400;
 }
 
 .inputError {
@@ -155,26 +158,24 @@ select:-webkit-autofill:focus {
     background: url('images/dude-1x.png') no-repeat,
       linear-gradient(180deg, #294045 0%, #1e2f33 100%);
     background-size: 320px 239px, auto;
-    background-position: right calc(100% - 58px), bottom;
+    background-position: right calc(100% - 38px), bottom;
+    padding: 125px 0 0;
   }
   .RegistrationForm {
-    margin-top: 125px;
     width: 533px;
     padding: 32px 69px 50px 55px;
+    gap: 32px;
   }
   .form {
-    margin-top: 32px;
+    gap: 24px;
   }
   .input {
     width: 409px;
   }
   .btnRegister {
-    width: 409px;
     margin-top: 56px;
   }
-  .btnLogin {
-    width: 409px;
-  }
+
   @media screen and (-webkit-min-device-pixel-ratio: 2),
     (min-resolition: 2dppx),
     (min-resolution: 192dpi) {

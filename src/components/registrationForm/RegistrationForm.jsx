@@ -3,15 +3,9 @@ import { Field, Form, Formik, ErrorMessage } from 'formik';
 import s from './RegistrationForm.module.css';
 import { Link } from 'react-router-dom';
 import PasswordStrengthBar from 'react-password-strength-bar';
-// import * as Yup from 'yup';
-// import { useDispatch } from 'react-redux';
-// import { registerThunk, logIn } from '../../redux/auth/operations';
-// import toast from 'react-hot-toast';
-// import { useNavigate } from 'react-router-dom';
 import { registrationSchema } from '../../utils/validationSchemas';
 import { useRegisterSubmit } from '../../utils/registrationFormHandlers';
 const RegistrationForm = () => {
-  // const dispatch = useDispatch();
   const initialValues = {
     name: '',
     email: '',
