@@ -1,29 +1,29 @@
-import { ErrorMessage, Field, Form, Formik } from "formik";
-import { useDispatch } from "react-redux";
-import { useNavigate, Link } from "react-router-dom";
-import { logIn } from "../../redux/auth/operations";
-import * as Yup from "yup";
-import toast from "react-hot-toast";
-import s from "./LoginForm.module.css";
+import { ErrorMessage, Field, Form, Formik } from 'formik';
+import { useDispatch } from 'react-redux';
+import { useNavigate, Link } from 'react-router-dom';
+import { logIn } from '../../redux/auth/operations';
+import * as Yup from 'yup';
+import toast from 'react-hot-toast';
+import s from './LoginForm.module.css';
 
 const LoginForm = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
   const initialValues = {
-    email: "",
-    password: "",
+    email: '',
+    password: '',
   };
 
   const LoginSchema = Yup.object().shape({
     email: Yup.string()
-      .email("Invalid email")
-      .max(64, "Maximum 64 characters")
-      .required("Email is required"),
+      .email('Invalid email')
+      .max(64, 'Maximum 64 characters')
+      .required('Email is required'),
     password: Yup.string()
-      .min(8, "Minimum 8 characters")
-      .max(64, "Maximum 64 characters")
-      .required("Password is required"),
+      .min(8, 'Minimum 8 characters')
+      .max(64, 'Maximum 64 characters')
+      .required('Password is required'),
   });
 
   const handleSubmit = async (values, actions) => {
@@ -31,14 +31,14 @@ const LoginForm = () => {
       const resultAction = await dispatch(logIn(values));
 
       if (logIn.fulfilled.match(resultAction)) {
-        toast.success("Login successful!");
+        toast.success('Login successful!');
         actions.resetForm();
-        navigate("/dashboard");
+        navigate('/');
       } else {
-        toast.error("Login failed. Please check your credentials.");
+        toast.error('Login failed. Please check your credentials.');
       }
     } catch (error) {
-      toast.error("Something went wrong. Try again later.");
+      toast.error('Something went wrong. Try again later.');
     } finally {
       actions.setSubmitting(false);
     }
@@ -65,8 +65,8 @@ const LoginForm = () => {
                 <div className={s.inputWrapper}>
                   <Field
                     className={`${s.input} ${
-                      touched.email && errors.email ? s.inputError : ""
-                    } ${touched.email && !errors.email ? s.inputValid : ""}`}
+                      touched.email && errors.email ? s.inputError : ''
+                    } ${touched.email && !errors.email ? s.inputValid : ''}`}
                     type="email"
                     name="email"
                     placeholder="E-mail"
@@ -84,9 +84,9 @@ const LoginForm = () => {
                 <div className={s.inputWrapper}>
                   <Field
                     className={`${s.input} ${
-                      touched.password && errors.password ? s.inputError : ""
+                      touched.password && errors.password ? s.inputError : ''
                     } ${
-                      touched.password && !errors.password ? s.inputValid : ""
+                      touched.password && !errors.password ? s.inputValid : ''
                     }`}
                     type="password"
                     name="password"
