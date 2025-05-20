@@ -25,3 +25,12 @@ export const logIn = createAsyncThunk('auth/login', async (body, thunkAPI) => {
     return thunkAPI.rejectWithValue(error.message);
   }
 });
+
+export const logOut = createAsyncThunk('auth/logout', async (_, thunkAPI) => {
+  try {
+    const { data } = await api.post('/auth/logout');
+    return data;
+  } catch (error) {
+    return thunkAPI.rejectWithValue(error.message);
+  }
+});
