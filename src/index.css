@@ -4,8 +4,8 @@
   --main-color-white: #fcfcfc;
   --main-color-yellow: #dfad3f;
   --main-color-red: #b20202;
-  --font-family-inter: "Inter", sans-serif;
-  --font-family-poppins: "Poppins", sans-serif;
+  --font-family-inter: 'Inter', sans-serif;
+  --font-family-poppins: 'Poppins', sans-serif;
   --background-color-gradient-list: linear-gradient(
     180deg,
     #294045 0%,
@@ -16,11 +16,25 @@
     #355359 0%,
     #3b5d63 100%
   );
+  --main-transition: 0.3s ease;
 }
 
 /*Приклад використання глобальних змінних в будь-якому css*/
 /* .button {
   background-color: var(--main-color-black);
+  color: var(--main-color-white);
+} */
+
+/* Ховер та фокус на кнопки */
+/* Темна:
+.btn:hover,
+.btn:focus {
+  background: var(--background-color-gradient-list);
+}
+Світла:
+.btn:hover,
+.btn:focus {
+  border-color: var(--main-color-white);
   color: var(--main-color-white);
 } */
 
@@ -88,7 +102,7 @@ img {
 @font-face {
   font-family: 'Inter';
   src: url('./fonts/Inter-VariableFont.ttf') format('truetype');
-  font-weight: 100 900; 
+  font-weight: 100 900;
 }
 
 @font-face {
@@ -111,7 +125,6 @@ img {
   src: url('./fonts/Poppins-Bold.ttf') format('truetype');
   font-weight: 700;
 }
-
 
 /* .poppins-regular {
   font-family: "Poppins", sans-serif;
@@ -140,11 +153,10 @@ img {
 /* Calendar */
 
 .react-datepicker-wrapper {
-  display: inline-block !important; 
+  display: inline-block !important;
   margin: 0 !important;
   padding: 0 !important;
 }
-
 
 .react-datepicker {
   border: none !important;
@@ -228,8 +240,11 @@ img {
   color: var(--main-color-white) !important;
   background-color: var(--main-color-yellow) !important;
 }
-  
-.react-datepicker__day--keyboard-selected, .react-datepicker__month-text--keyboard-selected, .react-datepicker__quarter-text--keyboard-selected, .react-datepicker__year-text--keyboard-selected {
+
+.react-datepicker__day--keyboard-selected,
+.react-datepicker__month-text--keyboard-selected,
+.react-datepicker__quarter-text--keyboard-selected,
+.react-datepicker__year-text--keyboard-selected {
   background-color: transparent !important;
   border-radius: none !important;
 }
