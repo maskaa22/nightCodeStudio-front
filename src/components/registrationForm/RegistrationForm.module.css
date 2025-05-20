@@ -1,17 +1,18 @@
 .containerOverride {
-  padding: 26px 0;
-  height: 100vh;
+  min-height: 100vh;
   display: flex;
   justify-content: center;
   max-width: 767px;
+  background: var(--background-color-gradient-list);
 }
 
 .RegistrationForm {
+  margin-top: 26px;
   background: #508f8c;
   border-radius: 8px;
-  padding: 16px;
+  padding: 16px 16px 46px 16px;
   width: 288px;
-  height: 516px;
+  height: fit-content;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -64,6 +65,8 @@
   text-align: center;
   cursor: pointer;
   padding: 11px 0;
+  transition: all 0.3s ease;
+  text-decoration: none;
 }
 
 .btnRegister {
@@ -71,12 +74,23 @@
   background: linear-gradient(180deg, #355359 0%, #3b5d63 100%);
   color: #fcfcfc;
   border: none;
+  transition: all 0.3s ease;
+}
+.btnRegister:hover,
+.btnRegister:focus {
+  background: var(--background-color-gradient-list);
 }
 
 .btnLogin {
   background: transparent;
   color: #081222;
   border: 1px solid #081222;
+  text-decoration: none;
+}
+.btnLogin:hover,
+.btnLogin:focus {
+  border-color: var(--main-color-white);
+  color: var(--main-color-white);
 }
 
 .error {
@@ -89,6 +103,7 @@
 
 .inputError {
   border-color: #b20202;
+  color: #b20202;
 }
 
 .inputError::placeholder,
@@ -99,6 +114,7 @@
 
 .inputValid {
   border-color: #0b6016;
+  color: #0b6016;
 }
 
 .inputValid::placeholder,
@@ -134,18 +150,17 @@ select:-webkit-autofill:focus {
 
 @media screen and (min-width: 768px) {
   .containerOverride {
-    padding-top: 125px;
     max-width: 1279px;
-    min-height: 120vh;
+    min-height: max(100vh, 1024px);
     background: url('images/dude-1x.png') no-repeat,
       linear-gradient(180deg, #294045 0%, #1e2f33 100%);
     background-size: 320px 239px, auto;
-    background-position: bottom right;
+    background-position: right calc(100% - 58px), bottom;
   }
   .RegistrationForm {
+    margin-top: 125px;
     width: 533px;
-    height: 621px;
-    padding: 32px;
+    padding: 32px 69px 50px 55px;
   }
   .form {
     margin-top: 32px;
@@ -160,26 +175,29 @@ select:-webkit-autofill:focus {
   .btnLogin {
     width: 409px;
   }
-}
-@media screen and (-webkit-min-device-pixel-ratio: 2),
-  (min-resolition: 2dppx),
-  (min-resolution: 192dpi) {
-  .containerOverride {
-    background: url('images/dude-2x.png') no-repeat,
-      linear-gradient(180deg, #294045 0%, #1e2f33 100%);
-    background-size: 320px 239px, auto;
-    background-position: bottom right;
+  @media screen and (-webkit-min-device-pixel-ratio: 2),
+    (min-resolition: 2dppx),
+    (min-resolution: 192dpi) {
+    .containerOverride {
+      background: url('images/dude-2x.png') no-repeat,
+        linear-gradient(180deg, #294045 0%, #1e2f33 100%);
+      background-size: 320px 239px, auto;
+      background-position: right calc(100% - 58px), bottom;
+    }
   }
 }
+
 @media screen and (min-width: 1280px) {
   .containerOverride {
-    padding-top: 48px;
-    min-height: 100%;
+    min-height: 100vh;
     max-width: 100%;
     background: url('images/dude-like-1x.png') no-repeat,
       linear-gradient(180deg, #294045 0%, #1e2f33 100%);
     background-size: 320px 239px, auto;
-    background-position: bottom right;
+    background-position: right calc(100% - 58px), bottom;
+  }
+  .RegistrationForm {
+    margin-top: 48px;
   }
   @media screen and (-webkit-min-device-pixel-ratio: 2),
     (min-resolition: 2dppx),
@@ -188,7 +206,7 @@ select:-webkit-autofill:focus {
       background: url('images/dude-like-2x.png') no-repeat,
         linear-gradient(180deg, #294045 0%, #1e2f33 100%);
       background-size: 320px 239px, auto;
-      background-position: bottom right;
+      background-position: right calc(100% - 58px), bottom;
     }
   }
 }
