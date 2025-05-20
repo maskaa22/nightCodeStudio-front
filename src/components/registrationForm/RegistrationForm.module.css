@@ -172,9 +172,6 @@ select:-webkit-autofill:focus {
   .input {
     width: 409px;
   }
-  .btnRegister {
-    margin-top: 56px;
-  }
 
   @media screen and (-webkit-min-device-pixel-ratio: 2),
     (min-resolition: 2dppx),
@@ -196,10 +193,9 @@ select:-webkit-autofill:focus {
       linear-gradient(180deg, #294045 0%, #1e2f33 100%);
     background-size: 320px 239px, auto;
     background-position: right calc(100% - 58px), bottom;
+    padding: 48px 0 0;
   }
-  .RegistrationForm {
-    margin-top: 48px;
-  }
+
   @media screen and (-webkit-min-device-pixel-ratio: 2),
     (min-resolition: 2dppx),
     (min-resolution: 192dpi) {
