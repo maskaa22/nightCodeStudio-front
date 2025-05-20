@@ -4,7 +4,7 @@ import Select from 'react-select';
 import Toggle from '../toggle/Toggle';
 import Calendar from '../calendar/Calendar';
 import css from './EditTransactionForm.module.css';
-import { selectStyles } from '../addTransactionForm/SelectStyles';
+import { SelectStyles } from '../../utils/SelectStyles';
 
 const categoryOptions = [
   { value: 'main', label: 'Main expenses' },
@@ -34,7 +34,7 @@ const TransactionFormFields = ({ isExpense }) => {
       {isExpense && (
         <Select
           options={categoryOptions}
-          styles={selectStyles}
+          styles={SelectStyles}
           placeholder="Category"
           isSearchable={false}
           onChange={(option) => setFieldValue('category', option.value)}
@@ -100,7 +100,7 @@ const EditTransactionForm = ({ onClose }) => {
 
               <div className={css.btnWrapper}>
                 <button type="submit" className={css.btnAdd}>
-                  Add
+                  Save
                 </button>
                 <button
                   type="button"
