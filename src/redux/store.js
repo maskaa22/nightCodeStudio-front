@@ -33,7 +33,6 @@ const categoriesPersistConfig = {
 
 export const store = configureStore({
   reducer: {
-    // statistics: persistReducer(persistConfig, statisticsReducer),
     statistics: statisticsReducer,
     auth: persistReducer(authPersistConfig, authReducer),
     user: persistReducer(userPersistConfig, userReducer),

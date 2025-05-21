@@ -1,5 +1,5 @@
-import { createSlice } from "@reduxjs/toolkit";
-import { fetchStatistics } from "./operations";
+import { createSlice } from '@reduxjs/toolkit';
+import { fetchStatistics } from './operations';
 
 const initialState = {
   items: [],
@@ -8,7 +8,7 @@ const initialState = {
 };
 
 const slice = createSlice({
-  name: "statistics",
+  name: 'statistics',
   initialState,
   reducers: {},
   extraReducers: (builder) => {

@@ -68,12 +68,12 @@
   }
 
   .linkContainer {
-    gap: 23px;
+    gap: 20px;
   }
 
   .iconLayout {
-    width: 18px;
-    height: 18px;
+    width: 24px;
+    height: 24px;
   }
 
   .active .iconLayout {
@@ -82,8 +82,8 @@
 
   .icon {
     fill: #355359;
-    width: 12px;
-    height: 11px;
+    width: 18px;
+    height: 18px;
   }
 }
 
@@ -91,5 +91,6 @@
   .container {
     padding: 16px 32px;
     width: 100%;
+    gap: 12px;
   }
 }

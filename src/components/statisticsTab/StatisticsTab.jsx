@@ -1,8 +1,8 @@
-import Toggle from "../toggle/Toggle.jsx";
-import Chart from "../chart/Chart.jsx";
-import StatisticsDashboard from "../statisticsDashboard/StatisticsDashboard.jsx";
-import StatisticsTable from "../statisticsTable/StatisticsTable.jsx";
-import css from './StatisticsTab.module.css'
+import Toggle from '../toggle/Toggle.jsx';
+import Chart from '../chart/Chart.jsx';
+import StatisticsDashboard from '../statisticsDashboard/StatisticsDashboard.jsx';
+import StatisticsTable from '../statisticsTable/StatisticsTable.jsx';
+import css from './StatisticsTab.module.css';
 
 const StatisticsTab = () => {
   return (
@@ -12,10 +12,12 @@ const StatisticsTab = () => {
           <Toggle
             inStatisticsTab={true}
             onChange={(isExpense) =>
-              console.log(isExpense ? "Expense statistics" : "Income statistics")
+              console.log(
+                isExpense ? 'Expense statistics' : 'Income statistics',
+              )
             }
           />
-            <Chart />
+          <Chart />
         </div>
         <div>
           <StatisticsDashboard />

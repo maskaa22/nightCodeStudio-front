@@ -1,6 +1,5 @@
-import React from "react";
-import Currency from "../currency/Currency";
-import { useMediaQuery } from "react-responsive";
+import Currency from '../currency/Currency';
+import { useMediaQuery } from 'react-responsive';
 
 const CurrencyTab = () => {
   const isMobile = useMediaQuery({ maxWidth: 767 });

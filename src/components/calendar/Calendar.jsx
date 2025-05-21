@@ -1,8 +1,8 @@
-import { forwardRef } from "react";
-import DatePicker, { registerLocale } from "react-datepicker";
-import { enUS } from "date-fns/locale";
-import "react-datepicker/dist/react-datepicker.css";
-import s from "./Calendar.module.css";
+import { forwardRef } from 'react';
+import DatePicker, { registerLocale } from 'react-datepicker';
+import { enUS } from 'date-fns/locale';
+import 'react-datepicker/dist/react-datepicker.css';
+import s from './Calendar.module.css';
 
 const CustomInput = forwardRef(function Calendar({ value, onClick }, ref) {
   return (
@@ -28,7 +28,7 @@ const customLocale = {
   },
 };
 
-registerLocale("custom-en", customLocale);
+registerLocale('custom-en', customLocale);
 
 const Calendar = ({ value, onChange }) => {
   return (
