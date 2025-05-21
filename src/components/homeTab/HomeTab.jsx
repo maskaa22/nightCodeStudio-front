@@ -1,10 +1,18 @@
 import TransactionsList from '../transactionsList/TransactionsList';
 import ButtonAddTransaction from '../buttonAddTransaction/ButtonAddTransaction';
 import ModalAddTransaction from '../modalAddTransaction/ModalAddTransaction';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
+import { useDispatch } from 'react-redux';
+import { getCategoriesData } from '../../redux/categories/operations';
 
 const HomeTab = () => {
   const [isOpen, setIsOpen] = useState(false);
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(getCategoriesData());
+  }, [dispatch]);
+
   return (
     <div>
       <TransactionsList />

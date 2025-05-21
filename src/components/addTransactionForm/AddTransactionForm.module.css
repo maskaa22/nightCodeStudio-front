@@ -9,7 +9,6 @@
   flex-direction: column;
   width: 100%;
   justify-content: center;
-  /* gap: 12px; */
 }
 
 .formContent {
@@ -46,7 +45,6 @@
 .dateAmountWrapper {
   display: flex;
   flex-direction: column;
-  /* gap: 12px; */
 }
 
 .btnWrapper {

@@ -1,5 +1,4 @@
 import * as Yup from 'yup';
-import { categories } from '../components/addTransactionForm/AddTransactionForm';
 
 export const registrationSchema = Yup.object({
   name: Yup.string()
@@ -20,7 +19,8 @@ export const registrationSchema = Yup.object({
 });
 
 
-export const TransactionSchema = Yup.object().shape({
+export const getTransactionSchema = (expenseCategories = []) =>
+  Yup.object().shape({
   type: Yup.string().oneOf(['expense', 'income']).required('Type is required'),
   amount: Yup.number()
     .min(0, 'Amount should be more or equal to 0')
@@ -30,7 +30,7 @@ export const TransactionSchema = Yup.object().shape({
     is: 'expense',
     then: () =>
       Yup.string()
-        .oneOf(categories)
+        .oneOf(expenseCategories)
         .required('Category is required'),
     otherwise: () => Yup.string().notRequired(),
   }),
