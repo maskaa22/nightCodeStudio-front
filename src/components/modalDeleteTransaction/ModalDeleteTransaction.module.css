@@ -1,122 +1,130 @@
-
 .backdrop {
-    position: fixed;
-    z-index: 999;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-backdrop-filter: blur(7px);
+  position: fixed;
+  z-index: 999;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  backdrop-filter: brightness(0.7);
 }
 
 .modal {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    border-radius: 16px;
-        padding-top: 16px;
-        padding-left: 16px;
-        padding-right: 16px;
-        padding-bottom: 32px;
-        width: 287px;
-        height: 352px;
-    background: var(--background-color-gradient-button);
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border-radius: 16px;
+  padding-top: 16px;
+  padding-left: 16px;
+  padding-right: 16px;
+  padding-bottom: 32px;
+  width: fit-content;
+  height: fit-content;
+  background: var(--background-color-light-green);
 }
-.closeIconBtn{
-    display: block;
-    margin-left: auto;
-    border: none;
-    background: transparent;
+.closeIconBtn {
+  display: block;
+  margin-left: auto;
+  border: none;
+  background: transparent;
 }
-.closeSvg{
-    stroke: var(--main-color-black);
-        width: 16px;
-        height: 16px;
+.closeSvg {
+  stroke: var(--main-color-black);
+  width: 16px;
+  height: 16px;
 }
-.logoWrapper{
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
+.logoWrapper {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
-.logoSvg{
-    stroke: var(--main-color-black);
-        width: 54px;
-        height: 54px;
+.logoSvg {
+  stroke: var(--main-color-black);
+  width: 54px;
+  height: 54px;
 }
-.logoText{
-    font-weight: 700;
-    font-family: var(--font-family-poppins);
-        font-size: 30px;
-        text-align: center;
-        color: var(--main-color-black);
-        margin-bottom: 25px;
+.logoText {
+  font-weight: 700;
+  font-family: var(--font-family-poppins);
+  font-size: 30px;
+  text-align: center;
+  color: var(--main-color-black);
+  margin-bottom: 25px;
 }
-.deleteConfirmParagraph{
-    font-weight: 400;
-    font-family: var(--font-family-inter);
-        font-size: 18px;
-        text-align: center;
-        color: var(--main-color-black);
-        margin-bottom: 24px;
+.deleteConfirmParagraph {
+  font-weight: 400;
+  font-family: var(--font-family-inter);
+  font-size: 18px;
+  text-align: center;
+  color: var(--main-color-black);
+  margin-bottom: 24px;
 }
-.btnsWrapper{
-   display: flex;
-   flex-direction: column;
-   gap: 12px;
+.btnsWrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
 }
-.deleteBtn{
-    border-radius: 8px;
-    border: none;
-        padding: 11px 79px;
-        width: 255px;
-        height: 44px;
-        background-color: var(--main-color-red);
-        color: var(--main-color-white);
-        font-weight: 500;
-            font-size: 18px;
-            font-family: var(--font-family-inter);
+.deleteBtn {
+  border-radius: 8px;
+  border: none;
+  padding: 11px 79px;
+  width: 255px;
+  height: 44px;
+  background-color: var(--main-color-red);
+  color: var(--main-color-white);
+  font-weight: 500;
+  font-size: 18px;
+  font-family: var(--font-family-inter);
 }
-.cancelBtn{
-    border: 1px solid var(--main-color-black);
-        border-radius: 8px;
-        padding: 11px 68px;
-        width: 255px;
-        height: 44px;
-        font-weight: 500;
-            font-size: 18px;
-            font-family: var(--font-family-inter);
-            color: var(--main-color-black);
-            background-color: transparent;
+.cancelBtn {
+  border: 1px solid var(--main-color-black);
+  border-radius: 8px;
+  padding: 11px 68px;
+  width: 255px;
+  height: 44px;
+  font-weight: 500;
+  font-size: 18px;
+  font-family: var(--font-family-inter);
+  color: var(--main-color-black);
+  background-color: transparent;
 }
 @media screen and (min-width: 768px) {
-    .modal {
-        width: 533px;
-        height: 387px;
-        padding-top: 24px;
-        padding-right: 24px;
-    }
-  .logoText{
+  .modal {
+    width: 533px;
+    height: 387px;
+    padding-top: 24px;
+    padding-right: 24px;
+  }
+  .logoText {
     margin-bottom: 38px;
   }
   .btnsWrapper {
     gap: 21px;
-  }
-  .deleteBtn{
     width: 410px;
   }
-  .cancelBtn{
-    width: 410px;
+  .deleteBtn,
+  .cancelBtn {
+    width: 100%;
+  }
+  .deleteBtn:hover,
+  .deleteBtn:focus {
+    background: var(--background-color-gradient-list);
+  }
+
+  .cancelBtn:hover,
+  .cancelBtn:focus {
+    border-color: var(--main-color-white);
+    color: var(--main-color-white);
   }
 }
 
 @media screen and (min-width: 1280px) {
-    .modal {
-        width: 533px;
-        height: 387px;
-    }
-} 
+  .modal {
+    width: 533px;
+    height: 387px;
+  }
+}

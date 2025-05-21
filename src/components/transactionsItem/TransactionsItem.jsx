@@ -7,7 +7,7 @@ const TransactionsItem = ({ date, type, category, comment, sum, isEven }) => {
   const typeClass = type === '+' ? s.income : s.expense;
   const evenClass = isEven ? s.even : '';
   const [isModalEditOpen, setIsModalEditOpen] = useState(false);
-  const [isOpen, setIsOpen] = useState(false)
+  const [isOpen, setIsOpen] = useState(false);
 
   return (
     <div className={s.itemWrapper}>
@@ -42,10 +42,7 @@ const TransactionsItem = ({ date, type, category, comment, sum, isEven }) => {
             </svg>
             <span className={s.editSpan}>Edit</span>
           </button>
-          <button
-            className={s.deleteBtn}
-            onClick={() => setIsOpen(true)}
-          >
+          <button className={s.deleteBtn} onClick={() => setIsOpen(true)}>
             Delete
           </button>
         </div>

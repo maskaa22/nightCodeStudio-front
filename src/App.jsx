@@ -2,7 +2,6 @@ import { Route, Routes } from 'react-router-dom';
 import './App.css';
 import RestrictedRoute from './components/restrictedRoute/RestrictedRoute';
 import PrivateRoute from './components/privateRoute/PrivateRoute';
-import NotFound from './pages/notFound/NotFound';
 import RegistrationPage from './pages/registrationPage/RegistrationPage';
 import LoginPage from './pages/loginPage/LoginPage';
 import UserAcountLayout from './components/userAcountLayout/UserAcountLayout';
@@ -11,9 +10,12 @@ import StatisticsTab from './components/statisticsTab/StatisticsTab.jsx';
 import CurrencyTab from './components/currencyTab/CurrencyTab';
 import { Toaster } from 'react-hot-toast';
 import { useMediaQuery } from 'react-responsive';
+import { useRedirectFunction } from './utils/locationFunction.js';
 
 function App() {
   const isMobile = useMediaQuery({ maxWidth: 767 });
+  useRedirectFunction();
+
   return (
     <>
       <Toaster position="top-right" reverseOrder={false} />
@@ -55,8 +57,6 @@ function App() {
           path="/login"
           element={<RestrictedRoute component={<LoginPage />} redirectTo="/" />}
         />
-
-        <Route path="*" element={<NotFound />} />
       </Routes>
     </>
   );

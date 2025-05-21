@@ -1,7 +1,7 @@
-import { useEffect } from 'react';
 import s from './ModalLogout.module.css';
 import { useDispatch } from 'react-redux';
 import { logout } from '../../redux/auth/operations';
+import { useKeyDownFunction } from '../../utils/keyDown';
 
 const ModalLogout = ({ onClose, isLogoutModalOpen }) => {
   const dispatch = useDispatch();
@@ -10,17 +10,7 @@ const ModalLogout = ({ onClose, isLogoutModalOpen }) => {
     dispatch(logout());
   };
 
-  useEffect(() => {
-    const handleEsc = (e) => {
-      if (e.key === 'Escape') {
-        onClose();
-      }
-    };
-
-    document.addEventListener('keydown', handleEsc);
-
-    return () => document.removeEventListener('keydown', handleEsc);
-  }, [onClose]);
+  useKeyDownFunction(onClose);
 
   if (!isLogoutModalOpen) return null;
 

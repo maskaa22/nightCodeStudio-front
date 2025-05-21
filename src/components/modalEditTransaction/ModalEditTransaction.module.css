@@ -1,70 +1,69 @@
 .overlay {
-    position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background: linear-gradient(
-      180deg,
-      rgb(53, 83, 89, 0.7) 0%,
-      rgb(59, 93, 99, 0.7) 100%
-    );
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    z-index: 999;
-  }
-  
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(
+    180deg,
+    rgb(53, 83, 89, 0.7) 0%,
+    rgb(59, 93, 99, 0.7) 100%
+  );
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 999;
+}
+
+.modal {
+  background-color: #508f8c;
+  padding: 0 8px 24px 8px;
+  border-radius: 8px;
+  width: 287px;
+  position: relative;
+}
+
+.closeBtn {
+  position: absolute;
+  top: 16px;
+  right: 16px;
+  width: 20px;
+  height: 20px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 0;
+}
+
+.icon {
+  stroke: var(--main-color-black);
+  width: 20px;
+  height: 20px;
+}
+
+.title {
+  font-size: 30px;
+  font-family: var(--font-family-inter);
+  margin-top: 40px;
+  text-align: center;
+}
+
+@media only screen and (min-width: 768px) {
   .modal {
-    background-color: #508f8c;
-    padding: 0 8px 24px 8px;
-    border-radius: 8px;
-    width: 287px;
-    position: relative;
+    padding: 0 65px 46px 65px;
+    width: 540px;
   }
-  
   .closeBtn {
-    position: absolute;
-    top: 16px;
-    right: 16px;
-    width: 20px;
-    height: 20px;
-    background: none;
-    border: none;
-    cursor: pointer;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    padding: 0;
+    top: 20px;
+    right: 20px;
+    width: 16px;
+    height: 16px;
   }
-  
   .icon {
-    stroke: var(--main-color-black);
-    width: 20px;
-    height: 20px;
+    width: 16px;
+    height: 16px;
   }
-  
-  .title {
-    font-size: 30px;
-    font-family: var(--font-family-inter);
-    margin-top: 40px;
-    text-align: center;
-  }
-  
-  @media only screen and (min-width: 768px) {
-    .modal {
-      padding: 0 65px 46px 65px;
-      width: 540px;
-    }
-    .closeBtn {
-      top: 20px;
-      right: 20px;
-      width: 16px;
-      height: 16px;
-    }
-    .icon {
-      width: 16px;
-      height: 16px;
-    }
-  }
-  
+}

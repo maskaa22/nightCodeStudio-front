@@ -1,58 +1,58 @@
 .select {
-    background: var(--background-color-gradient-button);
-    color: var(--main-color-white);
-    border-radius: 8px;
-    border: 1px solid var(--main-color-white);
-    font-size: 18px;
-    font-weight: 500;
-    padding: 10px 14px;
-    margin-right: 20px;
-    margin-bottom: 20px;
-    cursor: pointer;
-    appearance: none;
-    /* background: url(/sprite.svg#icon-arrow-down) no-repeat right;
+  background: var(--background-color-gradient-button);
+  color: var(--main-color-white);
+  border-radius: 8px;
+  border: 1px solid var(--main-color-white);
+  font-size: 18px;
+  font-weight: 500;
+  padding: 10px 14px;
+  margin-right: 20px;
+  margin-bottom: 20px;
+  cursor: pointer;
+  appearance: none;
+  /* background: url(/sprite.svg#icon-arrow-down) no-repeat right;
     background-position-x: calc(100% + 32px); */
 }
 
 .select:hover,
 .select:focus {
-    background: var(--background-color-gradient-list);
+  background: var(--background-color-gradient-list);
 }
 
 .option {
-    cursor: pointer;
-    color: #fcfcfc;
-    background-color: linear-gradient(180deg, #294045 0%, #1e2f33 100%);
+  cursor: pointer;
+  color: #fcfcfc;
+  background-color: linear-gradient(180deg, #294045 0%, #1e2f33 100%);
 }
 
 .option:hover,
 .option:focus {
-    color: #fcfcfc;
-    background: linear-gradient(180deg, #355359 0%, #3b5d63 100%);
+  color: #fcfcfc;
+  background: linear-gradient(180deg, #355359 0%, #3b5d63 100%);
 }
 
 .selectWrapper select {
-    appearance: none;
-    padding: 10px 30px 10px 14px;
+  appearance: none;
+  padding: 10px 30px 10px 14px;
 }
 
 .selectWrapper {
-    position: relative;
+  position: relative;
 }
 
 .selectWrapper svg {
-    width: 24px;
-    height: 24px;
-    position: absolute;
-    right: 24px;
-    top: 50%;
-    transform: translateY(-50%);
-    fill: #fcfcfc;
-    stroke: transparent;
-    transition: transform 0.5s;
+  width: 24px;
+  height: 24px;
+  position: absolute;
+  right: 24px;
+  top: 50%;
+  transform: translateY(-50%);
+  fill: #fcfcfc;
+  stroke: transparent;
+  transition: transform 0.5s;
 }
 
-.selectWrapper select:focus+svg {
-    /* transform: ; */
-    transform: translateY(-60%) rotate(180deg);
+.selectWrapper select:focus + svg {
+  /* transform: ; */
+  transform: translateY(-60%) rotate(180deg);
 }
