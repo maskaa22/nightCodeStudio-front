@@ -6,7 +6,6 @@ export const getUserData = createAsyncThunk(
   async (body, thunkAPI) => {
     try {
       const { data } = await api.get('/user/me');
-      console.log(data);
       return data;
     } catch (error) {
       return thunkAPI.rejectWithValue(error.response);

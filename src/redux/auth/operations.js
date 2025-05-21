@@ -6,11 +6,10 @@ import { clearUser } from '../user/slice.js';
 
 export const registerThunk = createAsyncThunk(
   'auth/register',
-  async (body, { dispatch, rejectWithValue }) => {
+  async (body, {rejectWithValue }) => {
     try {
       const { data } = await api.post('/auth/register', body);
       setAuthHeader(data.data.accessToken);
-      await dispatch(getUserData());
       return data;
     } catch (error) {
       return rejectWithValue(error.response);
