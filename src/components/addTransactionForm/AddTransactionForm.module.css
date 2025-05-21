@@ -9,7 +9,7 @@
   flex-direction: column;
   width: 100%;
   justify-content: center;
-  gap: 12px;
+  /* gap: 12px; */
 }
 
 .formContent {
@@ -28,6 +28,7 @@
   border-radius: 8px;
   padding: 11px 14px;
   height: 44px;
+  max-width: 100%;
   transition: border-color var(--main-transition);
 }
 .field::placeholder,
@@ -45,11 +46,11 @@
 .dateAmountWrapper {
   display: flex;
   flex-direction: column;
-  gap: 12px;
+  /* gap: 12px; */
 }
 
 .btnWrapper {
-  margin-top: 30px;
+  margin-top: 18px;
   display: flex;
   flex-direction: column;
   gap: 12px;
@@ -87,21 +88,63 @@
   color: var(--main-color-white);
 }
 
+.errorWrapper {
+  min-height: 12px;
+}
+
+.error {
+  min-height: 12px;
+  display: block;
+  font-size: 10px;
+  color: var(--main-color-red);
+  margin: 4px 0 4px 4px;
+}
+
+.errorField {
+  border: 1px solid var(--main-color-red);
+  color: var(--main-color-red);
+}
+
+.errorField::placeholder {
+  color: var(--main-color-red);
+}
+
 @media only screen and (min-width: 768px) {
+  .formWrapper {
+    margin-top: 40px;
+  }
+
   .form {
-    gap: 36px;
+    gap: 20px;
+  }
+
+  .formContent {
+    margin-top: 32px;
+  }
+  .dateAmountWrapper {
+    gap: 24px;
   }
   .btnWrapper {
-    margin-top: 38px;
+    margin-top: 14px;
     gap: 21px;
   }
-  .amountField {
-    width: 50%;
+  .amountField,
+  .field {
+    width: 100%;
   }
   .dateAmountWrapper {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
+  }
+  .errorWrapper {
+    min-height: 16px;
+  }
+
+  .error {
+    min-height: 16px;
+    font-size: 12px;
+    margin: 0;
   }
 }

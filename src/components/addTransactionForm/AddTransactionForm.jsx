@@ -1,10 +1,12 @@
-import { useState } from 'react';
-import { Field, Form, Formik, useFormikContext } from 'formik';
+import { useId, useState } from 'react';
+import { ErrorMessage, Field, Form, Formik, useFormikContext } from 'formik';
 import Select from 'react-select';
 import Toggle from '../toggle/Toggle';
 import Calendar from '../calendar/Calendar';
 import css from './AddTransactionForm.module.css';
 import { SelectStyles } from '../../utils/SelectStyles';
+import { TransactionSchema } from '../../utils/validationSchemas';
+
 
 const categoryOptions = [
   { value: 'main', label: 'Main expenses' },
@@ -18,6 +20,10 @@ const categoryOptions = [
   { value: 'entertainment', label: 'Entertainment' },
 ];
 
+export const categories = categoryOptions.map((category) => category.value);
+console.log(categories);
+
+
 const initialFormValues = {
   type: 'expense',
   category: '',
@@ -27,35 +33,80 @@ const initialFormValues = {
 };
 
 export const TransactionFormFields = ({ isExpense }) => {
-  const { values, setFieldValue } = useFormikContext();
+  const { values, setFieldValue, errors, touched } = useFormikContext();
+  const amountFieldId = useId();
+  const dateFieldId = useId();
+  const categoryFieldId = useId();
+  const commentFieldId = useId();
 
   return (
     <div className={css.form}>
       {isExpense && (
-        <Select
-          options={categoryOptions}
-          styles={SelectStyles}
-          placeholder="Category"
-          isSearchable={false}
-          onChange={(option) => setFieldValue('category', option.value)}
-          value={categoryOptions.find((opt) => opt.value === values.category)}
-        />
+        <div>
+          <Select
+            options={categoryOptions}
+            styles={SelectStyles(!!(errors.category && touched.category))}
+            placeholder="Category"
+            isSearchable={false}
+            name="category"
+            onChange={(option) => setFieldValue('category', option.value)}
+            value={categoryOptions.find((opt) => opt.value === values.category)}
+            id={categoryFieldId}
+          />
+          <div className={css.errorWrapper}>
+            <ErrorMessage
+              name="category"
+              component="span"
+              className={css.error}
+            />
+          </div>
+        </div>
       )}
 
       <div className={css.dateAmountWrapper}>
-        <Field
-          type="number"
-          name="amount"
-          placeholder="0.00"
-          className={css.amountField}
-        />
-        <Calendar
-          value={values.date}
-          onChange={(date) => setFieldValue('date', date)}
-        />
+        <div>
+          <Field
+            type="number"
+            name="amount"
+            id={amountFieldId}
+            placeholder="0.00"
+            className={`${css.amountField} ${
+              errors.amount && touched.amount ? css.errorField : ''
+            }`}
+          />
+          <div className={css.errorWrapper}>
+            <ErrorMessage
+              name="amount"
+              component="span"
+              className={css.error}
+            />
+          </div>
+        </div>
+        <div>
+          <Calendar
+            value={values.date}
+            onChange={(date) => setFieldValue('date', date)}
+            id={dateFieldId}
+            name="date"
+          />
+          <div className={css.errorWrapper}>
+            <ErrorMessage name="date" component="span" className={css.error} />
+          </div>
+        </div>
       </div>
-
-      <Field name="comment" placeholder="Comment" className={css.field} />
+      <div>
+        <Field
+          name="comment"
+          placeholder="Comment"
+          className={`${css.field} ${
+            errors.comment && touched.comment ? css.errorField : ''
+          }`}
+          id={commentFieldId}
+        />
+        <div className={css.errorWrapper}>
+          <ErrorMessage name="comment" component="span" className={css.error} />
+        </div>
+      </div>
     </div>
   );
 };
@@ -86,6 +137,7 @@ const AddTransactionForm = ({ onClose }) => {
       <Formik
         initialValues={initialFormValues}
         onSubmit={handleSubmit}
+        validationSchema={TransactionSchema}
         enableReinitialize
       >
         {({ setFieldValue }) => (

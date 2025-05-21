@@ -1,20 +1,24 @@
-export const SelectStyles = {
+export const SelectStyles = (hasError) => ({
   control: (base, state) => ({
     ...base,
     backgroundColor: 'inherit',
-    borderColor: state.isFocused && state.isSelected ? '#355359' : '#1e2f33',
+    borderColor: hasError
+      ? '#b20202'
+      : state.isFocused && state.isSelected
+      ? '#355359'
+      : '#1e2f33',
     borderRadius: '8px',
     boxShadow: 'none',
     height: '44px',
-    color: '#081222',
+    color: hasError ? '#b20202' : '#081222',
     fontSize: '18px',
     fontFamily: 'Inter',
     fontWeight: '500',
     '&:hover': {
-      border: '1px solid #355359',
+      borderColor: hasError ? 'red' : '#355359',
     },
     '&:focus': {
-      border: '1px solid #355359',
+      borderColor: hasError ? 'red' : '#355359',
     },
   }),
   option: (base, state) => ({
@@ -39,18 +43,18 @@ export const SelectStyles = {
   }),
   singleValue: (base) => ({
     ...base,
-    color: '#081222',
+    color: hasError ? '#b20202' : '#081222',
+  }),
+  placeholder: (base) => ({
+    ...base,
+    color: hasError ? '#b20202' : '#081222',
   }),
   indicatorSeparator: () => ({
     display: 'none',
   }),
   dropdownIndicator: (base) => ({
     ...base,
-    color: '#081222',
+    color: hasError ? '#b20202' : '#081222',
     padding: '0 8px',
   }),
-  placeholder: (base) => ({
-    ...base,
-    color: '#081222',
-  }),
-};
+});

@@ -1,4 +1,5 @@
 import * as Yup from 'yup';
+import { categories } from '../components/addTransactionForm/AddTransactionForm';
 
 export const registrationSchema = Yup.object({
   name: Yup.string()
@@ -16,4 +17,25 @@ export const registrationSchema = Yup.object({
   confirmPassword: Yup.string()
     .oneOf([Yup.ref('password')], 'Passwords must match')
     .required('Required'),
+});
+
+
+export const TransactionSchema = Yup.object().shape({
+  type: Yup.string().oneOf(['expense', 'income']).required('Type is required'),
+  amount: Yup.number()
+    .min(0, 'Amount should be more or equal to 0')
+    .max(1000000, 'Too big amount')
+    .required('Amount is required'),
+  category: Yup.string().when('type', {
+    is: 'expense',
+    then: () =>
+      Yup.string()
+        .oneOf(categories)
+        .required('Category is required'),
+    otherwise: () => Yup.string().notRequired(),
+  }),
+  date: Yup.date().required('Date is required'),
+  comment: Yup.string()
+    .min(2, 'Coment should be more than 2 characters')
+    .max(192, 'Too big comment'),
 });
