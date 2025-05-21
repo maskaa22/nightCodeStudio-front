@@ -10,13 +10,18 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  transition: all 0.3s ease;
+  transition: all var(--main-transition);
 }
 
 .btn:hover,
 .btn:focus {
-  background-color: transparent;
-  border-color: var(--main-color-black);
+  background: var(--background-color-gradient-button);
+  border-color: var(--main-color-white);
+}
+
+.btn:hover .icon,
+.btn:focus .icon {
+  stroke: var(--main-color-white);
 }
 
 .icon {

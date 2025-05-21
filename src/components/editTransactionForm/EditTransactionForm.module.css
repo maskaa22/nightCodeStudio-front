@@ -28,10 +28,18 @@
   border-radius: 8px;
   padding: 11px 14px;
   height: 44px;
-  /* transition: border-color 0.3s ease; */
+  transition: border-color var(--main-transition);
 }
-.field::placeholder {
+.field::placeholder,
+.amountField::placeholder {
   color: #294045;
+}
+
+.field:hover,
+.amountField:hover,
+.field:focus,
+.amountField:focus {
+  border: 1px solid var(--main-color-black);
 }
 
 .dateAmountWrapper {
@@ -57,12 +65,26 @@
   color: var(--main-color-white);
   border: none;
   border-radius: 8px;
+  transition: all var(--main-transition);
 }
+
+.btnAdd:hover,
+.btnAdd:focus {
+  background: var(--background-color-gradient-list);
+}
+
 .btnCancel {
   composes: btnAdd;
   background: transparent;
   color: var(--main-color-black);
   border: 1px solid var(--main-color-black);
+}
+
+.btnCancel:hover,
+.btnCancel:focus {
+  background: transparent;
+  border-color: var(--main-color-white);
+  color: var(--main-color-white);
 }
 
 @media only screen and (min-width: 768px) {
