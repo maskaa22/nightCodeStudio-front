@@ -17,7 +17,8 @@
   height: fit-content;
   border-radius: 16px;
   padding: 16px 16px 23px 16px;
-  background: url(images/dude-1x.png) no-repeat, #508f8c;
+  background: url(images/dude-1x.png) no-repeat,
+    var(--background-color-light-green);
   background-size: 159px, auto;
   background-position: right calc(100% - 23px), bottom;
   min-height: 528px;

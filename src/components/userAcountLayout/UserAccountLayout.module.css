@@ -19,7 +19,7 @@
 
   .layout {
     flex-direction: row;
-    padding: 32px 0;
+    padding: 32px 0 0;
     gap: 24px;
   }
 }

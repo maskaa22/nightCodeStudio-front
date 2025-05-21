@@ -1,11 +1,5 @@
-import React from 'react'
-
 const Loader = () => {
-  return (
-    <div>
-      
-    </div>
-  )
-}
+  return <div>...Loader</div>;
+};
 
-export default Loader
+export default Loader;

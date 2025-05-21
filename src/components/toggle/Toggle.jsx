@@ -22,7 +22,7 @@ const Toggle = ({ onChange, inStatisticsTab = false }) => {
         Income
       </span>
       <button
-        type='button'
+        type="button"
         className={`${s.toggleButton} ${isExpense ? s.expense : s.income}`}
         onClick={handleToggle}
         aria-pressed={isExpense}

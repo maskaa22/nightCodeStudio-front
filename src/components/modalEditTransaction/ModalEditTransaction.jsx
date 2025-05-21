@@ -1,18 +1,9 @@
-import { useEffect } from 'react';
-import EditTransactionForm from '../editTransactionForm/EditTransactionForm'
-import css from './ModalEditTransaction.module.css'
+import EditTransactionForm from '../editTransactionForm/EditTransactionForm';
+import css from './ModalEditTransaction.module.css';
+import { useKeyDownFunction } from '../../utils/keyDown';
 
-const ModalEditTransaction = ({isOpen, onClose}) => {
-  useEffect(() => {
-    const handleEsc = (e) => {
-      if (e.key === 'Escape') {
-        onClose();
-      }
-    };
-
-    document.addEventListener('keydown', handleEsc);
-    return () => document.removeEventListener('keydown', handleEsc);
-  }, [onClose]);
+const ModalEditTransaction = ({ isOpen, onClose }) => {
+  useKeyDownFunction(onClose);
 
   if (!isOpen) return null;
   return (
@@ -28,6 +19,6 @@ const ModalEditTransaction = ({isOpen, onClose}) => {
       </div>
     </div>
   );
-}
+};
 
-export default ModalEditTransaction
+export default ModalEditTransaction;

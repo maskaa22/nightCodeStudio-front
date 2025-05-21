@@ -1,44 +1,44 @@
 .tableHead {
-    display: flex;
-    justify-content: space-between;
-    background: var(--background-color-gradient-list);
-    border-radius: 8px;
-    font-size: 16px;
-    font-weight: 600;
-    padding: 16px;
+  display: flex;
+  justify-content: space-between;
+  background: var(--background-color-gradient-list);
+  border-radius: 8px;
+  font-size: 16px;
+  font-weight: 600;
+  padding: 16px;
 }
 
 .tableBody {
-    display: block;
-    font-size: 14px;
-    font-weight: 400;
-    padding: 16px;
+  display: block;
+  font-size: 14px;
+  font-weight: 400;
+  padding: 16px;
 }
 
 .tableHeadRow {
-    display: flex;
-    justify-content: space-between;
-    gap: 100px;
+  display: flex;
+  justify-content: space-between;
+  gap: 100px;
 }
 
 .tableRow {
-    display: flex;
-    justify-content: space-between;
+  display: flex;
+  justify-content: space-between;
 }
 
 .tableRow:not(:last-child) {
-    border-bottom: 1px solid var(--main-color-white);
+  border-bottom: 1px solid var(--main-color-white);
 }
 
 .tableData {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    padding: 16px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 16px;
 }
 
 .marker {
-    width: 24px;
-    height: 24px;
-    background-color: blue;
+  width: 24px;
+  height: 24px;
+  background-color: blue;
 }

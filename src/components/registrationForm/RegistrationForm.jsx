@@ -5,13 +5,9 @@ import { Link } from 'react-router-dom';
 import PasswordStrengthBar from 'react-password-strength-bar';
 import { registrationSchema } from '../../utils/validationSchemas';
 import { useRegisterSubmit } from '../../utils/registrationFormHandlers';
+import { initialValuesRegister } from '../../constants';
 const RegistrationForm = () => {
-  const initialValues = {
-    name: '',
-    email: '',
-    password: '',
-    confirmPassword: '',
-  };
+
 
   return (
     <div className={`container ${s.containerOverride}`}>
@@ -25,7 +21,7 @@ const RegistrationForm = () => {
         </picture>
 
         <Formik
-          initialValues={initialValues}
+          initialValues={initialValuesRegister}
           validationSchema={registrationSchema}
           onSubmit={useRegisterSubmit()}
         >

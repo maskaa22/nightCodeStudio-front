@@ -1,18 +1,9 @@
-import { useEffect } from 'react';
 import AddTransactionForm from '../addTransactionForm/AddTransactionForm';
 import css from './ModalAddTransaction.module.css';
+import { useKeyDownFunction } from '../../utils/keyDown';
 
 const ModalAddTransaction = ({ isOpen, onClose }) => {
-  useEffect(() => {
-    const handleEsc = (e) => {
-      if (e.key === 'Escape') {
-        onClose();
-      }
-    };
-
-    document.addEventListener('keydown', handleEsc);
-    return () => document.removeEventListener('keydown', handleEsc);
-  }, [onClose]);
+  useKeyDownFunction(onClose);
 
   if (!isOpen) return null;
   return (
@@ -24,7 +15,7 @@ const ModalAddTransaction = ({ isOpen, onClose }) => {
             <use href="/sprite.svg#icon-close" />
           </svg>
         </button>
-        <AddTransactionForm onClose={onClose}/>
+        <AddTransactionForm onClose={onClose} />
       </div>
     </div>
   );
