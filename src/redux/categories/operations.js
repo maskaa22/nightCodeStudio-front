@@ -18,7 +18,6 @@ export const getCategoriesData = createAsyncThunk(
 
       return data.data;
     } catch (error) {
-      console.log(error);
       return thunkAPI.rejectWithValue(error.message);
     }
   },

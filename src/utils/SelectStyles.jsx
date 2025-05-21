@@ -8,6 +8,7 @@ export const SelectStyles = (hasError) => ({
       ? '#355359'
       : '#1e2f33',
     borderRadius: '8px',
+    cursor: 'pointer',
     boxShadow: 'none',
     height: '44px',
     color: hasError ? '#b20202' : '#081222',
