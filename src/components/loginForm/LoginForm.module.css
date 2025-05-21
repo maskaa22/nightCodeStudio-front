@@ -1,10 +1,16 @@
 .container {
   display: flex;
   justify-content: center;
+  width: 100%;
   max-width: 767px;
-  height: 100vh;
+  min-height: 100vh;
   padding: 20px;
   background: var(--background-color-gradient-list);
+  /* background: url(images/dude-1x.png) no-repeat,
+    linear-gradient(180deg, #294045 0%, #1e2f33 100%);
+  background-size: 320px, auto;
+  background-position: right calc(100% - 38px), bottom;
+  padding: 125px 0 0; */
 }
 
 .LoginForm {
@@ -13,13 +19,14 @@
   flex-direction: column;
   align-items: center;
   width: 288px;
-  min-height: 516px;
+  height: fit-content;
   border-radius: 16px;
-  padding: 16px;
+  padding: 16px 16px 23px 16px;
   background: #508f8c;
 }
 
 .form {
+  /* padding: 16px 16px 23px; */
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -32,12 +39,14 @@
   gap: 16px;
   padding-top: 16px;
   padding-bottom: 16px;
+  width: 100%;
 }
 
 .formButtons {
   display: flex;
   flex-direction: column;
   gap: 16px;
+  width: 100%;
 }
 
 .inputWrapper {
@@ -53,6 +62,8 @@
   border-radius: 8px;
   outline: none;
   font-family: var(--font-family-inter);
+  font-size: 18px;
+  font-weight: 500;
   background: transparent;
 }
 
@@ -60,7 +71,7 @@
   font-family: var(--font-family-inter);
   font-size: 18px;
   font-weight: 500;
-  color: var(--main-color-red);
+  color: var(--main-color-black);
 }
 
 .icon {
@@ -75,27 +86,39 @@
 .btnLogin,
 .btnRegister {
   text-align: center;
-  width: 256px;
+  width: 100%;
   height: 44px;
   border-radius: 8px;
   font: 500 18px var(--font-family-inter);
   padding: 11px 0;
-  color: var(--main-color-black);
-  background: #508f8c;
-  border: 1px solid var(--main-color-black);
-  transition: background 0.3s ease, color 0.3s ease, transform 0.2s ease,
-    box-shadow 0.2s ease;
+  transition: all 0.3s ease;
+  text-decoration: none;
+}
+
+.btnLogin {
+  background: linear-gradient(180deg, #355359 0%, #3b5d63 100%);
+  color: #fcfcfc;
+  border: none;
+  transition: all 0.3s ease;
 }
 
 .btnLogin:hover,
-.btnLogin:focus-visible,
+.btnLogin:focus {
+  background: var(--background-color-gradient-list);
+}
+
+.btnRegister {
+  background: transparent;
+  color: var(--main-color-black);
+  border: 1px solid var(--main-color-black);
+  text-decoration: none;
+  margin-bottom: 155px;
+}
+
 .btnRegister:hover,
-.btnRegister:focus-visible {
-  background: var(--background-color-gradient-button);
-  transform: translateY(-1px);
+.btnRegister:focus {
+  border-color: var(--main-color-white);
   color: var(--main-color-white);
-  outline: none;
-  box-shadow: 0 0 0 3px rgba(80, 143, 140, 0.4);
 }
 
 .error {
@@ -142,7 +165,7 @@
   right: 12px;
   width: 159px;
   height: 118px;
-  background-image: url("/images/dude-1x.png");
+  background-image: url('/images/dude-1x.png');
   background-repeat: no-repeat;
   background-size: 147px 100%;
   background-position: right bottom;
@@ -154,7 +177,7 @@
   (min-resolution: 2dppx),
   (min-resolution: 192dpi) {
   .illustrationMobile {
-    background-image: url("/images/dude-2x.png");
+    background-image: url('/images/dude-2x.png');
   }
 }
 
@@ -164,29 +187,28 @@
     padding-top: 176px;
     padding-bottom: 329px;
     max-width: 1279px;
-    background: url("/images/dude-1x.png") no-repeat,
+    background: url('/images/dude-1x.png') no-repeat,
       var(--background-color-gradient-list);
     background-size: 320px 239px, auto;
-    background-position: calc(100%) calc(100% - 58px);
+    background-position: right calc(100% - 58px), bottom;
   }
 
   @media screen and (-webkit-min-device-pixel-ratio: 2),
     (min-resolution: 192dpi) {
     .container {
-      background: url("/images/dude-2x.png") no-repeat,
+      background: url('/images/dude-2x.png') no-repeat,
         var(--background-color-gradient-list);
       background-size: 320px 239px, auto;
-      background-position: calc(100%) calc(100% - 58px);
+      background-position: right calc(100% - 58px), bottom;
     }
   }
 
   .LoginForm {
-    width: 533px;
-    height: 519px;
+    width: fit-content;
     padding-top: 53px;
     padding-bottom: 82px;
-    padding-left: 32px;
-    padding-right: 32px;
+    padding-left: 62px;
+    padding-right: 62px;
   }
 
   .formInputs {
@@ -208,6 +230,10 @@
     width: 409px;
   }
 
+  .btnRegister {
+    margin-bottom: 0;
+  }
+
   .illustrationMobile {
     display: none;
   }
@@ -217,17 +243,20 @@
 @media screen and (min-width: 1280px) {
   .container {
     padding-top: 75px;
-    background: url("images/dude-like-1x.png") no-repeat,
+    background: url('/images/dude-1x.png') no-repeat,
       var(--background-color-gradient-list);
     background-size: 320px 239px, auto;
-    background-position: right 16px bottom 35px;
+    /* background-position: right calc(100%-16px) bottom calc(100%-35px) ; */
+    /* min-height: 100vh;
+    max-width: 100%; */
+    background-position: right 16px, bottom 35px;
   }
 
   @media screen and (-webkit-min-device-pixel-ratio: 2),
     (min-resolution: 2dppx),
     (min-resolution: 192dpi) {
     .container {
-      background: url("images/dude-like-2x.png") no-repeat,
+      background: url('/images/dude-1x.png') no-repeat,
         var(--background-color-gradient-list);
       background-size: 320px 239px, auto;
       background-position: right 16px bottom 35px;

@@ -1,48 +1,17 @@
 import { ErrorMessage, Field, Form, Formik } from 'formik';
 import { useDispatch } from 'react-redux';
 import { useNavigate, Link } from 'react-router-dom';
-import { logIn } from '../../redux/auth/operations';
-import * as Yup from 'yup';
-import toast from 'react-hot-toast';
+import {
+  loginInitialValues,
+  loginValidationSchema,
+  loginHandlerSubmit,
+} from '../../utils/authForm';
+
 import s from './LoginForm.module.css';
 
 const LoginForm = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
-
-  const initialValues = {
-    email: '',
-    password: '',
-  };
-
-  const LoginSchema = Yup.object().shape({
-    email: Yup.string()
-      .email('Invalid email')
-      .max(64, 'Maximum 64 characters')
-      .required('Email is required'),
-    password: Yup.string()
-      .min(8, 'Minimum 8 characters')
-      .max(64, 'Maximum 64 characters')
-      .required('Password is required'),
-  });
-
-  const handleSubmit = async (values, actions) => {
-    try {
-      const resultAction = await dispatch(logIn(values));
-
-      if (logIn.fulfilled.match(resultAction)) {
-        toast.success('Login successful!');
-        actions.resetForm();
-        navigate('/');
-      } else {
-        toast.error('Login failed. Please check your credentials.');
-      }
-    } catch (error) {
-      toast.error('Something went wrong. Try again later.');
-    } finally {
-      actions.setSubmitting(false);
-    }
-  };
 
   return (
     <div className={s.container}>
@@ -55,9 +24,9 @@ const LoginForm = () => {
         />
 
         <Formik
-          initialValues={initialValues}
-          validationSchema={LoginSchema}
-          onSubmit={handleSubmit}
+          initialValues={loginInitialValues}
+          validationSchema={loginValidationSchema}
+          onSubmit={loginHandlerSubmit(dispatch, navigate)}
         >
           {({ isSubmitting, touched, errors }) => (
             <Form className={s.form}>
@@ -118,7 +87,6 @@ const LoginForm = () => {
             </Form>
           )}
         </Formik>
-
         <div className={s.illustrationMobile} />
       </div>
     </div>
