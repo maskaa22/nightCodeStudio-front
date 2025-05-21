@@ -6,11 +6,6 @@
   min-height: 100vh;
   padding: 20px;
   background: var(--background-color-gradient-list);
-  /* background: url(images/dude-1x.png) no-repeat,
-    linear-gradient(180deg, #294045 0%, #1e2f33 100%);
-  background-size: 320px, auto;
-  background-position: right calc(100% - 38px), bottom;
-  padding: 125px 0 0; */
 }
 
 .LoginForm {
@@ -22,11 +17,13 @@
   height: fit-content;
   border-radius: 16px;
   padding: 16px 16px 23px 16px;
-  background: #508f8c;
+  background: url(images/dude-1x.png) no-repeat, #508f8c;
+  background-size: 159px, auto;
+  background-position: right calc(100% - 23px), bottom;
+  min-height: 528px;
 }
 
 .form {
-  /* padding: 16px 16px 23px; */
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -112,7 +109,6 @@
   color: var(--main-color-black);
   border: 1px solid var(--main-color-black);
   text-decoration: none;
-  margin-bottom: 155px;
 }
 
 .btnRegister:hover,
@@ -184,9 +180,9 @@
 /* Tablet */
 @media screen and (min-width: 768px) {
   .container {
-    padding-top: 176px;
-    padding-bottom: 329px;
+    padding: 176px 0 0 0;
     max-width: 1279px;
+    min-height: max(100vh, 1024px);
     background: url('/images/dude-1x.png') no-repeat,
       var(--background-color-gradient-list);
     background-size: 320px 239px, auto;
@@ -209,6 +205,7 @@
     padding-bottom: 82px;
     padding-left: 62px;
     padding-right: 62px;
+    background: #508f8c;
   }
 
   .formInputs {
@@ -246,10 +243,9 @@
     background: url('/images/dude-1x.png') no-repeat,
       var(--background-color-gradient-list);
     background-size: 320px 239px, auto;
-    /* background-position: right calc(100%-16px) bottom calc(100%-35px) ; */
-    /* min-height: 100vh;
-    max-width: 100%; */
-    background-position: right 16px, bottom 35px;
+    min-height: 100vh;
+    max-width: 100%;
+    background-position: right calc(100% - 35px), bottom;
   }
 
   @media screen and (-webkit-min-device-pixel-ratio: 2),

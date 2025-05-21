@@ -87,7 +87,6 @@ const LoginForm = () => {
             </Form>
           )}
         </Formik>
-        <div className={s.illustrationMobile} />
       </div>
     </div>
   );
