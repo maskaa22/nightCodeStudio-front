@@ -9,8 +9,16 @@
   width: 271px;
   height: 44px;
   font-size: 18px;
+  font-family: var(--font-family-inter);
+  font-weight: 500;
   background-color: transparent;
   color: #081222;
+}
+
+.customDateInput:hover,
+.customDateInput:focus {
+  border: 1px solid #355359;
+  outline: none;
 }
 
 .icon {

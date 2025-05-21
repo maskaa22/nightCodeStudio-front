@@ -4,9 +4,7 @@ import Select from 'react-select';
 import Toggle from '../toggle/Toggle';
 import Calendar from '../calendar/Calendar';
 import css from './AddTransactionForm.module.css';
-import { selectStyles } from './SelectStyles';
-
-
+import { SelectStyles } from '../../utils/SelectStyles';
 
 const categoryOptions = [
   { value: 'main', label: 'Main expenses' },
@@ -36,7 +34,7 @@ export const TransactionFormFields = ({ isExpense }) => {
       {isExpense && (
         <Select
           options={categoryOptions}
-          styles={selectStyles}
+          styles={SelectStyles}
           placeholder="Category"
           isSearchable={false}
           onChange={(option) => setFieldValue('category', option.value)}

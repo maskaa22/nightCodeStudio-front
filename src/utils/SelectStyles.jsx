@@ -1,4 +1,4 @@
-export const selectStyles = {
+export const SelectStyles = {
   control: (base, state) => ({
     ...base,
     backgroundColor: 'inherit',
@@ -10,6 +10,12 @@ export const selectStyles = {
     fontSize: '18px',
     fontFamily: 'Inter',
     fontWeight: '500',
+    '&:hover': {
+      border: '1px solid #355359',
+    },
+    '&:focus': {
+      border: '1px solid #355359',
+    },
   }),
   option: (base, state) => ({
     ...base,
@@ -20,6 +26,7 @@ export const selectStyles = {
       : 'transparent',
     color: '#FCFCFC',
     fontSize: '16px',
+    fontWeight: 500,
     padding: '12px 16px',
     cursor: 'pointer',
   }),

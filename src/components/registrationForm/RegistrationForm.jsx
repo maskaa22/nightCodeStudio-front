@@ -3,61 +3,14 @@ import { Field, Form, Formik, ErrorMessage } from 'formik';
 import s from './RegistrationForm.module.css';
 import { Link } from 'react-router-dom';
 import PasswordStrengthBar from 'react-password-strength-bar';
-import * as Yup from 'yup';
-import { useDispatch } from 'react-redux';
-import { registerThunk, logIn } from '../../redux/auth/operations';
-import toast from 'react-hot-toast';
-import { useNavigate } from 'react-router-dom';
+import { registrationSchema } from '../../utils/validationSchemas';
+import { useRegisterSubmit } from '../../utils/registrationFormHandlers';
 const RegistrationForm = () => {
-  const dispatch = useDispatch();
   const initialValues = {
     name: '',
     email: '',
     password: '',
     confirmPassword: '',
-  };
-
-  const validationSchema = Yup.object({
-    name: Yup.string()
-      .min(2, 'Min 2 characters')
-      .max(32, 'Max 32 characters')
-      .required('Required'),
-    email: Yup.string()
-      .email('Invalid email')
-      .max(64, 'Max 64 characters')
-      .required('Required'),
-    password: Yup.string()
-      .min(8, 'Min 8 characters')
-      .max(64, 'Max 64 characters')
-      .required('Required'),
-    confirmPassword: Yup.string()
-      .oneOf([Yup.ref('password')], 'Passwords must match')
-      .required('Required'),
-  });
-  const navigate = useNavigate();
-  const handleSubmit = async (values, { resetForm }) => {
-    const { confirmPassword, ...dataToSend } = values;
-
-    try {
-      await dispatch(registerThunk(dataToSend)).unwrap();
-      toast.success('Successfully registered!');
-
-      const loginData = {
-        email: dataToSend.email,
-        password: dataToSend.password,
-      };
-
-      await dispatch(logIn(loginData)).unwrap();
-      toast.success('Logged in automatically!');
-      navigate('/', { replace: true });
-      resetForm();
-    } catch (error) {
-      if (error?.status === 409 || error?.response?.status === 409) {
-        toast.error('Email already exists. Please use a different one.');
-      } else {
-        toast.error('Registration or login failed. Please try again.');
-      }
-    }
   };
 
   return (
@@ -73,8 +26,8 @@ const RegistrationForm = () => {
 
         <Formik
           initialValues={initialValues}
-          validationSchema={validationSchema}
-          onSubmit={handleSubmit}
+          validationSchema={registrationSchema}
+          onSubmit={useRegisterSubmit()}
         >
           {({ values, errors, touched }) => (
             <Form className={s.form}>
@@ -176,10 +129,8 @@ const RegistrationForm = () => {
                 Register
               </button>
 
-              <Link to="/login">
-                <button type="button" className={s.btnLogin}>
-                  Login
-                </button>
+              <Link to="/login" className={s.btnLogin}>
+                Login
               </Link>
             </Form>
           )}
