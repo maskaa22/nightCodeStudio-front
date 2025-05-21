@@ -1,6 +1,9 @@
-import s from "./Header.module.css";
+import { useSelector } from 'react-redux';
+import s from './Header.module.css';
+import { selectUserName } from '../../redux/user/selectors';
 
 const Header = ({ openLogoutModal }) => {
+  const name = useSelector(selectUserName);
   return (
     <header className={s.header}>
       <div className="container">
@@ -12,7 +15,7 @@ const Header = ({ openLogoutModal }) => {
             alt="Logo"
           />
           <div className={s.exitBlock}>
-            <p className={s.name}>name</p>
+            <p className={s.name}>{name}</p>
             <button className={s.exitButton} onClick={openLogoutModal}>
               <svg className={s.exitIcon} width="18" height="18">
                 <use href="/sprite.svg#icon-exit" />

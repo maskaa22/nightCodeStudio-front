@@ -19,7 +19,12 @@ function App() {
       <Toaster position="top-right" reverseOrder={false} />
       <Routes>
         <Route path="/" element={<UserAcountLayout />}>
-          <Route path="/" element={<HomeTab />} />
+          <Route
+            path="/"
+            element={
+              <PrivateRoute component={<HomeTab />} redirectTo="/login" />
+            }
+          />
           <Route
             path="/statistics"
             element={
