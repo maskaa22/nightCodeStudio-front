@@ -9,6 +9,7 @@ const ModalLogout = ({ onClose, isLogoutModalOpen }) => {
   const handleLogout = () => {
     dispatch(logout());
   };
+
   useEffect(() => {
     const handleEsc = (e) => {
       if (e.key === 'Escape') {

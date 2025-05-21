@@ -8,7 +8,7 @@ export const loginHandlerSubmit =
       if (logIn.fulfilled.match(result)) {
         toast.success('Login successful!');
         actions.resetForm();
-        navigate('/dashboard');
+        navigate('/');
       } else {
         toast.error('Login failed. Check your credentials.');
       }
