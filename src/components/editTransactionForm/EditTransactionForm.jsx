@@ -1,22 +1,13 @@
 import { useState } from 'react';
-import { Field, Form, Formik, useFormikContext } from 'formik';
+import { ErrorMessage, Field, Form, Formik, useFormikContext } from 'formik';
 import Select from 'react-select';
 import Toggle from '../toggle/Toggle';
 import Calendar from '../calendar/Calendar';
 import css from './EditTransactionForm.module.css';
 import { SelectStyles } from '../../utils/SelectStyles';
 
-const categoryOptions = [
-  { value: 'main', label: 'Main expenses' },
-  { value: 'products', label: 'Products' },
-  { value: 'car', label: 'Car' },
-  { value: 'selfCare', label: 'Self care' },
-  { value: 'childCare', label: 'Child care' },
-  { value: 'household', label: 'Household products' },
-  { value: 'education', label: 'Education' },
-  { value: 'leisure', label: 'Leisure' },
-  { value: 'entertainment', label: 'Entertainment' },
-];
+import { getTransactionSchema } from '../../utils/validationSchemas';
+import { useExpenseCategories } from '../addTransactionForm/getExpenseCategories';
 
 const initialFormValues = {
   type: 'expense',
@@ -26,42 +17,85 @@ const initialFormValues = {
   date: new Date(),
 };
 
-const TransactionFormFields = ({ isExpense }) => {
-  const { values, setFieldValue } = useFormikContext();
+export const TransactionFormFields = ({ isExpense, expenses }) => {
+  const { values, setFieldValue, errors, touched } = useFormikContext();
 
   return (
     <div className={css.form}>
       {isExpense && (
-        <Select
-          options={categoryOptions}
-          styles={SelectStyles}
-          placeholder="Category"
-          isSearchable={false}
-          onChange={(option) => setFieldValue('category', option.value)}
-          value={categoryOptions.find((opt) => opt.value === values.category)}
-        />
+        <div>
+          <Select
+            options={expenses}
+            styles={SelectStyles(!!(errors.category && touched.category))}
+            placeholder="Category"
+            isSearchable={false}
+            name="category"
+            onChange={(option) => setFieldValue('category', option.value)}
+            value={expenses.find((opt) => opt.value === values.category)}
+            id="category"
+          />
+          <div className={css.errorWrapper}>
+            <ErrorMessage
+              name="category"
+              component="span"
+              className={css.error}
+            />
+          </div>
+        </div>
       )}
 
       <div className={css.dateAmountWrapper}>
-        <Field
-          type="number"
-          name="amount"
-          placeholder="0.00"
-          className={css.amountField}
-        />
-        <Calendar
-          value={values.date}
-          onChange={(date) => setFieldValue('date', date)}
-        />
+        <div>
+          <Field
+            type="number"
+            name="amount"
+            id="amount"
+            placeholder="0.00"
+            className={`${css.amountField} ${
+              errors.amount && touched.amount ? css.errorField : ''
+            }`}
+          />
+          <div className={css.errorWrapper}>
+            <ErrorMessage
+              name="amount"
+              component="span"
+              className={css.error}
+            />
+          </div>
+        </div>
+        <div>
+          <Calendar
+            value={values.date}
+            onChange={(date) => setFieldValue('date', date)}
+            id="date"
+            name="date"
+          />
+          <div className={css.errorWrapper}>
+            <ErrorMessage name="date" component="span" className={css.error} />
+          </div>
+        </div>
       </div>
-
-      <Field name="comment" placeholder="Comment" className={css.field} />
+      <div>
+        <Field
+          name="comment"
+          placeholder="Comment"
+          className={`${css.field} ${
+            errors.comment && touched.comment ? css.errorField : ''
+          }`}
+          id="comment"
+        />
+        <div className={css.errorWrapper}>
+          <ErrorMessage name="comment" component="span" className={css.error} />
+        </div>
+      </div>
     </div>
   );
 };
 
 const EditTransactionForm = ({ onClose }) => {
   const [isExpense, setIsExpense] = useState(true);
+  const expenses = useExpenseCategories();
+  const expenseCategoryTitles = expenses.map((category) => category.value);
 
   const handleSubmit = (values, { resetForm }) => {
     console.log('Submitted values:', values);
@@ -86,6 +120,7 @@ const EditTransactionForm = ({ onClose }) => {
       <Formik
         initialValues={initialFormValues}
         onSubmit={handleSubmit}
+        validationSchema={getTransactionSchema(expenseCategoryTitles)}
         enableReinitialize
       >
         {({ setFieldValue }) => (
@@ -96,11 +131,14 @@ const EditTransactionForm = ({ onClose }) => {
             />
 
             <div className={css.formContent}>
-              <TransactionFormFields isExpense={isExpense} />
+              <TransactionFormFields
+                isExpense={isExpense}
+                expenses={expenses}
+              />
 
               <div className={css.btnWrapper}>
                 <button type="submit" className={css.btnAdd}>
-                  Save
+                  Add
                 </button>
                 <button
                   type="button"
