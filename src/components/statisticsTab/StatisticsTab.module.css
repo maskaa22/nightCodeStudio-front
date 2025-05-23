@@ -1,9 +1,16 @@
 .statistics {
-  background: var(--background-color-gradient-button);
-  border-radius: 16px;
-  color: var(--main-color-white);
-  display: flex;
-  justify-content: space-around;
-  align-items: center;
-  flex-wrap: wrap;
+    background: var(--background-color-gradient-button);
+    border-radius: 16px;
+    color: var(--main-color-white);
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    flex-wrap: wrap;
+    min-width: 757px;
+}
+
+@media screen and (max-width: 767px) {
+    .statistics {
+        min-width: 1px;
+    }
 }
