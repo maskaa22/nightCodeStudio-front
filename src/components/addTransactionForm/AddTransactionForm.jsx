@@ -106,7 +106,7 @@ const AddTransactionForm = ({ onClose }) => {
       date: formattedDate,
       category: formatedCategory,
     };
-    console.log('Submitted values:', data);
+
     dispatch(addTransaction(data));
     resetForm({
       values: {

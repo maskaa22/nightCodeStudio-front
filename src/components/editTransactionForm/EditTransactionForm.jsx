@@ -93,7 +93,7 @@ const EditTransactionForm = ({ onClose, id }) => {
   const transactionData = transactions.find((item) => item._id === id);
   const isExpense = transactionData.type !== 'income';
   const dispatch = useDispatch();
-  console.log(transactionData);
+
   const initialFormValues = {
     type: transactionData.type,
     category: transactionData.category.title,
@@ -101,19 +101,26 @@ const EditTransactionForm = ({ onClose, id }) => {
     comment: transactionData.comment,
     date: new Date(transactionData.date),
   };
-  console.log(transactionData.type);
 
   const handleSubmit = (values) => {
     const formattedDate = new Date(values.date).toISOString().split('T')[0];
     const formatedCategory =
       values.type === 'income' ? 'Incomes' : values.category;
-    const data = {
+    const formData = {
       ...values,
       date: formattedDate,
       category: formatedCategory,
     };
-    console.log('Submitted values:', data);
-    dispatch(updateTransaction({ id, ...data }));
+
+    const updatedFields = Object.keys(formData).reduce((acc, key) => {
+      const initialValue = initialFormValues[key];
+      const currentValue = formData[key];
+      if (currentValue !== initialValue) {
+        acc[key] = currentValue;
+      }
+      return acc;
+    }, {});
+    dispatch(updateTransaction({ id, ...updatedFields }));
 
     onClose();
   };
