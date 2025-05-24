@@ -1,5 +1,7 @@
+import { useSelector } from 'react-redux';
 import TransactionsItem from '../transactionsItem/TransactionsItem';
 import s from './TransactionsList.module.css';
+import { selectTransactions } from '../../redux/transactions/selectors';
 
 const data = [
   {
@@ -108,8 +110,15 @@ const data = [
   },
 ];
 
+
+
 const TransactionsList = () => {
-  if (!data.length) {
+  const transactions = useSelector(selectTransactions)
+  console.log(transactions);
+  
+
+
+  if (!transactions.length) {
     return <p className={s.placeholder}>No transactions yet</p>;
   }
 
@@ -125,8 +134,8 @@ const TransactionsList = () => {
           <li>Comment</li>
           <li>Sum</li>
         </ul>
-        {data.map((item, index) => (
-          <TransactionsItem key={item.id} {...item} isEven={index % 2 === 1} />
+        {transactions.map((item, index) => (
+          <TransactionsItem key={item._id} {...item} isEven={index % 2 === 1} />
         ))}
       </ul>
     </div>

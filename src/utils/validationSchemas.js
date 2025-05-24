@@ -21,7 +21,7 @@ export const registrationSchema = Yup.object({
 
 export const getTransactionSchema = (expenseCategories = []) =>
   Yup.object().shape({
-  type: Yup.string().oneOf(['expense', 'income']).required('Type is required'),
+  type: Yup.string().oneOf(['expenses', 'income']).required('Type is required'),
   amount: Yup.number()
     .min(0, 'Amount should be more or equal to 0')
     .max(1000000, 'Too big amount')

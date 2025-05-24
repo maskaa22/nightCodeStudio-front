@@ -32,6 +32,11 @@
   align-items: center;
 }
 
+.toggleButton:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
 .toggleSlider {
   position: relative;
   width: 100%;

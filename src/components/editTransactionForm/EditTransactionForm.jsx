@@ -1,4 +1,3 @@
-import { useState } from 'react';
 import { ErrorMessage, Field, Form, Formik, useFormikContext } from 'formik';
 import Select from 'react-select';
 import Toggle from '../toggle/Toggle';
@@ -8,14 +7,9 @@ import { SelectStyles } from '../../utils/SelectStyles';
 
 import { getTransactionSchema } from '../../utils/validationSchemas';
 import { useExpenseCategories } from '../addTransactionForm/getExpenseCategories';
-
-const initialFormValues = {
-  type: 'expense',
-  category: '',
-  amount: '',
-  comment: '',
-  date: new Date(),
-};
+import { useDispatch, useSelector } from 'react-redux';
+import { selectTransactions } from '../../redux/transactions/selectors';
+import { updateTransaction } from '../../redux/transactions/operations';
 
 export const TransactionFormFields = ({ isExpense, expenses }) => {
   const { values, setFieldValue, errors, touched } = useFormikContext();
@@ -92,27 +86,36 @@ export const TransactionFormFields = ({ isExpense, expenses }) => {
   );
 };
 
-const EditTransactionForm = ({ onClose }) => {
-  const [isExpense, setIsExpense] = useState(true);
+const EditTransactionForm = ({ onClose, id }) => {
   const expenses = useExpenseCategories();
   const expenseCategoryTitles = expenses.map((category) => category.value);
-
-  const handleSubmit = (values, { resetForm }) => {
-    console.log('Submitted values:', values);
-    resetForm({
-      values: {
-        ...initialFormValues,
-        type: isExpense ? 'expense' : 'income',
-        date: new Date(),
-      },
-    });
-    onClose();
+  const transactions = useSelector(selectTransactions);
+  const transactionData = transactions.find((item) => item._id === id);
+  const isExpense = transactionData.type !== 'income';
+  const dispatch = useDispatch();
+  console.log(transactionData);
+  const initialFormValues = {
+    type: transactionData.type,
+    category: transactionData.category.title,
+    amount: transactionData.amount,
+    comment: transactionData.comment,
+    date: new Date(transactionData.date),
   };
+  console.log(transactionData.type);
 
-  const handleTypeChange = (isExpense, setFieldValue) => {
-    setIsExpense(isExpense);
-    setFieldValue('type', isExpense ? 'expense' : 'income');
-    setFieldValue('category', '');
+  const handleSubmit = (values) => {
+    const formattedDate = new Date(values.date).toISOString().split('T')[0];
+    const formatedCategory =
+      values.type === 'income' ? 'Incomes' : values.category;
+    const data = {
+      ...values,
+      date: formattedDate,
+      category: formatedCategory,
+    };
+    console.log('Submitted values:', data);
+    dispatch(updateTransaction({ id, ...data }));
+
+    onClose();
   };
 
   return (
@@ -123,12 +126,9 @@ const EditTransactionForm = ({ onClose }) => {
         validationSchema={getTransactionSchema(expenseCategoryTitles)}
         enableReinitialize
       >
-        {({ setFieldValue }) => (
+        {() => (
           <Form>
-            <Toggle
-              value={isExpense}
-              onChange={(value) => handleTypeChange(value, setFieldValue)}
-            />
+            <Toggle value={isExpense} disabled={true} />
 
             <div className={css.formContent}>
               <TransactionFormFields
@@ -138,7 +138,7 @@ const EditTransactionForm = ({ onClose }) => {
 
               <div className={css.btnWrapper}>
                 <button type="submit" className={css.btnAdd}>
-                  Add
+                  Save
                 </button>
                 <button
                   type="button"
