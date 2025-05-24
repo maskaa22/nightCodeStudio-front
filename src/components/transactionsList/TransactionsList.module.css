@@ -16,9 +16,13 @@
 }
 
 .placeholder {
-  text-align: center;
   color: #ccc;
   padding: 20px;
+  background: var(--background-color-gradient-button);
+  display: flex;
+  justify-content: center;
+  border-radius: 12px;
+  height: 280px;
 }
 
 @media (min-width: 768px) {
@@ -33,6 +37,10 @@
     padding-left: 8px;
   }
 
+  .placeholder {
+    height: 538px;
+  }
+
   .list {
     background: var(--background-color-gradient-button);
     padding: 32px 16px;
@@ -43,7 +51,7 @@
     gap: 16px;
     margin: 0;
     overflow-y: auto;
-    max-height: 538px;
+    height: 538px;
   }
 
   .list::-webkit-scrollbar {
@@ -68,7 +76,12 @@
     grid-template-columns: 121px 95px 125px 142px 1fr;
   }
   .list {
-    padding: 32px 32px 0px 27px;
-    max-height: 585px;
+    padding: 32px 32px 16px 27px;
+    height: 585px;
+  }
+
+  .placeholder {
+    height: 585px;
+    width: 757px;
   }
 }
