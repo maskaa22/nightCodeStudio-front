@@ -36,17 +36,18 @@ const slice = createSlice({
       .addCase(addTransaction.fulfilled, (state, action) => {
         state.loading = false;
         state.items.push(action.payload);
-        thunkAPI.dispatch(getTransactions());
+        // thunkAPI.dispatch(getTransactions());
       })
       .addCase(addTransaction.pending, handlePending)
       .addCase(addTransaction.rejected, handleRejected)
       .addCase(updateTransaction.fulfilled, (state, action) => {
         state.loading = false;
         const index = state.items.findIndex((t) => t.id === action.payload.id);
-        if (index !== -1) {
-          state.items[index] = { ...state.items[index], ...action.payload };
-        }
-        thunkAPI.dispatch(getTransactions());
+        state.items.splice(index, 1, action.payload);
+        // if (index !== -1) {
+        //   state.items[index] = { ...state.items[index], ...action.payload };
+        // }
+        // thunkAPI.dispatch(getTransactions());
       })
       .addCase(updateTransaction.pending, handlePending)
       .addCase(updateTransaction.rejected, handleRejected);

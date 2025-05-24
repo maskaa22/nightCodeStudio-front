@@ -78,7 +78,11 @@ const TransactionsList = () => {
   // const error = useSelector(selectError);
 
   useEffect(() => {
-    dispatch(getTransactions());
+    const abortController = new AbortController();
+    dispatch(getTransactions({ signal: abortController.signal }));
+    return () => {
+      abortController.abort();
+    };
   }, [dispatch]);
 
   if (isLoading) return <p>Завантаження транзакцій...</p>;
@@ -101,8 +105,8 @@ const TransactionsList = () => {
           <li>Comment</li>
           <li>Sum</li>
         </ul>
-        {transactions.map((item, index) => (
-          <TransactionsItem key={item._id} {...item} isEven={index % 2 === 1} />
+        {transactions?.map((item, index) => (
+          <TransactionsItem key={index} {...item} isEven={index % 2 === 1} />
         ))}
       </ul>
     </div>

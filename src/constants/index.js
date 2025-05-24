@@ -21,3 +21,4 @@ export const initialValuesRegister = {
   password: '',
   confirmPassword: '',
 };
+
