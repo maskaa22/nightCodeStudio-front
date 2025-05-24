@@ -3,8 +3,8 @@ import { api } from '../../api/axios';
 import { selectAccessToken } from '../auth/selectors';
 import { setAuthHeader } from '../../api/authHeader';
 
-export const fetchTransactions = createAsyncThunk(
-  'transactions/fetchAll',
+export const getTransactions = createAsyncThunk(
+  'transactions/getAll',
   async (_, thunkAPI) => {
     try {
       const state = thunkAPI.getState();
@@ -15,7 +15,7 @@ export const fetchTransactions = createAsyncThunk(
       }
 
       const { data } = await api.get('/transactions', setAuthHeader(token));
-      console.log(data.transactions);
+
       return data.transactions;
     } catch (error) {
       return thunkAPI.rejectWithValue(error.message);
@@ -49,7 +49,7 @@ export const addTransaction = createAsyncThunk(
 
 export const updateTransaction = createAsyncThunk(
   'transactions/updateTransaction',
-    async ({ id, ...body }, thunkAPI) => {
+  async ({ id, ...body }, thunkAPI) => {
     try {
       const state = thunkAPI.getState();
       const token = selectAccessToken(state);

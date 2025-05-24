@@ -111,11 +111,11 @@ const AddTransactionForm = ({ onClose }) => {
     resetForm({
       values: {
         ...initialFormValues,
-
         date: new Date(),
       },
     });
     onClose();
+  
   };
 
   return (

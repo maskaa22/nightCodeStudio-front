@@ -1,7 +1,7 @@
 import { createSlice } from '@reduxjs/toolkit';
 import {
   addTransaction,
-  fetchTransactions,
+  getTransactions,
   updateTransaction,
 } from './operations';
 
@@ -26,16 +26,16 @@ const slice = createSlice({
   reducers: {},
   extraReducers: (builder) => {
     builder
-      .addCase(fetchTransactions.fulfilled, (state, action) => {
+      .addCase(getTransactions.fulfilled, (state, action) => {
         state.items = action.payload;
         state.loading = false;
       })
-      .addCase(fetchTransactions.pending, handlePending)
-      .addCase(fetchTransactions.rejected, handleRejected)
+      .addCase(getTransactions.pending, handlePending)
+      .addCase(getTransactions.rejected, handleRejected)
 
       .addCase(addTransaction.fulfilled, (state, action) => {
         state.loading = false;
-        state.items.push(action.payload);
+        // state.items.push(action.payload);
       })
       .addCase(addTransaction.pending, handlePending)
       .addCase(addTransaction.rejected, handleRejected)

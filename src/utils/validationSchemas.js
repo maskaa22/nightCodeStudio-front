@@ -27,7 +27,7 @@ export const getTransactionSchema = (expenseCategories = []) =>
     .max(1000000, 'Too big amount')
     .required('Amount is required'),
   category: Yup.string().when('type', {
-    is: 'expense',
+    is: 'expenses',
     then: () =>
       Yup.string()
         .oneOf(expenseCategories)

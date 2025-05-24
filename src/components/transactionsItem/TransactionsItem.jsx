@@ -11,7 +11,7 @@ const TransactionsItem = ({ date, type, category, comment, amount, isEven, _id }
   const [isOpen, setIsOpen] = useState(false);
 
   return (
-    <div className={s.itemWrapper} id={_id}>
+    <div className={s.itemWrapper}>
       <li className={`${s.card} ${typeClass} ${evenClass}`}>
         <div className={s.row}>
           <span className={s.label}>Date</span>
