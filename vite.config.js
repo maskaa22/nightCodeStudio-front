@@ -9,7 +9,7 @@ export default defineConfig({
     outDir: 'dist',
     sourcemap: true,
   },
-  server: {
-    historyApiFallback: true, // для dev-сервера
-  }
+  // server: {
+  //   historyApiFallback: true, // для dev-сервера
+  // }
 });
