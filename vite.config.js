@@ -5,8 +5,11 @@ import react from '@vitejs/plugin-react-swc';
 export default defineConfig({
   plugins: [react()],
     base: '/',
+    build: {
     outDir: 'dist',
-  server: {
-    historyApiFallback: true, // для dev-сервера
-  }
+    sourcemap: true,
+  },
+  // server: {
+  //   historyApiFallback: true, // для dev-сервера
+  // }
 });
