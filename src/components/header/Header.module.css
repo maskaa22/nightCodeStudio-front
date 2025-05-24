@@ -52,3 +52,35 @@
   font-weight: 400;
   font-size: 16px;
 }
+
+.headerAvatarWrapper {
+  width: 32px;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-right: 12px;
+}
+
+.headerAvatar {
+  width: 32px;
+  height: 32px;
+  border-radius: 8px;
+  object-fit: cover;
+  display: block;
+}
+
+.headerAvatarSkeleton {
+  width: 32px;
+  height: 32px;
+  border-radius: 8px;
+  background: #b0c4c4;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 16px;
+  font-weight: 500;
+  color: #355359;
+  font-family: var(--font-family-inter);
+  text-transform: uppercase;
+}
