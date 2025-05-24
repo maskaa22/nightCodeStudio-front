@@ -1,10 +1,10 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
-import { api } from '../../api/axios.js';
+import { api } from '../../api/axios';
 import { selectAccessToken } from '../auth/selectors';
-import { setAuthHeader } from '../../api/authHeader.js';
+import { setAuthHeader } from '../../api/authHeader';
 
-export const getUserData = createAsyncThunk(
-  'user/getData',
+export const getCategoriesData = createAsyncThunk(
+  'categories/getCategories',
   async (_, thunkAPI) => {
     try {
       const state = thunkAPI.getState();
@@ -14,10 +14,11 @@ export const getUserData = createAsyncThunk(
         throw new Error('No access token found');
       }
 
-      const { data } = await api.get('/users/me', setAuthHeader(token));
-      return data;
+      const { data } = await api.get('/categories', setAuthHeader(token));
+
+      return data.data;
     } catch (error) {
-      return thunkAPI.rejectWithValue(error.response);
+      return thunkAPI.rejectWithValue(error.message);
     }
   },
 );

@@ -9,6 +9,7 @@ export const SelectStyles = {
     cursor: 'pointer',
     boxShadow: 'none',
     height: '44px',
+    width: '122px',
     color: '#fcfcfc',
     fontSize: '18px',
     fontFamily: 'Inter',

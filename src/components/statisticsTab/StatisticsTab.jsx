@@ -8,7 +8,7 @@ const StatisticsTab = () => {
   return (
     <div>
       <div className={css.statistics}>
-        <div>
+        <div className={css.innerContainer}>
           <Toggle
             inStatisticsTab={true}
             onChange={(isExpense) =>

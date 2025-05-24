@@ -2,7 +2,7 @@ import EditTransactionForm from '../editTransactionForm/EditTransactionForm';
 import css from './ModalEditTransaction.module.css';
 import { useKeyDownFunction } from '../../utils/keyDown';
 
-const ModalEditTransaction = ({ isOpen, onClose }) => {
+const ModalEditTransaction = ({ isOpen, onClose, transactionId }) => {
   useKeyDownFunction(onClose);
 
   if (!isOpen) return null;
@@ -15,7 +15,7 @@ const ModalEditTransaction = ({ isOpen, onClose }) => {
             <use href="/sprite.svg#icon-close" />
           </svg>
         </button>
-        <EditTransactionForm onClose={onClose} />
+        <EditTransactionForm id={transactionId} onClose={onClose} />
       </div>
     </div>
   );

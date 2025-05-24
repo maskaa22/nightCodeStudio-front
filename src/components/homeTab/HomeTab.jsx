@@ -3,11 +3,14 @@ import ButtonAddTransaction from '../buttonAddTransaction/ButtonAddTransaction';
 import ModalAddTransaction from '../modalAddTransaction/ModalAddTransaction';
 import { useState } from 'react';
 
+
+
 const HomeTab = () => {
   const [isOpen, setIsOpen] = useState(false);
-  return (
+
+    return (
     <div>
-      <TransactionsList />
+        <TransactionsList />
       <ButtonAddTransaction onClick={() => setIsOpen(true)} />
       <ModalAddTransaction isOpen={isOpen} onClose={() => setIsOpen(false)} />
     </div>
