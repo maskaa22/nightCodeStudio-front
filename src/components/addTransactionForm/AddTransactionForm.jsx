@@ -7,7 +7,7 @@ import { SelectStyles } from '../../utils/SelectStyles';
 import { useExpenseCategories } from './getExpenseCategories';
 import { getTransactionSchema } from '../../utils/validationSchemas';
 import { useDispatch } from 'react-redux';
-import { addTransaction } from '../../redux/transactions/operations';
+import { addTransaction, getTransactions } from '../../redux/transactions/operations';
 
 const initialFormValues = {
   type: 'expenses',
@@ -114,6 +114,7 @@ const AddTransactionForm = ({ onClose }) => {
         date: new Date(),
       },
     });
+    dispatch(getTransactions());
     onClose();
   
   };

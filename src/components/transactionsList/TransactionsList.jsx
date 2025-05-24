@@ -8,6 +8,7 @@ import {
 import { getTransactions } from '../../redux/transactions/operations';
 import { useEffect } from 'react';
 import s from './TransactionsList.module.css';
+// import { data } from 'react-router-dom';
 
 // const data = [
 //   {
