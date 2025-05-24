@@ -1,0 +1,155 @@
+.overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: rgba(0, 0, 0, 0.3);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1000;
+  }
+  
+  .modal {
+    background: #508F8C;
+    border-radius: 16px;
+    padding: 64px 32px 0px 32px;
+    width: 458px;
+    height: 352px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
+  }
+  
+  .closeBtn {
+    position: absolute;
+    top: 24px;
+    right: 32px;
+    background: none;
+    border: none;
+    font-size: 32px;
+    cursor: pointer;
+  }
+  
+  .avatarBlock {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 24px;
+    position: relative;
+  }
+  
+  .avatar {
+    width: 80px;
+    height: 80px;
+    border-radius: 8px;
+    object-fit: cover;
+    margin-bottom: 8px;
+    display: block;
+  }
+  
+  .avatarAddBtn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 24px;
+    height: 24px;
+    background: #256d4a;
+    color: #fff;
+    border-radius: 6px;
+    font-size: 22px;
+    cursor: pointer;
+    position: absolute;
+    left: 50%;
+    top: 90%;
+    transform: translate(-50%, -50%);
+    z-index: 2;
+  }
+  
+  .inputWrapper {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .input {
+    height: 44px;
+    width: 100%;
+    padding: 0 16px;
+    border-radius: 8px;
+    border: 1px solid #081222;
+    font-size: 18px;
+    font-family: var(--font-family-inter);
+    font-weight: 500;
+    background: transparent;
+    color: #081222;
+    outline: none;
+  }
+  
+  .input::placeholder {
+    font-family: var(--font-family-inter);
+    font-size: 18px;
+    font-weight: 500;
+    color: #081222;
+  }
+  
+  .inputError {
+    border-color: #B20202;
+    color: #B20202;
+  }
+  
+  .inputError::placeholder {
+    color: #B20202;
+  }
+  
+  .error {
+    color: #B20202;
+    font-size: 12px;
+    margin-top: 2px;
+    font-family: var(--font-family-inter);
+  }
+  
+  .saveBtn {
+    width: 100%;
+    height: 44px;
+    border-radius: 8px;
+    font: 500 18px var(--font-family-inter);
+    padding: 11px 0;
+    background: linear-gradient(180deg, #355359 0%, #3b5d63 100%);
+    color: #fcfcfc;
+    border: none;
+    text-align: center;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: block;
+    margin-top: 16px;
+  }
+  
+  .saveBtn:hover,
+  .saveBtn:focus {
+    background: var(--background-color-gradient-list);
+  }
+  
+  .avatarSkeleton {
+    width: 68px;
+    height: 68px;
+    border-radius: 8px;
+    background: #b0c4c4;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 8px;
+    font-size: 32px;
+    font-weight: 500;
+    color: #355359;
+    font-family: var(--font-family-inter);
+    text-transform: uppercase;
+  }
+  
+  .closeSvg {
+    stroke: var(--main-color-black);
+    width: 16px;
+    height: 16px;
+  }
