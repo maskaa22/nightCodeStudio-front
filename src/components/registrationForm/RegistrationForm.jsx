@@ -108,7 +108,7 @@ const RegistrationForm = () => {
                       ? values.password + '_'
                       : ''
                   }
-                  minLength={1}
+                  minLength={9}
                   className={
                     values.password === values.confirmPassword &&
                     values.confirmPassword !== ''
