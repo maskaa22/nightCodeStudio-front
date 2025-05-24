@@ -1,6 +1,6 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
 import { api } from '../../api/axios.js';
-// import { selectAccessToken } from '../auth/selectors';
+import { selectAccessToken } from '../auth/selectors';
 import { setAuthHeader } from '../../api/authHeader.js';
 
 export const getUserData = createAsyncThunk(
