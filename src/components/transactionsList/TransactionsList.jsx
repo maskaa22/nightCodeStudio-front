@@ -8,6 +8,7 @@ import {
 import { getTransactions } from '../../redux/transactions/operations';
 import { useEffect } from 'react';
 import s from './TransactionsList.module.css';
+// import { data } from 'react-router-dom';
 
 // const data = [
 //   {
@@ -71,15 +72,18 @@ import s from './TransactionsList.module.css';
 const TransactionsList = () => {
   const dispatch = useDispatch();
   const transactions = useSelector(selectTransactions);
+
   const isLoading = useSelector(selectIsLoading);
-  const error = useSelector(selectError);
+
+  // const error = useSelector(selectError);
 
   useEffect(() => {
     dispatch(getTransactions());
   }, [dispatch]);
 
   if (isLoading) return <p>Завантаження транзакцій...</p>;
-  if (error) return <p>Помилка: {error}</p>;
+
+  // if (error) return <p>Помилка: {error}</p>;
 
   if (!transactions.length) {
     return <p className={s.placeholder}>No transactions yet</p>;
@@ -98,7 +102,7 @@ const TransactionsList = () => {
           <li>Sum</li>
         </ul>
         {transactions.map((item, index) => (
-          <TransactionsItem key={item.id} {...item} isEven={index % 2 === 1} />
+          <TransactionsItem key={item._id} {...item} isEven={index % 2 === 1} />
         ))}
       </ul>
     </div>

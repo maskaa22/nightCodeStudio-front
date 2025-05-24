@@ -1,30 +1,55 @@
 import { createSlice } from '@reduxjs/toolkit';
-import { getTransactions } from './operations.js';
+import {
+  addTransaction,
+  getTransactions,
+  updateTransaction,
+} from './operations';
 
 const initialState = {
   items: [],
-  isLoading: false,
+  loading: false,
   error: null,
+};
+
+const handlePending = (state) => {
+  state.loading = true;
+};
+
+const handleRejected = (state, action) => {
+  state.loading = false;
+  state.error = action.payload;
 };
 
 const slice = createSlice({
   name: 'transactions',
   initialState,
   reducers: {},
-  extraReducers: (builder) => {
+  extraReducers: (builder, thunkAPI) => {
     builder
-      .addCase(getTransactions.pending, (state) => {
-        state.isLoading = true;
-        state.error = null;
-      })
       .addCase(getTransactions.fulfilled, (state, action) => {
-        state.isLoading = false;
-        state.items = action.payload.transactions;
+        state.items = action.payload;
+        state.loading = false;
       })
-      .addCase(getTransactions.rejected, (state, action) => {
-        state.isLoading = false;
-        state.error = action.payload;
-      });
+      .addCase(getTransactions.pending, handlePending)
+      .addCase(getTransactions.rejected, handleRejected)
+
+      .addCase(addTransaction.fulfilled, (state, action) => {
+        state.loading = false;
+        state.items.push(action.payload);
+        thunkAPI.dispatch(getTransactions());
+      })
+      .addCase(addTransaction.pending, handlePending)
+      .addCase(addTransaction.rejected, handleRejected)
+      .addCase(updateTransaction.fulfilled, (state, action) => {
+        state.loading = false;
+        const index = state.items.findIndex((t) => t.id === action.payload.id);
+        if (index !== -1) {
+          state.items[index] = { ...state.items[index], ...action.payload };
+        }
+        thunkAPI.dispatch(getTransactions());
+      })
+      .addCase(updateTransaction.pending, handlePending)
+      .addCase(updateTransaction.rejected, handleRejected);
   },
 });
 

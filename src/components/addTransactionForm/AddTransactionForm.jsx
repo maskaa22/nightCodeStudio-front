@@ -1,4 +1,3 @@
-import { useState } from 'react';
 import { ErrorMessage, Field, Form, Formik, useFormikContext } from 'formik';
 import Select from 'react-select';
 import Toggle from '../toggle/Toggle';
@@ -7,9 +6,11 @@ import css from './AddTransactionForm.module.css';
 import { SelectStyles } from '../../utils/SelectStyles';
 import { useExpenseCategories } from './getExpenseCategories';
 import { getTransactionSchema } from '../../utils/validationSchemas';
+import { useDispatch } from 'react-redux';
+import { addTransaction, getTransactions } from '../../redux/transactions/operations';
 
 const initialFormValues = {
-  type: 'expense',
+  type: 'expenses',
   category: '',
   amount: '',
   comment: '',
@@ -92,26 +93,30 @@ export const TransactionFormFields = ({ isExpense, expenses }) => {
 };
 
 const AddTransactionForm = ({ onClose }) => {
-  const [isExpense, setIsExpense] = useState(true);
   const expenses = useExpenseCategories();
   const expenseCategoryTitles = expenses.map((category) => category.value);
+  const dispatch = useDispatch();
 
   const handleSubmit = (values, { resetForm }) => {
-    console.log('Submitted values:', values);
+    const formattedDate = new Date(values.date).toISOString().split('T')[0];
+    const formatedCategory =
+      values.type === 'income' ? 'Incomes' : values.category;
+    const data = {
+      ...values,
+      date: formattedDate,
+      category: formatedCategory,
+    };
+
+    dispatch(addTransaction(data));
     resetForm({
       values: {
         ...initialFormValues,
-        type: isExpense ? 'expense' : 'income',
         date: new Date(),
       },
     });
+    dispatch(getTransactions());
     onClose();
-  };
-
-  const handleTypeChange = (isExpense, setFieldValue) => {
-    setIsExpense(isExpense);
-    setFieldValue('type', isExpense ? 'expense' : 'income');
-    setFieldValue('category', '');
+  
   };
 
   return (
@@ -122,34 +127,42 @@ const AddTransactionForm = ({ onClose }) => {
         validationSchema={getTransactionSchema(expenseCategoryTitles)}
         enableReinitialize
       >
-        {({ setFieldValue }) => (
-          <Form>
-            <Toggle
-              value={isExpense}
-              onChange={(value) => handleTypeChange(value, setFieldValue)}
-            />
+        {({ values, setFieldValue }) => {
+          const isExpense = values.type === 'expenses';
+          const handleTypeChange = (newValue) => {
+            setFieldValue('type', newValue ? 'expenses' : 'income');
+            setFieldValue('category', ''); 
+          };
 
-            <div className={css.formContent}>
-              <TransactionFormFields
-                isExpense={isExpense}
-                expenses={expenses}
+          return (
+            <Form>
+              <Toggle
+                value={isExpense}
+                onChange={(value) => handleTypeChange(value, setFieldValue)}
               />
 
-              <div className={css.btnWrapper}>
-                <button type="submit" className={css.btnAdd}>
-                  Add
-                </button>
-                <button
-                  type="button"
-                  className={css.btnCancel}
-                  onClick={onClose}
-                >
-                  Cancel
-                </button>
+              <div className={css.formContent}>
+                <TransactionFormFields
+                  isExpense={isExpense}
+                  expenses={expenses}
+                />
+
+                <div className={css.btnWrapper}>
+                  <button type="submit" className={css.btnAdd}>
+                    Add
+                  </button>
+                  <button
+                    type="button"
+                    className={css.btnCancel}
+                    onClick={onClose}
+                  >
+                    Cancel
+                  </button>
+                </div>
               </div>
-            </div>
-          </Form>
-        )}
+            </Form>
+          );
+        }}
       </Formik>
     </div>
   );

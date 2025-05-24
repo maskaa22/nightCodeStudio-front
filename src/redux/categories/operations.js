@@ -14,7 +14,7 @@ export const getCategoriesData = createAsyncThunk(
         throw new Error('No access token found');
       }
 
-      const { data } = await api.get(`/categories`, setAuthHeader(token));
+      const { data } = await api.get('/categories', setAuthHeader(token));
 
       return data.data;
     } catch (error) {
