@@ -7,8 +7,6 @@ import { registrationSchema } from '../../utils/validationSchemas';
 import { useRegisterSubmit } from '../../utils/registrationFormHandlers';
 import { initialValuesRegister } from '../../constants';
 const RegistrationForm = () => {
-
-
   return (
     <div className={`container ${s.containerOverride}`}>
       <div className={s.RegistrationForm}>
@@ -105,8 +103,12 @@ const RegistrationForm = () => {
                   style={{ marginTop: '1rem', width: '100%' }}
                   scoreWordStyle={{ display: 'none' }}
                   scoreWords={[]}
-                  password={values.password}
-                  minScore={2}
+                  password={
+                    values.password && values.password.length > 0
+                      ? values.password + '_'
+                      : ''
+                  }
+                  minLength={1}
                   className={
                     values.password === values.confirmPassword &&
                     values.confirmPassword !== ''
