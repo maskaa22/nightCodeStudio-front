@@ -1,16 +1,28 @@
 .statistics {
-    background: var(--background-color-gradient-button);
-    border-radius: 16px;
-    color: var(--main-color-white);
-    display: flex;
-    justify-content: space-around;
-    align-items: center;
-    flex-wrap: wrap;
-    min-width: 757px;
+  background: var(--background-color-gradient-button);
+  border-radius: 16px;
+  color: var(--main-color-white);
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  flex-wrap: wrap;
+  min-width: 757px;
+}
+.innerContainer {
+    padding: 16px;
+        width: 100%;
 }
 
 @media screen and (max-width: 767px) {
-    .statistics {
-        min-width: 1px;
-    }
+  .statistics {
+    min-width: 1px;
+  }
+}
+@media screen and (min-width: 1280px) {
+  .statistics {
+    width: 100%;
+    height: 100%;
+    align-items: flex-start;
+    padding: 16px;
+  }
 }

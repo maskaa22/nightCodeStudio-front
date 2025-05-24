@@ -31,13 +31,21 @@ const categoriesPersistConfig = {
   storage,
 };
 
+const transactionsPersistConfig = {
+  key: 'transactions',
+  storage,
+};
+
 export const store = configureStore({
   reducer: {
     statistics: statisticsReducer,
     auth: persistReducer(authPersistConfig, authReducer),
     user: persistReducer(userPersistConfig, userReducer),
     categories: persistReducer(categoriesPersistConfig, categoriesReducer),
-    transactions: transactionsReducer,
+    transactions: persistReducer(
+      transactionsPersistConfig,
+      transactionsReducer,
+    ),
   },
   middleware: (getDefaultMiddleware) =>
     getDefaultMiddleware({

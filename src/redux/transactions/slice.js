@@ -6,7 +6,7 @@ import {
 } from './operations';
 
 const initialState = {
-  transactions: [],
+  items: [],
   loading: false,
   error: null,
 };
@@ -27,7 +27,7 @@ const slice = createSlice({
   extraReducers: (builder) => {
     builder
       .addCase(fetchTransactions.fulfilled, (state, action) => {
-        state.transactions = action.payload;
+        state.items = action.payload;
         state.loading = false;
       })
       .addCase(fetchTransactions.pending, handlePending)
@@ -35,17 +35,15 @@ const slice = createSlice({
 
       .addCase(addTransaction.fulfilled, (state, action) => {
         state.loading = false;
-        state.transactions.push(action.payload);
+        state.items.push(action.payload);
       })
       .addCase(addTransaction.pending, handlePending)
       .addCase(addTransaction.rejected, handleRejected)
       .addCase(updateTransaction.fulfilled, (state, action) => {
         state.loading = false;
-        const index = state.transactions.findIndex(
-          (t) => t.id === action.payload.id,
-        );
+        const index = state.items.findIndex((t) => t.id === action.payload.id);
         if (index !== -1) {
-          state.transactions[index] = action.payload;
+          state.items[index] = action.payload;
         }
       })
       .addCase(updateTransaction.pending, handlePending)
