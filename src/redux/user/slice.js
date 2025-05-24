@@ -1,5 +1,5 @@
 import { createSlice } from '@reduxjs/toolkit';
-import { getUserData } from './operations.js';
+import { getUserData } from './operations';
 
 const initialState = {
   name: '',
@@ -23,8 +23,14 @@ const slice = createSlice({
     setUserPhoto: (state, action) => {
       state.photo = action.payload;
     },
+    setUserData: (state, action) => {
+      state.name = action.payload.name || '';
+      state.email = action.payload.email || '';
+      state.balance = action.payload.balance || null;
+      state.photo = action.payload.photo || '';
+    },
   },
 });
 
-export const { clearUser, setUserPhoto } = slice.actions;
+export const { clearUser, setUserPhoto, setUserData } = slice.actions;
 export const userReducer = slice.reducer;

@@ -1,4 +1,5 @@
 import { registerThunk, logIn } from '../redux/auth/operations';
+import { setUserData } from '../redux/user/slice';
 import toast from 'react-hot-toast';
 import { useNavigate } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
@@ -13,8 +14,14 @@ export const useRegisterSubmit = () => {
       const { confirmPassword, ...dataToSend } = values;
 
       try {
-        await dispatch(registerThunk(dataToSend)).unwrap();
+        const registerResult = await dispatch(
+          registerThunk(dataToSend),
+        ).unwrap();
         toast.success('Successfully registered!');
+
+        if (registerResult?.data) {
+          dispatch(setUserData(registerResult.data));
+        }
 
         const loginData = {
           email: dataToSend.email,
