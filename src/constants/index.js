@@ -22,3 +22,14 @@ export const initialValuesRegister = {
   confirmPassword: '',
 };
 
+export const initialStateUser = {
+  name: '',
+  email: '',
+  balance: null,
+  photo: '',
+};
+export const initialStateTransaction = {
+  items: [],
+  loading: false,
+  error: null,
+};
