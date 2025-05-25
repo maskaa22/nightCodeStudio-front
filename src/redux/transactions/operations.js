@@ -91,16 +91,10 @@ export const deleteTransaction = createAsyncThunk(
   'transactions/deleteTransaction',
   async ({ id }, thunkAPI) => {
     try {
-      const state = thunkAPI.getState();
-      const token = selectAccessToken(state);
-      if (!token) {
-        throw new Error('No access token found');
-      }
-      const { data } = await api.delete(
-        `transactions/${id}`,
-        setAuthHeader(token),
-      );
-      // const { data } = await api.delete(`/transactions/${id}`);
+      
+      await api.delete(`transactions/${id}`);
+      
+      await thunkAPI.dispatch(getUserData());
       return { id };
     } catch (error) {
       return thunkAPI.rejectWithValue(error.message);
