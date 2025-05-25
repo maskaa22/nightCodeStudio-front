@@ -14,14 +14,15 @@ const COLORS = [
   '#00AD84',
 ];
 
-const StatisticsTable = () => {
+const StatisticsTable = ({type}) => {
   // const statistics = [
   //   { title: 'Salary', total: 8700.0 },
   //   { title: 'Freelance', total: 3800.74 },
   //   { title: 'Other', total: 1500.0 },
   // ];
 
-  const statistics = useSelector(selectStatistics)['income']
+
+  const statistics = useSelector(selectStatistics)[type]
 
   // console.log(statistics);
 
