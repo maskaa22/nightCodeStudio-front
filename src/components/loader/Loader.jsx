@@ -1,3 +1,5 @@
+import { Puff } from 'react-loader-spinner'
+
 const Loader = () => {
   return (<Puff
     visible={true}
