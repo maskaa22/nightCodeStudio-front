@@ -17,13 +17,9 @@ const Header = ({ openLogoutModal }) => {
     dispatch(getUserData());
   }, [dispatch]);
 
-  const [profileName, setProfileName] = useState(name);
-
-  useEffect(() => {
-    setProfileName(name);
-  }, [name]);
 
   const handleSave = () => {
+    dispatch(getUserData());
     setIsProfileOpen(false);
   };
 
@@ -63,7 +59,7 @@ const Header = ({ openLogoutModal }) => {
       <UserProfileModal
         isOpen={isProfileOpen}
         onClose={() => setIsProfileOpen(false)}
-        name={profileName}
+        name={name}
         onSave={handleSave}
       />
     </header>
