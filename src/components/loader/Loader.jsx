@@ -1,11 +1,16 @@
 import { useSelector } from 'react-redux';
-import { BounceLoader } from 'react-spinners'
-import { selectIsLoading } from '../../redux/loader/selectors';
+import styles from './GlobalLoader.module.css';
 
-const Loader = () => {
-  const isLoading = useSelector(selectIsLoading);
-  if (!isLoading) return null
-  return (<BounceLoader color="#1e2f33" />  );
+const GlobalLoader = () => {
+  const isLoading = useSelector((state) => state.loader.loading);
+
+  if (!isLoading) return null;
+
+  return (
+    <div className={styles.backdrop}>
+      <div className={styles.spinner}></div>
+    </div>
+  );
 };
 
-export default Loader;
+export default GlobalLoader;

@@ -11,7 +11,7 @@ import CurrencyTab from './components/currencyTab/CurrencyTab';
 import { Toaster } from 'react-hot-toast';
 import { useMediaQuery } from 'react-responsive';
 import { useRedirectFunction } from './utils/locationFunction.js';
-import Loader from './components/loader/Loader.jsx';
+import GlobalLoader from './components/loader/Loader';
 
 function App() {
   const isMobile = useMediaQuery({ maxWidth: 767 });
@@ -19,7 +19,7 @@ function App() {
 
   return (
     <>
-      <Loader/>
+      <GlobalLoader />
       <Toaster position="top-right" reverseOrder={false} />
       <Routes>
         <Route path="/" element={<UserAcountLayout />}>
