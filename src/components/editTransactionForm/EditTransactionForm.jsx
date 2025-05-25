@@ -10,6 +10,7 @@ import { useExpenseCategories } from '../addTransactionForm/getExpenseCategories
 import { useDispatch, useSelector } from 'react-redux';
 import { selectTransactions } from '../../redux/transactions/selectors';
 import { updateTransaction } from '../../redux/transactions/operations';
+import toast from 'react-hot-toast';
 
 export const TransactionFormFields = ({ isExpense, expenses }) => {
   const { values, setFieldValue, errors, touched } = useFormikContext();
@@ -102,7 +103,7 @@ const EditTransactionForm = ({ onClose, id }) => {
     date: new Date(transactionData.date),
   };
 
-  const handleSubmit = (values) => {
+  const handleSubmit = async (values) => {
     const formattedDate = new Date(values.date).toISOString().split('T')[0];
     const formatedCategory =
       values.type === 'income' ? 'Incomes' : values.category;
@@ -120,9 +121,15 @@ const EditTransactionForm = ({ onClose, id }) => {
       }
       return acc;
     }, {});
-    dispatch(updateTransaction({ id, ...updatedFields }));
-
-    onClose();
+    try {
+      await dispatch(updateTransaction({ id, ...updatedFields })).unwrap();
+      toast.success('Successfully updated transaction');
+      onClose();
+    } catch {
+      toast.error(
+        "Unfortunately we can't update this transaction. Try to reload your page",
+      );
+    }
   };
 
   return (
