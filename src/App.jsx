@@ -15,7 +15,7 @@ import { refreshUser } from './redux/auth/operations.js';
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { selectIsRefreshing } from './redux/auth/selectors.js';
-import Loader from './components/loader/Loader.jsx';
+import GlobalLoader from './components/loader/Loader';
 
 function App() {
   const dispatch = useDispatch();
@@ -27,7 +27,7 @@ function App() {
   const isMobile = useMediaQuery({ maxWidth: 767 });
   useRedirectFunction();
 
-  return isRefreshing ? <Loader /> : (
+  return isRefreshing ? <GlobalLoader /> : (
     <>
       <Toaster position="top-right" reverseOrder={false} />
       <Routes>
