@@ -3,25 +3,30 @@ import Chart from '../chart/Chart.jsx';
 import StatisticsDashboard from '../statisticsDashboard/StatisticsDashboard.jsx';
 import StatisticsTable from '../statisticsTable/StatisticsTable.jsx';
 import css from './StatisticsTab.module.css';
+import { useState } from 'react';
 
 const StatisticsTab = () => {
+  const [type, setType] = useState('expenses'); 
+
+  const isExpense = type === 'expenses';
+
+  const handleTypeChange = (newValue) => {
+    setType(newValue ? 'expenses' : 'income');
+  };
   return (
     <div>
       <div className={css.statistics}>
         <div className={css.innerContainer}>
-          <Toggle
+        <Toggle
             inStatisticsTab={true}
-            onChange={(isExpense) =>
-              console.log(
-                isExpense ? 'Expense statistics' : 'Income statistics',
-              )
-            }
+            value={isExpense}
+            onChange={handleTypeChange}
           />
-          <Chart />
+          <Chart type = {type} />
         </div>
         <div>
           <StatisticsDashboard />
-          <StatisticsTable />
+          <StatisticsTable type = {type} />
         </div>
       </div>
     </div>
