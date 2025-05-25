@@ -4,19 +4,19 @@ import s from './TransactionsItem.module.css';
 import ModalDeleteTransaction from '../modalDeleteTransaction/ModalDeleteTransaction';
 import { formattedDate } from '../../utils/formstDate';
 
-const TransactionsItem = ({
-  date,
-  type,
-  category,
-  comment,
-  amount,
-  isEven,
-  _id,
-}) => {
-  // const formattedDate = new Date(date).toDateString();
+// const TransactionsItem = ({
+//   date,
+//   type,
+//   category,
+//   comment,
+//   amount,
+//   isEven,
+//   _id,
+// }) => {
+//   // const formattedDate = new Date(date).toDateString();
 
 const TransactionsItem = ({ date, type, category, comment, amount, isEven, _id }) => {
-  const formattedDate = new Date(date).toDateString()
+  // const formattedDate = new Date(date).toDateString()
 
   const typeClass = type === '+' ? s.income : s.expense;
   const evenClass = isEven ? s.even : '';
