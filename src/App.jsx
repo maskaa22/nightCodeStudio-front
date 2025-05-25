@@ -11,12 +11,23 @@ import CurrencyTab from './components/currencyTab/CurrencyTab';
 import { Toaster } from 'react-hot-toast';
 import { useMediaQuery } from 'react-responsive';
 import { useRedirectFunction } from './utils/locationFunction.js';
+import { refreshUser } from './redux/auth/operations.js';
+import { useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { selectIsRefreshing } from './redux/auth/selectors.js';
+import Loader from './components/loader/Loader.jsx';
 
 function App() {
+  const dispatch = useDispatch();
+  const isRefreshing = useSelector(selectIsRefreshing);
+  useEffect(() => {
+    dispatch(refreshUser());
+  }, [dispatch]);
+
   const isMobile = useMediaQuery({ maxWidth: 767 });
   useRedirectFunction();
 
-  return (
+  return isRefreshing ? <Loader /> : (
     <>
       <Toaster position="top-right" reverseOrder={false} />
       <Routes>
