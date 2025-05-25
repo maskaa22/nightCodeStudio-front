@@ -1,12 +1,9 @@
 import { createSlice } from '@reduxjs/toolkit';
 import { getUserData } from './operations';
+import { initialStateUser } from '../../constants/index';
 
-const initialState = {
-  name: '',
-  email: '',
-  balance: null,
-  photo: '',
-};
+const initialState = initialStateUser;
+
 const slice = createSlice({
   name: 'user',
   initialState,
