@@ -41,6 +41,7 @@ const Calendar = ({ value, onChange }) => {
       weekStartsOn={1}
       calendarStartDay={1}
       showPopperArrow={false}
+      maxDate={new Date()}
     />
   );
 };
