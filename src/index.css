@@ -254,3 +254,8 @@ img {
   background-color: transparent !important;
   border-radius: none !important;
 }
+
+.react-datepicker__day--disabled {
+  color: rgba(252, 252, 252, 0.5) !important;
+  pointer-events: none; 
+}
