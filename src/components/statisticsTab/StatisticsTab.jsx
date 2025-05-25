@@ -6,27 +6,27 @@ import css from './StatisticsTab.module.css';
 import { useState } from 'react';
 
 const StatisticsTab = () => {
-  const [type, setType] = useState('expenses'); 
+  const [type, setType] = useState('expense');
 
-  const isExpense = type === 'expenses';
+  const isExpense = type === 'expense';
 
   const handleTypeChange = (newValue) => {
-    setType(newValue ? 'expenses' : 'income');
+    setType(newValue ? 'expense' : 'income');
   };
   return (
     <div>
       <div className={css.statistics}>
         <div className={css.innerContainer}>
-        <Toggle
+          <Toggle
             inStatisticsTab={true}
             value={isExpense}
             onChange={handleTypeChange}
           />
-          <Chart type = {type} />
+          <Chart type={type} />
         </div>
         <div>
           <StatisticsDashboard />
-          <StatisticsTable type = {type} />
+          <StatisticsTable type={type} />
         </div>
       </div>
     </div>

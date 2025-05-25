@@ -13,8 +13,6 @@ const TransactionsList = () => {
   const dispatch = useDispatch();
   const transactions = useSelector(selectTransactions);
 
-  const isLoading = useSelector(selectIsLoading);
-
   // const error = useSelector(selectError);
 
   useEffect(() => {
@@ -25,8 +23,6 @@ const TransactionsList = () => {
     };
   }, [dispatch]);
 
-  if (isLoading)
-    return <p className={s.placeholder}>Завантаження транзакцій...</p>;
 
   // if (error) return <p>Помилка: {error}</p>;
 
