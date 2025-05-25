@@ -9,7 +9,7 @@ const StatisticsTab = () => {
     <div>
       <div className={css.statistics}>
         <div className={css.innerContainer}>
-          <Toggle
+        <Toggle
             inStatisticsTab={true}
             onChange={(isExpense) =>
               console.log(

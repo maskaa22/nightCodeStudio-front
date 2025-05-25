@@ -135,7 +135,7 @@ const EditTransactionForm = ({ onClose, id }) => {
       >
         {() => (
           <Form>
-            <Toggle value={isExpense} disabled={true} />
+            <Toggle value={isExpense} disabled={false} />
 
             <div className={css.formContent}>
               <TransactionFormFields
