@@ -42,6 +42,11 @@
   border: 1px solid var(--main-color-black);
 }
 
+.amountField::-webkit-outer-spin-button,
+.amountField::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
 .dateAmountWrapper {
   display: flex;
   flex-direction: column;

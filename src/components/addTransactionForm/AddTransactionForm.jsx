@@ -7,7 +7,11 @@ import { SelectStyles } from '../../utils/SelectStyles';
 import { useExpenseCategories } from './getExpenseCategories';
 import { getTransactionSchema } from '../../utils/validationSchemas';
 import { useDispatch } from 'react-redux';
-import { addTransaction, getTransactions } from '../../redux/transactions/operations';
+import {
+  addTransaction,
+  getTransactions,
+} from '../../redux/transactions/operations';
+import toast from 'react-hot-toast';
 
 const initialFormValues = {
   type: 'expenses',
@@ -97,7 +101,7 @@ const AddTransactionForm = ({ onClose }) => {
   const expenseCategoryTitles = expenses.map((category) => category.value);
   const dispatch = useDispatch();
 
-  const handleSubmit = (values, { resetForm }) => {
+  const handleSubmit = async (values, { resetForm }) => {
     const formattedDate = new Date(values.date).toISOString().split('T')[0];
     const formatedCategory =
       values.type === 'income' ? 'Incomes' : values.category;
@@ -107,16 +111,24 @@ const AddTransactionForm = ({ onClose }) => {
       category: formatedCategory,
     };
 
-    dispatch(addTransaction(data));
-    resetForm({
-      values: {
-        ...initialFormValues,
-        date: new Date(),
-      },
-    });
-    dispatch(getTransactions());
-    onClose();
-  
+    try {
+      await dispatch(addTransaction(data)).unwrap();
+      resetForm({
+        values: {
+          ...initialFormValues,
+          date: new Date(),
+        },
+      });
+
+      toast.success('Successfully added transaction');
+      onClose();
+    } catch {
+      toast.error(
+        "Unfortunately we can't add this transaction. Try to reload your page",
+      );
+    } finally {
+      dispatch(getTransactions());
+    }
   };
 
   return (
@@ -131,7 +143,7 @@ const AddTransactionForm = ({ onClose }) => {
           const isExpense = values.type === 'expenses';
           const handleTypeChange = (newValue) => {
             setFieldValue('type', newValue ? 'expenses' : 'income');
-            setFieldValue('category', ''); 
+            setFieldValue('category', '');
           };
 
           return (

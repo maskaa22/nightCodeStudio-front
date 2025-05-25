@@ -1,6 +1,7 @@
 import { createSlice } from '@reduxjs/toolkit';
 import {
   addTransaction,
+  deleteTransaction,
   getTransactions,
   updateTransaction,
 } from './operations';
@@ -8,6 +9,7 @@ import { initialStateTransaction } from '../../constants/index.js';
 
 const handlePending = (state) => {
   state.loading = true;
+  state.error = null;
 };
 
 const handleRejected = (state, action) => {
@@ -19,7 +21,7 @@ const slice = createSlice({
   name: 'transactions',
   initialState: initialStateTransaction,
   reducers: {},
-  extraReducers: (builder, thunkAPI) => {
+  extraReducers: (builder) => {
     builder
       .addCase(getTransactions.fulfilled, (state, action) => {
         state.items = action.payload;
@@ -30,9 +32,7 @@ const slice = createSlice({
 
       .addCase(addTransaction.fulfilled, (state, action) => {
         state.loading = false;
-        state.items.push(action.payload);
-
-        // thunkAPI.dispatch(getTransactions());
+        state.items.unshift(action.payload);
       })
       .addCase(addTransaction.pending, handlePending)
       .addCase(addTransaction.rejected, handleRejected)
@@ -40,13 +40,17 @@ const slice = createSlice({
         state.loading = false;
         const index = state.items.findIndex((t) => t.id === action.payload.id);
         state.items.splice(index, 1, action.payload);
-        // if (index !== -1) {
-        //   state.items[index] = { ...state.items[index], ...action.payload };
-        // }
-        // thunkAPI.dispatch(getTransactions());
       })
       .addCase(updateTransaction.pending, handlePending)
-      .addCase(updateTransaction.rejected, handleRejected);
+      .addCase(updateTransaction.rejected, handleRejected)
+      .addCase(deleteTransaction.fulfilled, (state, { payload }) => {
+        if (!payload?.id) return;
+        state.loading = false;
+        state.error = null;
+        state.items = state.items.filter((item) => item.id !== payload.id);
+      })
+      .addCase(deleteTransaction.pending, handlePending)
+      .addCase(deleteTransaction.rejected, handleRejected);
   },
 });
 
