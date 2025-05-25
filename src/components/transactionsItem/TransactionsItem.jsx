@@ -4,20 +4,15 @@ import s from './TransactionsItem.module.css';
 import ModalDeleteTransaction from '../modalDeleteTransaction/ModalDeleteTransaction';
 import { formattedDate } from '../../utils/formstDate';
 
-// const TransactionsItem = ({
-//   date,
-//   type,
-//   category,
-//   comment,
-//   amount,
-//   isEven,
-//   _id,
-// }) => {
-//   // const formattedDate = new Date(date).toDateString();
-
-const TransactionsItem = ({ date, type, category, comment, amount, isEven, _id }) => {
-  // const formattedDate = new Date(date).toDateString()
-
+const TransactionsItem = ({
+  date,
+  type,
+  category,
+  comment,
+  amount,
+  isEven,
+  _id,
+}) => {
   const typeClass = type === '+' ? s.income : s.expense;
   const evenClass = isEven ? s.even : '';
   const [isModalEditOpen, setIsModalEditOpen] = useState(false);
@@ -32,7 +27,9 @@ const TransactionsItem = ({ date, type, category, comment, amount, isEven, _id }
         </div>
         <div className={s.row}>
           <span className={s.label}>Type</span>
-          <span className={`${s.value} ${s.typeCell}`}>{type}</span>
+          <span className={`${s.value} ${s.typeCell}`}>
+            {type === 'income' ? '+' : '-'}
+          </span>
         </div>
         <div className={s.row}>
           <span className={s.label}>Category</span>
@@ -69,7 +66,7 @@ const TransactionsItem = ({ date, type, category, comment, amount, isEven, _id }
         onClose={() => setIsModalEditOpen(false)}
       />
       <ModalDeleteTransaction
-         transactionId={_id}
+        transactionId={_id}
         isOpen={isOpen}
         onClose={() => setIsOpen(false)}
       />
