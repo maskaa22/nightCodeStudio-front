@@ -1,6 +1,7 @@
 import { createSlice } from '@reduxjs/toolkit';
 import {
   addTransaction,
+  deleteTransaction,
   getTransactions,
   updateTransaction,
 } from './operations';
@@ -8,6 +9,7 @@ import { initialStateTransaction } from '../../constants/index.js';
 
 const handlePending = (state) => {
   state.loading = true;
+  state.error = null;
 };
 
 const handleRejected = (state, action) => {
@@ -46,7 +48,15 @@ const slice = createSlice({
         // thunkAPI.dispatch(getTransactions());
       })
       .addCase(updateTransaction.pending, handlePending)
-      .addCase(updateTransaction.rejected, handleRejected);
+      .addCase(updateTransaction.rejected, handleRejected)
+      .addCase(deleteTransaction.fulfilled, (state, { payload }) => {
+        if (!payload?.id) return;
+        state.loading = false;
+        state.error = null;
+        state.items = state.items.filter((item) => item.id !== payload.id);
+      })
+      .addCase(deleteTransaction.pending, handlePending)
+      .addCase(deleteTransaction.rejected, handleRejected);
   },
 });
 
