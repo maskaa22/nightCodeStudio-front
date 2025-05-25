@@ -16,7 +16,7 @@ const ModalLogout = ({ onClose, isLogoutModalOpen }) => {
 
   return (
     <div className={s.backdrop} onClick={onClose}>
-      <div className={s.modal}>
+      <div className={s.modal} onClick={(e)=> e.stopPropagation()}>
         <div className={s.logoWrapper}>
           <svg className={s.logoSvg}>
             <use href="/sprite.svg#icon-logo" />

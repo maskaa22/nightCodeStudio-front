@@ -66,6 +66,7 @@ const TransactionsItem = ({
         onClose={() => setIsModalEditOpen(false)}
       />
       <ModalDeleteTransaction
+         transactionId={_id}
         isOpen={isOpen}
         onClose={() => setIsOpen(false)}
       />
