@@ -4,12 +4,7 @@ import {
   getTransactions,
   updateTransaction,
 } from './operations';
-
-const initialState = {
-  items: [],
-  loading: false,
-  error: null,
-};
+import { initialStateTransaction } from '../../constants/index.js';
 
 const handlePending = (state) => {
   state.loading = true;
@@ -22,7 +17,7 @@ const handleRejected = (state, action) => {
 
 const slice = createSlice({
   name: 'transactions',
-  initialState,
+  initialState: initialStateTransaction,
   reducers: {},
   extraReducers: (builder, thunkAPI) => {
     builder
@@ -36,6 +31,7 @@ const slice = createSlice({
       .addCase(addTransaction.fulfilled, (state, action) => {
         state.loading = false;
         state.items.push(action.payload);
+
         // thunkAPI.dispatch(getTransactions());
       })
       .addCase(addTransaction.pending, handlePending)
