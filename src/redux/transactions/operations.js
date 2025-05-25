@@ -1,5 +1,6 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
 import { api } from '../../api/axios';
+import { getUserData } from '../user/operations';
 // import { selectAccessToken } from '../auth/selectors';
 // import { setAuthHeader } from '../../api/authHeader';
 
@@ -17,7 +18,6 @@ export const getTransactions = createAsyncThunk(
       // const { data } = await api.get('/transactions', setAuthHeader(token));
 
       const { data } = await api.get('/transactions', { signal });
-      
 
       return data.transactions;
     } catch (error) {
@@ -41,10 +41,11 @@ export const addTransaction = createAsyncThunk(
       //   '/transactions',
       //   body,
       //   setAuthHeader(token),
-      
+
       // );
 
       const data = await api.post('/transactions', body);
+      await thunkAPI.dispatch(getUserData());
 
       return data.data.data;
     } catch (error) {
@@ -68,13 +69,12 @@ export const updateTransaction = createAsyncThunk(
       //   `/transactions/${id}`,
       //   body,
       //   setAuthHeader(token),
-      
+
       // );
 
-       const data = await api.patch(`/transactions/${id}`, body);
+      const data = await api.patch(`/transactions/${id}`, body);
 
-       console.log(data.data.data);
-       
+      await thunkAPI.dispatch(getUserData());
 
       return data.data.data;
     } catch (error) {
