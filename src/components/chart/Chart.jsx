@@ -4,7 +4,7 @@ import { COLORS } from '../../constants';
 import { useSelector } from 'react-redux';
 import { selectStatistics } from '../../redux/statistics/selectors';
 
-const ChartDrawing = () => {
+const ChartDrawing = ({type}) => {
   // let statistics = [
   //   { title: 'Salary', total: 8700.0 },
   //   { title: 'Freelance', total: 3800.74 },
@@ -16,7 +16,7 @@ const ChartDrawing = () => {
   //   { name: 'Other', value: 1500.0 },
   // ];
   
-  let statistics = useSelector(selectStatistics)['income']
+  let statistics = useSelector(selectStatistics)[type]
 
   // console.log(statistics);
 
@@ -52,8 +52,8 @@ const ChartDrawing = () => {
   );
 };
 
-const Chart = () => {
-  return <div>{ChartDrawing()}</div>;
+const Chart = ({type}) => {
+  return <div>{ChartDrawing({type})}</div>;
 };
 
 export default Chart;
