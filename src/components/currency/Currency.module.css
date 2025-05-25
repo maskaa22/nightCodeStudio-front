@@ -1,6 +1,6 @@
 .currency {
   padding: 16px;
-  background-image: url('images/dude-1x.png'),
+  background-image: url('/images/dude-1x.png'),
     var(--background-color-gradient-button);
   background-size: 234px, cover;
   background-position: center calc(100% - 32px), center;
@@ -12,7 +12,7 @@
   (min-resolution: 2dppx),
   (min-resolution: 192dpi) {
   .currency {
-    background-image: url('images/dude-2x.png'),
+    background-image: url('/images/dude-2x.png'),
       var(--background-color-gradient-button);
   }
 }

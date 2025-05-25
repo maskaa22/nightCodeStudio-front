@@ -7,8 +7,10 @@ const Currency = () => {
   const [rates, setRates] = useState([]);
 
   useEffect(() => {
-    fetchCurrency(setRates);
-  }, []);
+    if (rates.length === 0) {
+      fetchCurrency(setRates);
+    }
+  }, [rates]);
 
   return (
     <div className={s.currency}>

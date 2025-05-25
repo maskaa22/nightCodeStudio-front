@@ -1,25 +1,24 @@
-export const SelectStyles = (hasError) => ({
-  control: (base, state) => ({
+export const SelectStyles = {
+  control: (base) => ({
     ...base,
     backgroundColor: 'inherit',
-    borderColor: hasError
-      ? '#b20202'
-      : state.isFocused && state.isSelected
-      ? '#355359'
-      : '#1e2f33',
+    borderColor: '#fcfcfc',
     borderRadius: '8px',
+    marginRight: '20px',
+    marginBottom: '20px',
     cursor: 'pointer',
     boxShadow: 'none',
     height: '44px',
-    color: hasError ? '#b20202' : '#081222',
+    width: '122px', //add
+    color: '#fcfcfc',
     fontSize: '18px',
     fontFamily: 'Inter',
     fontWeight: '500',
     '&:hover': {
-      borderColor: hasError ? 'red' : '#355359',
+      border: '1px solid #fcfcfc',
     },
     '&:focus': {
-      borderColor: hasError ? 'red' : '#355359',
+      border: '1px solid #fcfcfc',
     },
   }),
   option: (base, state) => ({
@@ -44,18 +43,25 @@ export const SelectStyles = (hasError) => ({
   }),
   singleValue: (base) => ({
     ...base,
-    color: hasError ? '#b20202' : '#081222',
-  }),
-  placeholder: (base) => ({
-    ...base,
-    color: hasError ? '#b20202' : '#081222',
+    color: '#081222',
   }),
   indicatorSeparator: () => ({
     display: 'none',
   }),
   dropdownIndicator: (base) => ({
     ...base,
-    color: hasError ? '#b20202' : '#081222',
+    color: '#fcfcfc',
     padding: '0 8px',
+    transition: 'transform 0.5s',
+    '&:hover': {
+      transform: 'rotate(180deg)',
+    },
+    '&:focus': {
+      transform: 'rotate(180deg)',
+    },
   }),
-});
+  placeholder: (base) => ({
+    ...base,
+    color: '#fcfcfc',
+  }),
+};

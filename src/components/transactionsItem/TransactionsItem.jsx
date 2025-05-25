@@ -2,8 +2,22 @@ import { useState } from 'react';
 import ModalEditTransaction from '../modalEditTransaction/ModalEditTransaction';
 import s from './TransactionsItem.module.css';
 import ModalDeleteTransaction from '../modalDeleteTransaction/ModalDeleteTransaction';
+import { formattedDate } from '../../utils/formstDate';
 
-const TransactionsItem = ({ date, type, category, comment, sum, isEven }) => {
+// const TransactionsItem = ({
+//   date,
+//   type,
+//   category,
+//   comment,
+//   amount,
+//   isEven,
+//   _id,
+// }) => {
+//   // const formattedDate = new Date(date).toDateString();
+
+const TransactionsItem = ({ date, type, category, comment, amount, isEven, _id }) => {
+  // const formattedDate = new Date(date).toDateString()
+
   const typeClass = type === '+' ? s.income : s.expense;
   const evenClass = isEven ? s.even : '';
   const [isModalEditOpen, setIsModalEditOpen] = useState(false);
@@ -14,7 +28,7 @@ const TransactionsItem = ({ date, type, category, comment, sum, isEven }) => {
       <li className={`${s.card} ${typeClass} ${evenClass}`}>
         <div className={s.row}>
           <span className={s.label}>Date</span>
-          <span className={s.value}>{date}</span>
+          <span className={s.value}>{formattedDate(date)}</span>
         </div>
         <div className={s.row}>
           <span className={s.label}>Type</span>
@@ -22,7 +36,9 @@ const TransactionsItem = ({ date, type, category, comment, sum, isEven }) => {
         </div>
         <div className={s.row}>
           <span className={s.label}>Category</span>
-          <span className={s.value}>{category}</span>
+          {category && category.title && (
+            <span className={s.value}>{category.title}</span>
+          )}
         </div>
         <div className={s.row}>
           <span className={s.label}>Comment</span>
@@ -30,7 +46,7 @@ const TransactionsItem = ({ date, type, category, comment, sum, isEven }) => {
         </div>
         <div className={s.row}>
           <span className={s.label}>Sum</span>
-          <span className={`${s.value} ${s.sum}`}>{sum} UAH</span>
+          <span className={`${s.value} ${s.sum}`}>{amount} UAH</span>
         </div>
         <div className={s.actions}>
           <button
@@ -48,10 +64,12 @@ const TransactionsItem = ({ date, type, category, comment, sum, isEven }) => {
         </div>
       </li>
       <ModalEditTransaction
+        transactionId={_id}
         isOpen={isModalEditOpen}
         onClose={() => setIsModalEditOpen(false)}
       />
       <ModalDeleteTransaction
+         transactionId={_id}
         isOpen={isOpen}
         onClose={() => setIsOpen(false)}
       />

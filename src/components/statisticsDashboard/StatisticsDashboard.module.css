@@ -1,4 +1,8 @@
-.select {
+.form {
+  display: flex;
+}
+
+/* .select {
   background: var(--background-color-gradient-button);
   color: var(--main-color-white);
   border-radius: 8px;
@@ -12,9 +16,9 @@
   appearance: none;
   /* background: url(/sprite.svg#icon-arrow-down) no-repeat right;
     background-position-x: calc(100% + 32px); */
-}
+/* } */
 
-.select:hover,
+/* .select:hover,
 .select:focus {
   background: var(--background-color-gradient-list);
 }
@@ -54,5 +58,6 @@
 
 .selectWrapper select:focus + svg {
   /* transform: ; */
-  transform: translateY(-60%) rotate(180deg);
-}
+/* transform: translateY(-60%) rotate(180deg); */
+
+/* } */

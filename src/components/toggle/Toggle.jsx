@@ -1,15 +1,16 @@
-import { useState } from 'react';
 import s from './Toggle.module.css';
 
-const Toggle = ({ onChange, inStatisticsTab = false }) => {
-  const [isExpense, setIsExpense] = useState(true);
+const Toggle = ({
+  value = true,
+  onChange,
+  inStatisticsTab = false,
+  disabled = false,
+}) => {
+ 
   const handleToggle = (e) => {
     e.preventDefault();
-    const newState = !isExpense;
-    setIsExpense(newState);
-    if (onChange) {
-      onChange(newState);
-    }
+    if (disabled) return;
+    onChange?.(!value);
   };
 
   return (
@@ -23,14 +24,15 @@ const Toggle = ({ onChange, inStatisticsTab = false }) => {
       </span>
       <button
         type="button"
-        className={`${s.toggleButton} ${isExpense ? s.expense : s.income}`}
+        className={`${s.toggleButton} ${value ? s.expense : s.income}`}
         onClick={handleToggle}
-        aria-pressed={isExpense}
-        aria-label={isExpense ? 'Switch to Income' : 'Switch to Expense'}
+        aria-pressed={value}
+        aria-label={value? 'Switch to Income' : 'Switch to Expense'}
+        disabled={disabled}
       >
         <div className={s.toggleSlider}>
           <div className={s.toggleCircle}>
-            {isExpense ? (
+            {value ? (
               <svg className={s.toggleIcon}>
                 <use href="/sprite.svg#icon-minus" />
               </svg>
