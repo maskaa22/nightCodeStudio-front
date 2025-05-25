@@ -15,6 +15,9 @@ const TransactionsItem = ({
 }) => {
   // const formattedDate = new Date(date).toDateString();
 
+const TransactionsItem = ({ date, type, category, comment, amount, isEven, _id }) => {
+  const formattedDate = new Date(date).toDateString()
+
   const typeClass = type === '+' ? s.income : s.expense;
   const evenClass = isEven ? s.even : '';
   const [isModalEditOpen, setIsModalEditOpen] = useState(false);

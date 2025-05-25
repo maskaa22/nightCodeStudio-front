@@ -3,9 +3,9 @@ import { api } from '../../api/axios';
 
 export const fetchStatistics = createAsyncThunk(
   'statistics/fetchAll',
-  async (body, thunkAPI) => {
+  async (query, thunkAPI) => {
     try {
-      const { data } = await api.post(`/statistics`, body);
+      const { data } = await api.get(`/transactions/summary?period=${query}`);
 
       return data;
     } catch (error) {
