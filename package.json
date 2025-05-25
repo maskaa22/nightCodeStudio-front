@@ -24,6 +24,7 @@
     "react-responsive": "^10.0.1",
     "react-router-dom": "^7.6.0",
     "react-select": "^5.10.1",
+    "react-spinners": "^0.17.0",
     "recharts": "^2.15.3",
     "redux-persist": "^6.0.0",
     "yup": "^1.6.1"

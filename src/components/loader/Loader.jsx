@@ -1,15 +1,7 @@
-import { Puff } from 'react-loader-spinner'
+import { BounceLoader } from 'react-spinners'
 
 const Loader = () => {
-  return (<Puff
-    visible={true}
-    height="80"
-    width="80"
-    color="#4fa94d"
-    ariaLabel="puff-loading"
-    wrapperStyle={{}}
-    wrapperClass=""
-    />);
+  return (<BounceLoader color="#1e2f33" />  );
 };
 
 export default Loader;
