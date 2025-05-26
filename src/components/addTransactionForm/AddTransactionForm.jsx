@@ -140,7 +140,7 @@ const AddTransactionForm = ({ onClose }) => {
   //   } finally {
   //     dispatch(getTransactions());
   //   }
-  // };
+  };
 
   return (
     <div className={css.formWrapper}>
