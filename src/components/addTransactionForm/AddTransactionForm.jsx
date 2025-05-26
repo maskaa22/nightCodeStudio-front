@@ -103,7 +103,7 @@ const AddTransactionForm = ({ onClose }) => {
   const expenseCategoryTitles = expenses.map((category) => category.value);
   const dispatch = useDispatch();
 
-  const handleSubmit = async (values, { resetForm }) => {
+  const handleSubmit =  (values, { resetForm }) => {
     const formattedDate = new Date(values.date).toISOString().split('T')[0];
     const formatedCategory =
       values.type === 'income' ? 'Incomes' : values.category;
@@ -112,26 +112,35 @@ const AddTransactionForm = ({ onClose }) => {
       date: formattedDate,
       category: formatedCategory,
     };
+    dispatch(addTransaction(data));
+    resetForm({
+      values: {
+        ...initialFormValues,
+        date: new Date(),
+      },
+    });
+    dispatch(getTransactions());
+    onClose();
 
-    try {
-      await dispatch(addTransaction(data)).unwrap();
-      resetForm({
-        values: {
-          ...initialFormValues,
-          date: new Date(),
-        },
-      });
+  //   try {
+  //     await dispatch(addTransaction(data)).unwrap();
+  //     resetForm({
+  //       values: {
+  //         ...initialFormValues,
+  //         date: new Date(),
+  //       },
+  //     });
 
-      toast.success('Successfully added transaction');
-      onClose();
-    } catch {
-      toast.error(
-        "Unfortunately we can't add this transaction. Try to reload your page",
-      );
-    } finally {
-      dispatch(getTransactions());
-    }
-  };
+  //     toast.success('Successfully added transaction');
+  //     onClose();
+  //   } catch {
+  //     toast.error(
+  //       "Unfortunately we can't add this transaction. Try to reload your page",
+  //     );
+  //   } finally {
+  //     dispatch(getTransactions());
+  //   }
+  // };
 
   return (
     <div className={css.formWrapper}>
