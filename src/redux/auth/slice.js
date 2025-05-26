@@ -3,7 +3,7 @@ import { registerThunk, logIn, logout, refreshUser } from './operations';
 import { ref } from 'yup';
 
 const initialState = {
-  accessToken: '',
+  accessToken:null,
   isLoggedIn: false,
   isRefreshing: false,
 };
