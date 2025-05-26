@@ -14,7 +14,7 @@ import {
 import toast from 'react-hot-toast';
 
 const initialFormValues = {
-  type: 'expenses',
+  type: 'expense',
   category: '',
   amount: '',
   comment: '',
