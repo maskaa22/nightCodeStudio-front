@@ -5,7 +5,7 @@ export const useExpenseCategories = () => {
   const categories = useSelector(selectCategories);
 
   const expenses =
-    categories?.expense?.map((category) => ({
+    categories?.expenses?.map((category) => ({
       value: category.title,
       label: category.title,
     })) || [];
