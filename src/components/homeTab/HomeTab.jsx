@@ -12,7 +12,7 @@ const HomeTab = () => {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    dispatch(getCategoriesData)
+    dispatch(getCategoriesData())
   }, [dispatch])
 
     return (
