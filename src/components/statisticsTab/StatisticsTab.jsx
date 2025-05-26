@@ -6,12 +6,12 @@ import css from './StatisticsTab.module.css';
 import { useState } from 'react';
 
 const StatisticsTab = () => {
-  const [type, setType] = useState('expense');
+  const [type, setType] = useState('expenses');
 
-  const isExpense = type === 'expense';
+  const isExpense = type === 'expenses';
 
   const handleTypeChange = (newValue) => {
-    setType(newValue ? 'expense' : 'income');
+    setType(newValue ? 'expenses' : 'income');
   };
   return (
     <div>
