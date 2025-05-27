@@ -5,6 +5,7 @@
   max-width: 767px;
   background: var(--background-color-gradient-list);
   padding: 26px 0;
+  align-items: center;
 }
 
 .RegistrationForm {

@@ -28,7 +28,7 @@ const Currency = () => {
               <td className={s.bodyItem}>
                 {rate.currencyCodeA === 840 ? USD : EUR}
               </td>
-              <td className={s.bodyItem}>{rate.rateBuy}</td>
+              <td className={s.bodyItem}>{rate.rateBuy.toFixed(2)}</td>
               <td className={s.bodyItem}>{rate.rateSell.toFixed(2)}</td>
             </tr>
           ))}

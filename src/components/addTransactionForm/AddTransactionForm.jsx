@@ -23,9 +23,7 @@ const initialFormValues = {
 
 export const TransactionFormFields = ({ isExpense, expenses }) => {
   const { values, setFieldValue, errors, touched } = useFormikContext();
-  console.log(expenses);
   
-
   return (
     <div className={css.form}>
       {isExpense && (
