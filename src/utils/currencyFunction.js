@@ -29,6 +29,6 @@ export const fetchCurrency = async (setRates) => {
       JSON.stringify({ data: filtered, timestamp: Date.now() }),
     );
   } catch {
-    toast.error('💸 Помилка завантаження курсу валют');
+    toast.error('💸 Error loading currency rates');
   }
 };
