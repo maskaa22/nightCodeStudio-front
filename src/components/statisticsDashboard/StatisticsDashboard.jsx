@@ -1,7 +1,7 @@
 import { useDispatch } from 'react-redux';
 import { fetchStatistics } from '../../redux/statistics/operations';
 import css from './StatisticsDashboard.module.css';
-import { SelectStyles } from '../../utils/SelectStyles statistics';
+import { SelectStyles } from '../../utils/SelectStylesStatistics';
 import Select from 'react-select';
 import { useEffect } from 'react';
 import { months, monthsForSelect, yearsForSelect } from '../../constants';
