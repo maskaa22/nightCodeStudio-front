@@ -9,7 +9,7 @@ export const SelectStyles = {
     cursor: 'pointer',
     boxShadow: 'none',
     height: '44px',
-    width: '122px', //add
+    width: '122px',
     color: '#fcfcfc',
     fontSize: '18px',
     fontFamily: 'Inter',
@@ -41,9 +41,15 @@ export const SelectStyles = {
     overflow: 'hidden',
     marginTop: 4,
   }),
+  menuList: (base) => ({
+    ...base,
+    padding: 0,
+    scrollbarWidth: 'none',
+    overflowY: 'auto',
+  }),
   singleValue: (base) => ({
     ...base,
-    color: '#081222',
+    color: '#fcfcfc',
   }),
   indicatorSeparator: () => ({
     display: 'none',
