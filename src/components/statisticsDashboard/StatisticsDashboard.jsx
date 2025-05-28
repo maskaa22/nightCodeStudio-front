@@ -1,55 +1,81 @@
+// StatisticsDashboard.jsx
 import { useDispatch } from 'react-redux';
 import { fetchStatistics } from '../../redux/statistics/operations';
 import css from './StatisticsDashboard.module.css';
-import { SelectStyles } from '../../utils/SelectStylesStatistics';
+import { getSelectStyles } from '../../utils/SelectStylesStatistics'; 
 import Select from 'react-select';
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react'; 
 import { months, monthsForSelect, yearsForSelect } from '../../constants';
 
-let currentDate = new Date();
-
-const usingDate = {
-  month: months[currentDate.getMonth()],
-  year: currentDate.getFullYear().toString(),
-};
-
-const StatisticsDashboard = () => {
+  const StatisticsDashboard = () => {
   const dispatch = useDispatch();
 
-  useEffect(() => {
-    const formattedDate = `${usingDate.year}-${usingDate.month}`;
-    dispatch(fetchStatistics(formattedDate));
-  }, [dispatch]);
+  const [selectedDate, setSelectedDate] = useState(() => {
+    const currentDate = new Date();
+    return {
+      month: months[currentDate.getMonth()],
+      year: currentDate.getFullYear().toString(),
+    };
+  });
 
-  const handleChange = (event) => {
-    usingDate[event.name] = event.value;
-    const formattedDate = `${usingDate.year}-${usingDate.month}`;
+  const [windowWidth, setWindowWidth] = useState(window.innerWidth);
+
+  useEffect(() => {
+    const formattedDate = `${selectedDate.year}-${selectedDate.month}`;
     dispatch(fetchStatistics(formattedDate));
+  }, [dispatch, selectedDate]); 
+
+  useEffect(() => {
+    const handleResize = () => {
+      setWindowWidth(window.innerWidth);
+    };
+
+    window.addEventListener('resize', handleResize);
+
+    return () => {
+      window.removeEventListener('resize', handleResize);
+    };
+  }, []);
+
+  const handleChange = (selectedOption) => {
+    setSelectedDate((prevDate) => ({
+      ...prevDate,
+      [selectedOption.name]: selectedOption.value,
+    }));
   };
 
+  const currentSelectStyles = getSelectStyles(windowWidth);
+
   return (
-    <form onChange={handleChange} className={css.form}>
+    <div className={css.form}>
+      {' '}
       <Select
         options={monthsForSelect}
-        styles={SelectStyles}
+        styles={currentSelectStyles} 
         isSearchable={false}
         onChange={handleChange}
-        name="month"
+        name="month" 
+        value={monthsForSelect.find(
+          (element) => selectedDate.month === element.value,
+        )} 
         placeholder={
-          monthsForSelect.find((element) => usingDate.month === element.value)
-            .label
+          monthsForSelect.find(
+            (element) => selectedDate.month === element.value,
+          )?.label || 'Month'
         }
       />
-
       <Select
         options={yearsForSelect}
-        styles={SelectStyles}
+        styles={currentSelectStyles} 
         isSearchable={false}
         onChange={handleChange}
-        name="year"
-        placeholder={usingDate.year}
+        name="year" 
+        value={yearsForSelect.find(
+          (element) => selectedDate.year === element.value,
+        )} 
+        placeholder={selectedDate.year}
       />
-    </form>
+    </div>
   );
 };
 
