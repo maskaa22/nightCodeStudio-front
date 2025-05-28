@@ -31,7 +31,7 @@ const StatisticsTable = ({type}) => {
 
   return (
     <div>
-      <table>
+      <table className={css.table}>
         <thead className={css.tableHead}>
           <tr className={css.tableHeadRow}>
             <th>Category</th>

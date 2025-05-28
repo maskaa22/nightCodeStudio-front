@@ -1,24 +1,28 @@
+.table {
+  width: 264px;
+  margin-top: 20px;
+}
+
 .tableHead {
   display: flex;
-  justify-content: space-between;
   background: var(--background-color-gradient-list);
   border-radius: 8px;
   font-size: 16px;
   font-weight: 600;
-  padding: 16px;
+  padding: 12px 16px;
 }
 
 .tableBody {
   display: block;
   font-size: 14px;
   font-weight: 400;
-  padding: 16px;
+  padding-top: 19px;
 }
 
 .tableHeadRow {
   display: flex;
   justify-content: space-between;
-  gap: 100px;
+  flex-grow: 1;
 }
 
 .tableRow {
@@ -32,7 +36,7 @@
 
 .tableData {
   display: flex;
-  align-items: center;
+  /* align-items: center; */
   gap: 10px;
   padding: 16px;
 }
@@ -40,4 +44,21 @@
 .marker {
   width: 24px;
   height: 24px;
+}
+
+
+@media screen and (min-width: 768px) {
+  .table {
+    width: 317px;
+  }
+
+  .tableHead {
+    padding: 16px 28px;
+  }
+}
+
+@media screen and (min-width: 1280px) {
+  .table {
+    width: 395px;
+  }
 }
