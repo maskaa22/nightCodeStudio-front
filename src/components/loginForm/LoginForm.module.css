@@ -184,7 +184,7 @@
   .container {
     /* padding: 176px 0 0 0; */
     max-width: 1279px;
-    min-height: max(100vh, 1024px);
+    min-height: max(100vh, 1124px);
     background: url('/images/dude-1x.png') no-repeat,
       var(--background-color-gradient-list);
     background-size: 320px 239px, auto;
