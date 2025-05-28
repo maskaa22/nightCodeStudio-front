@@ -155,7 +155,7 @@ select:-webkit-autofill:focus {
 @media screen and (min-width: 768px) {
   .containerOverride {
     max-width: 1279px;
-    min-height: max(100vh, 1024px);
+    min-height: max(100vh, 1124px);
     background: url('/images/dude-1x.png') no-repeat,
       linear-gradient(180deg, #294045 0%, #1e2f33 100%);
     background-size: 320px 239px, auto;
