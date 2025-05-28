@@ -1,13 +1,14 @@
 import { Route, Routes } from 'react-router-dom';
 import './App.css';
+
 import RestrictedRoute from './components/restrictedRoute/RestrictedRoute';
-import PrivateRoute from './components/privateRoute/PrivateRoute';
-import RegistrationPage from './pages/registrationPage/RegistrationPage';
-import LoginPage from './pages/loginPage/LoginPage';
+const PrivateRoute = lazy(()=> import('./components/privateRoute/PrivateRoute' ));
+const RegistrationPage = lazy(()=> import('./pages/registrationPage/RegistrationPage'));
+const LoginPage = lazy(()=> import('./pages/loginPage/LoginPage'));
 import UserAcountLayout from './components/userAcountLayout/UserAcountLayout';
 import HomeTab from './components/homeTab/HomeTab';
-import StatisticsTab from './components/statisticsTab/StatisticsTab.jsx';
-import CurrencyTab from './components/currencyTab/CurrencyTab';
+const StatisticsTab = lazy(()=> import('./components/statisticsTab/StatisticsTab.jsx'));
+const CurrencyTab = lazy(()=> import('./components/currencyTab/CurrencyTab'));
 import { Toaster } from 'react-hot-toast';
 import { useMediaQuery } from 'react-responsive';
 import { useRedirectFunction } from './utils/locationFunction.js';
@@ -16,6 +17,7 @@ import { useRedirectFunction } from './utils/locationFunction.js';
 // import { useDispatch, useSelector } from 'react-redux';
 // import { selectIsRefreshing } from './redux/auth/selectors.js';
 import GlobalLoader from './components/loader/Loader';
+import { lazy, Suspense} from 'react';
 
 function App() {
   // const dispatch = useDispatch();
@@ -31,6 +33,7 @@ function App() {
     <>
     <GlobalLoader />
       <Toaster position="top-right" reverseOrder={false} />
+      <Suspense fallback={<GlobalLoader />}>
       <Routes>
         <Route path="/" element={<UserAcountLayout />}>
           <Route
@@ -69,7 +72,8 @@ function App() {
           path="/login"
           element={<RestrictedRoute component={<LoginPage />} redirectTo="/" />}
         />
-      </Routes>
+        </Routes>
+        </Suspense>
     </>
   );
 }
