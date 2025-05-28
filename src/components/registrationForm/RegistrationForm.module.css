@@ -4,7 +4,7 @@
   justify-content: center;
   max-width: 767px;
   background: var(--background-color-gradient-list);
-  padding: 26px 0;
+  /* padding: 26px 0; */
   align-items: center;
 }
 
@@ -160,7 +160,7 @@ select:-webkit-autofill:focus {
       linear-gradient(180deg, #294045 0%, #1e2f33 100%);
     background-size: 320px 239px, auto;
     background-position: right calc(100% - 38px), bottom;
-    padding: 125px 0 0;
+    /* padding: 125px 0 0; */
   }
   .RegistrationForm {
     width: 533px;
@@ -194,7 +194,7 @@ select:-webkit-autofill:focus {
       linear-gradient(180deg, #294045 0%, #1e2f33 100%);
     background-size: 320px 239px, auto;
     background-position: right calc(100% - 58px), bottom;
-    padding: 48px 0 0;
+    /* padding: 48px 0 0; */
   }
 
   @media screen and (-webkit-min-device-pixel-ratio: 2),
