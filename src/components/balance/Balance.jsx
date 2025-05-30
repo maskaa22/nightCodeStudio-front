@@ -9,7 +9,9 @@ const Ballance = () => {
     <div className={s.balance}>
       <p className={s.title}>Your balance</p>
       <p className={s.cost}>
-        {ballance}
+        {
+          ballance === 0 ? 0 : ballance
+        }
         <span className={s.curreny}>UAH</span>
       </p>
     </div>
